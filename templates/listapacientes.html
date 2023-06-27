@@ -1,0 +1,130 @@
+
+<!--listapacientes.html-->
+
+{% extends tipolayout %}
+
+
+{% block nav %}
+
+    <li>
+        <a href="/">Inicio</a>
+    </li>
+
+    {% if tipopaciente == "depresion"%}
+        <li>
+            <a href="/formularioregistro/depresion">Crear Nuevo Paciente de Trastorno Depresivo Mayor</a>
+        </li>
+        <li>
+            <a class="cerrarprogramadepresion1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
+        </li>
+
+    {% elif tipopaciente == "bipolar"%}
+        <li>
+            <a href="/formularioregistro/bipolar">Crear Nuevo Paciente de Trastorno Bipolar</a>
+        </li>
+        <li>
+            <a class="cerrarprogramabipolares1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
+        </li>
+
+    {% elif tipopaciente == "esquizofrenia"%}
+        <li>
+            <a href="/formularioregistro/esquizofrenia">Crear Nuevo Paciente de Trastorno del Espectro de la Esquizofrenia</a>
+        </li>
+        <li>
+            <a class="cerrarprogramaesquizofrenia1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
+        </li>
+    {% elif tipopaciente == "esquizoafectivo"%}
+        <li>
+            <a href="/formularioregistro/esquizoafectivo">Crear Nuevo Paciente de Trastorno Esquizoafectivo</a>
+        </li>
+        <li>
+            <a class="cerrarprogramaesquizoafectivo1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
+        </li>
+
+    {% endif %}
+
+{% endblock %}
+
+
+{% block title %}Lista de Pacientes{% endblock %}
+
+
+{% block content %}
+
+    <!--titulo de inicio-->
+    {% if tipopaciente == "depresion"%}
+        <h1 class="titulo2">Lista de Pacientes con Trastorno Depresivo Mayor</h1>
+    {% elif tipopaciente == "bipolar"%}
+        <h1 class="titulo2">Lista de Pacientes con Trastorno Bipolar</h1>
+    {% elif tipopaciente == "esquizofrenia"%}
+        <h1 class="titulo2">Listado de Pacientes con Trastorno del Espectro de la Esquizofrenia</h1>
+    {% elif tipopaciente == "esquizoafectivo"%}
+        <h1 class="titulo2">Lista de Pacientes con Trastorno Esquizoafectivo</h1>
+    {% endif %}
+
+
+
+    <!--crear mensajes flash-->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %} 
+            {% for category, message in messages %}
+                <div class="{{category}}">
+                    {{ message }}
+                </div>
+                <br>
+            {% endfor %}
+        {%endif%}
+    {% endwith %}
+
+
+    <h3>Número de pacientes en la lista: {{ numeropacientes }}</h3>
+    <br>
+    <div class="divtable">
+
+        <table>
+            <thead class="theadtable">
+                <tr>
+                    <!--colocar todo los valores de las tablas que se deseen mostar -->
+                    
+                    <td class="titulostablas1">Identificador (NHC):</td>
+                    <td class="titulostablas1">Fecha de creación:</td>
+                    <td class="titulostablas3"></td>
+                    <td class="titulostablas4"></td>
+                    <td class="titulostablas5"></td>
+
+                </tr>
+            </thead>
+
+
+            <tbody class="tbodytable">
+                {% for paciente in listapacientes %}
+                    <tr>
+                        <!--colocar todo los valores de las tablas que se deseen mostar -->
+                        <td class="contenidotabla0">{{ paciente.nhcpaciente }}</td>
+                        <td class="contenidotabla0">{{ paciente.fechacreacion }}</td>
+
+                        <!--Formulario Principal datos sociodemográficos-->
+                        <td class="contenidotabla3">
+                            <a class="btn3" href="/formularioregistro/{{ tipopaciente }}/{{ paciente.idpaciente }}">Editar Formulario de Registro</a>
+                        </td>
+
+                        <td class="contenidotabla3">
+                            <!-- en el apartado de borrar hay que indicar /idpaciente/nhcpaciente/fechacreacion-->
+                            <a class="btn8" href="/listaformulariospaciente/{{ tipopaciente }}/{{ paciente.idpaciente }}/{{ paciente.nhcpaciente}}/{{ paciente.fechacreacion }}">Rellenar/Editar Escalas</a>
+                        </td>
+
+                        <td class="contenidotabla3">
+                            <!-- en el apartado de borrar hay que indicar /idpaciente/nhcpaciente/fechacreacion-->
+                            <a class="btn7" href="/borrarpaciente/{{ tipopaciente }}/{{ paciente.idpaciente }}/{{ paciente.nhcpaciente }}/{{ paciente.fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas eliminar el paciente: {{  paciente.nhcpaciente }}?')">Eliminar Paciente</a>
+                        </td>
+
+                    </tr>
+                    
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+
+{% endblock %}

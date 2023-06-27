@@ -1,0 +1,77 @@
+
+<!--inicio-->
+
+{% extends 'layoutinicio.html' %}
+
+{% block nav %}
+    <li>
+        <a class="inicio" href="/">Inicio</a>
+    </li>
+    <li>
+        <a class="depresion" href="/listapacientes/depresion">Lista de Pacientes con Trastorno Depresivo Mayor</a>
+    </li>
+    <li>
+        <a class="bipolares" href="/listapacientes/bipolar">Lista de Pacientes con Trastorno Bipolar</a>
+    </li>
+    <li>
+        <a class="esquizofrenia" href="/listapacientes/esquizofrenia">Lista de Pacientes con Trastorno de Espectro de la Esquizofrenia</a>
+    </li>
+    <li>
+        <a class="esquizoafectivo" href="/listapacientes/esquizoafectivo">Lista de Pacientes con Trastorno Esquizoafectivo</a>
+    </li>
+    <li>
+        <a class="exportarinicio" href="/exportarbase">Exportar las Bases de Datos</a>
+    </li>
+{% endblock %}
+
+
+{% block title %}Inicio{% endblock %}
+
+
+{% block content %}
+
+    <!--titulo de inicio-->
+    <h1 class="titulo">Inicio</h1>
+
+    <!--crear mensajes flash-->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %} 
+            {% for category, message in messages %}
+                <div class="{{category}}">
+                    {{ message }}
+                </div>
+                <br>
+            {% endfor %}
+        {%endif%}
+    {% endwith %}
+
+
+    <form action="" method="post">
+
+    <!--lista de de botones de inicio-->
+    <div class="botonesinicio">
+        <ul class="botonesinicio2" >
+            <li class="liinicio">
+                <input class="botongrandeinicio" type="submit" id="botoncrearinicio1" name="botoncrearinicio" value="Crear Paciente con Trastorno Depresivo Mayor" />
+            </li>
+            <li class="liinicio">
+                <input class="botongrandeinicio" type="submit" id="botoncrearinicio2" name="botoncrearinicio" value="Crear Paciente con Trastorno Bipolar" />
+            </li>
+            <li class="liinicio">
+                <input class="botongrandeinicio" type="submit" id="botoncrearinicio3" name="botoncrearinicio" value="Crear Paciente con Trastorno del Espectro de la Esquizofrenia" />
+            </li>
+            <li class="liinicio">
+                <input class="botongrandeinicio" type="submit" id="botoncrearinicio4" name="botoncrearinicio" value="Crear Paciente con Trastorno Esquizoafectivo" />
+            </li>
+
+            <li class="liinicio">
+                <input class="botongrandeiniciocerrar" type="submit" id="botonsalirinicio1" name="botonsalirinicio" value="Cerrar Programa" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')" />
+            </li>
+
+        </ul>
+    </div>
+    </form>
+
+{% endblock %}
+
+

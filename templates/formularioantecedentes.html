@@ -1,0 +1,241 @@
+<!-- Seleccionar el layout adecuado en cada caso -->
+{% extends tipolayout %}
+
+
+<!-- Seleccionar el estado del paciente en cada caso -->
+{% block title %}Formulario Antecedentes: Paciente {{formulariosecundario.estadopaciente}}.{% endblock %}
+
+
+<!-- Indicar si es necesario colocar algun boton en el nav referente a este formulario -->
+{% block nav %}{% endblock %}
+
+
+<!-- Indicar si es necesario colocar script en javascript referente a este formulario -->
+{% block scripts %}{% endblock %}
+
+
+
+<!-- Para escribir el titulo del formulario, indicar el estado del paciente en cada caso -->
+{% block contenttitle %}
+
+<div>
+    {% if formulariosecundario.estadopaciente == "estable" %}
+
+        {% if formulariosecundario.estadoescala == "Sin rellenar" %}
+            <h1 class="titulo2">Formulario Antecedentes: Paciente Estable.</h1>
+        
+        {% elif formulariosecundario.estadoescala == "En Proceso o Finalizada" %}
+            <h1 class="titulo2">Editar Formulario Antecedentes: Paciente Estable.</h1>
+        {% endif %}
+    
+
+    {% elif formulariosecundario.estadopaciente == "inestable" %}
+
+        {% if formulariosecundario.estadoescala == "Sin rellenar" %}
+            <h1 class="titulo2">Formulario Antecedentes: Paciente Inestable.</h1>
+        
+        {% elif formulariosecundario.estadoescala == "En Proceso o Finalizada" %}
+            <h1 class="titulo2">Editar Formulario Antecedentes: Paciente Inestable.</h1>
+        {% endif %}
+
+    {% endif %}
+    <br>
+
+
+    <!--crear mensajes flash-->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %} 
+            {% for category, message in messages %}
+                <div class="{{category}}">
+                    {{ message }}
+                </div>
+    
+                <br>
+            {% endfor %}
+        {%endif%}
+    {% endwith %}
+    
+
+</div>
+
+{% endblock %}
+
+
+<!-- Escribir el contenido del formulario -->
+{% block contentform %}
+
+
+
+
+
+
+
+
+
+<!-- Preguntas Antecedentes personales psiquiátricos -->
+<div>
+    <h3>ANTECEDENTES PERSONALES SOMÁTICOS:</h3>
+    <br>
+
+
+    <div>
+        <h4>1. Antecedentes personales somáticos. En caso de tener una enfermedad médica, escriba cuál:</h4>
+        <textarea id="antecedentespersonalessomaticos1" name="antecedentespersonalessomaticos" rows="7" placeholder="Indica las enfermedades">{{formulariosecundario.antecedentespersonalessomaticos}}</textarea>
+    </div>
+    <br>
+
+</div>
+<br>
+
+
+
+<!-- Preguntas Antecedentes personales psiquiátricos -->
+<div>
+    <h3>ANTECEDENTES PERSONALES PSIQUIÁTRICOS:</h3>
+    <br>
+
+    <div>
+        <h4>1. Diagnóstico DMS-5:</h4>
+
+        <textarea id="diagnosticodms51" name="diagnosticodms5" rows="7" placeholder="Indica el diagnóstico DMS-5">{{formulariosecundario.diagnosticodms5}}</textarea>
+    </div>
+    <br>
+
+
+    <div>
+        <h4>2. Fase de la enfermedad actual:</h4>
+
+        <input type="radio" id="faseenfermedadactual1" name="faseenfermedadactual" value="Descompensación." {% if "Descompensación." == formulariosecundario.faseenfermedadactual %} checked {% endif %}>
+        <label for="faseenfermedadactual1">Descompensación.</label>
+        <br>
+
+        <input type="radio" id="faseenfermedadactual2" name="faseenfermedadactual" value="Estabilidad." {% if "Estabilidad." == formulariosecundario.faseenfermedadactual %} checked {% endif %}>
+        <label for="faseenfermedadactual2">Estabilidad.</label>
+
+    </div>
+    <br>
+
+
+    <div>
+        <h4>3. Edad de inicio de la sintomatología:</h4>
+        <input type="number" id="edadiniciosintomatologia1" name="edadiniciosintomatologia" placeholder="Indica la edad" value="{{formulariosecundario.edadiniciosintomatologia}}">
+    </div>
+    <br>
+
+
+    <div>
+        <h4>4. Años de evolución de la enfermedad:</h4>
+        <input type="number" id="anosevolucionenfermedad1" name="anosevolucionenfermedad" placeholder="Indica un número" value="{{formulariosecundario.anosevolucionenfermedad}}">
+    </div>
+    <br>
+
+
+    <div>
+        <h4>5. Número de descompensaciones:</h4>
+        <input type="number" id="numerodescompensaciones1" name="numerodescompensaciones" placeholder="Indica un número" value="{{formulariosecundario.numerodescompensaciones}}">
+    </div>
+    <br>
+
+    <div>
+        <h4>6. Número de descompensaciones en los últimos 6 meses:</h4>
+        <input type="number" id="numerodescompensaciones6meses1" name="numerodescompensaciones6meses" placeholder="Indica el número" value="{{formulariosecundario.numerodescompensaciones6meses}}">
+    </div>
+    <br>
+
+
+    <div>
+        <h4>7. Número de ingresos:</h4>
+        <input type="number" id="numeroingresos1" name="numeroingresos" placeholder="Indica un número" value="{{formulariosecundario.numeroingresos}}">
+    </div>
+    <br>
+
+
+    <div>
+        <h4>8. Número de ingresos en los últimos 6 meses:</h4>
+        <input type="number" id="numeroingresos6meses1" name="numeroingresos6meses" placeholder="Indica el número" value="{{formulariosecundario.numeroingresos6meses}}">
+    </div>
+    <br>
+
+
+    <div>
+        <h4>9. Tratamiento psicofarmacológico actual. Introduzca en cada línea un fármaco, su dosis actual y el tiempo de duración:</h4>
+        <textarea id="tratamientopsicofarmacologico1" name="tratamientopsicofarmacologico" rows="7" placeholder="Indica el tratamiento psicofarmacológico actual">{{formulariosecundario.tratamientopsicofarmacologico}}</textarea>
+    </div>
+    <br>
+
+
+    <div>
+        <h4>10. Tratamiento médico actual. Introduzca en cada línea un fármaco, su dosis actual y el tiempo de duración:</h4>
+        <textarea id="tratamientomedicoactual1" name="tratamientomedicoactual" rows="7" placeholder="Indica el tratamiento médico actual">{{formulariosecundario.tratamientomedicoactual}}</textarea>
+    </div>
+    <br>
+
+
+    <div>
+        <h4>11. Antecedentes personales tóxicos. Marque si consume alguna de estas sustancias:</h4>
+
+        <input type="checkbox" id="antecedentespersonalestoxicos1" name="antecedentespersonalestoxicos1" value="Tabaco." {% if "Tabaco." == formulariosecundario.antecedentespersonalestoxicos1 %} checked {% endif %}>
+        <label for="antecedentespersonalestoxicos1">Tabaco.</label>
+        <br>
+
+        <input type="checkbox" id="antecedentespersonalestoxicos10" name="antecedentespersonalestoxicos8" value="Cafeína." {% if "Cafeína." == formulariosecundario.antecedentespersonalestoxicos8 %} checked {% endif %}>
+        <label for="antecedentespersonalestoxicos10">Cafeína.</label>
+        <br>
+
+
+        <input type="checkbox" id="antecedentespersonalestoxicos2" name="antecedentespersonalestoxicos2" value="Alcohol." {% if "Alcohol." == formulariosecundario.antecedentespersonalestoxicos2 %} checked {% endif %}>
+        <label for="antecedentespersonalestoxicos2">Alcohol.</label>
+        <br>
+
+        <input type="checkbox" id="antecedentespersonalestoxicos3" name="antecedentespersonalestoxicos3" value="Cocaína." {% if "Cocaína." == formulariosecundario.antecedentespersonalestoxicos3 %} checked {% endif %}>
+        <label for="antecedentespersonalestoxicos3">Cocaína.</label>
+        <br>
+
+        <input type="checkbox" id="antecedentespersonalestoxicos4" name="antecedentespersonalestoxicos4" value="Opiáceos." {% if "Opiáceos." == formulariosecundario.antecedentespersonalestoxicos4 %} checked {% endif %}>
+        <label for="antecedentespersonalestoxicos4">Opiáceos.</label>
+        <br>
+
+        <input type="checkbox" id="antecedentespersonalestoxicos5" name="antecedentespersonalestoxicos5" value="Cannabis." {% if "Cannabis." == formulariosecundario.antecedentespersonalestoxicos5 %} checked {% endif %}>
+        <label for="antecedentespersonalestoxicos5">Cannabis.</label>
+        <br>
+
+        <input type="checkbox" id="antecedentespersonalestoxicos6" name="antecedentespersonalestoxicos6" value="Anfetaminas." {% if "Anfetaminas." == formulariosecundario.antecedentespersonalestoxicos6 %} checked {% endif %}>
+        <label for="antecedentespersonalestoxicos6">Anfetaminas.</label>
+        <br>
+
+        <input type="checkbox" id="antecedentespersonalestoxicos7" name="antecedentespersonalestoxicos7" value="Otro:" {% if "Otro:" == formulariosecundario.antecedentespersonalestoxicos7 %} checked {% endif %}>
+        <label for="antecedentespersonalestoxicos7">Otro:</label>   
+
+        <input type="text" id="antecedentespersonalestoxicos8" name="textoantecedentespersonalestoxicos" placeholder="Indica otros tipos de sustancias" {% if formulariosecundario.antecedentespersonalestoxicos7 == "Otro:" %} value="{{formulariosecundario.textoantecedentespersonalestoxicos}}" {% else %} value="" {% endif %}>
+        
+        <input type="hidden" id="antecedentespersonalestoxicos9" name="textoantecedentespersonalestoxicos2" value="">
+    
+    </div>                    
+    <br> 
+
+    <div>
+        <h4>12. Cumple los criterios de abuso o dependencia en los últimos 3 meses:</h4>
+
+        <input type="radio" id="criteriosabuso1" name="criteriosabuso" value="Si." {% if "Si." == formulariosecundario.criteriosabuso %} checked {% endif %}>
+        <label for="criteriosabuso1">Si.</label>
+        <br>
+
+        <input type="radio" id="criteriosabuso2" name="criteriosabuso" value="No." {% if "No." == formulariosecundario.criteriosabuso %} checked {% endif %}>
+        <label for="criteriosabuso2">No.</label>
+
+    </div>
+    <br>
+
+
+
+    <div>
+        <h4>13. Antecedentes familiares psiquiátricos:</h4>
+        <textarea id="antecedentesfamiliarespsiquiatricos1" name="antecedentesfamiliarespsiquiatricos" rows="7" placeholder="Indica los antecedentes familiares psiquiátricos">{{formulariosecundario.antecedentesfamiliarespsiquiatricos}}</textarea>
+    </div>
+    <br>
+
+</div>
+<br>
+
+
+{% endblock %}

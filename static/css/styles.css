@@ -1,0 +1,1807 @@
+/*Estilos generales*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    font-family: Arial;
+    /*font-family: sans-serif;*/
+}
+
+body{
+    background-color: white;
+}
+
+.box h2{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.box h3{
+    /*margin-top: 5px;
+    margin-bottom: 5px;*/
+    font-size: 25px;
+}
+
+.box p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /*font-size: 20px;*/
+}
+
+.box h4{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.box h5{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.box ul{
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+/* Estilos de cabecera*/
+header{
+    width: 1344px;
+    height: 130px;
+    margin: 0px auto;
+}
+
+#logotipo{
+    width: 100%;
+    height: 250px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.logotipo1 {
+    display: block;
+    float: left;
+    margin-top: 10px;
+    margin-right: 0px;
+}
+
+.logotipo2 {
+    display: block;
+    float: left;
+    margin-top: 10px;
+}
+
+.logotipo3 {
+    display: block;
+    float: left;
+    margin-top: 10px;
+}
+
+.logotipo4 {
+    display: block;
+    float: left;
+    margin-top: 10px;
+}
+
+#logotipo h2{
+    display: block;
+    float: left;
+    margin-top: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    letter-spacing: 0px;
+    font-size: 10px bold;
+    color: #B30033;
+}
+
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* estilos barra navegación */
+nav{
+    width: 1344px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: #B30033;
+    border: 1px solid #333333;
+    box-shadow: 0px 15px 15px gray;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.nav1{
+    width: 1344px;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #B30033;
+    border: 1px solid #333333;
+    box-shadow: 0px 15px 15px gray;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+nav ul{
+    list-style: none;
+    text-decoration: none;
+}
+
+nav ul li{
+    line-height: 40px;
+    float: left;
+}
+
+nav ul li a{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: white;
+}
+
+nav ul li a:hover{
+    background: #af828f;
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+/* nav inicio pagina inicio*/
+
+.inicio{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    width: 40px;
+    height: 60px;
+    padding-left: 24px;
+    padding-right: 24px;
+    background: #B30033;
+    border-radius: 5px;
+    color: white;
+}
+
+.inicio:hover{
+    background: #af828f;
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+/* nav depresion pagina inicio*/
+
+.depresion{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    width: 208px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #B30033;
+    border-radius: 5px;
+    color: white;
+    line-height: 30px;
+}
+
+.depresion:hover{
+    background: #af828f;
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+/* nav bipolares pagina inicio*/
+.bipolares{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    width: 200px;
+    text-align: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    background: #B30033;
+    border-radius: 5px;
+    color: white;
+    line-height: 30px;
+}
+
+.bipolares:hover{
+    background: #af828f;
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+/* nav esquizofrenia pagina inicio*/
+.esquizofrenia{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    width: 267px;
+    text-align: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    background: #B30033;
+    border-radius: 5px;
+    color: white;
+    line-height: 30px;
+}
+
+.esquizofrenia:hover{
+    background: #af828f;
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+/* nav esquizoafectivo pagina inicio*/
+.esquizoafectivo{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    width: 200px;
+    text-align: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    background: #B30033;
+    border-radius: 5px;
+    color: white;
+    line-height: 30px;
+}
+
+.esquizoafectivo:hover{
+    background: #af828f;
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+/* nav exportar pagina inicio*/
+
+.exportarinicio{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    width: 149px;
+    text-align: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    background: grey;
+    border-radius: 5px;
+    color: white;
+    line-height: 30px;
+    /*margin-left: 317px;*/
+    
+}
+
+.exportarinicio:hover{
+    /*background: rgb(128, 100, 100);*/
+    background: #af828f;
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* nav cerrar programa depresion*/
+.cerrarprogramadepresion1{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 672px;
+    
+}
+
+.cerrarprogramadepresion1:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+/* nav cerrar programa depresion*/
+.cerrarprogramadepresion2{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 691px;
+    
+}
+
+.cerrarprogramadepresion2:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramadepresion3{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 411px;
+    
+}
+
+.cerrarprogramadepresion3:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramadepresion4{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 691px;
+    
+}
+
+.cerrarprogramadepresion4:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* nav cerrar programa bipolares*/
+.cerrarprogramabipolares1{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 747px;
+    
+}
+
+.cerrarprogramabipolares1:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramabipolares2{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 767px;
+    
+}
+
+.cerrarprogramabipolares2:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramabipolares3{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 487px;
+    
+}
+
+.cerrarprogramabipolares3:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramabipolares4{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 767px;
+    
+}
+
+.cerrarprogramabipolares4:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* nav cerrar programa esquizofrenia*/
+.cerrarprogramaesquizofrenia1{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 556px;
+    
+}
+
+.cerrarprogramaesquizofrenia1:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramaesquizofrenia2{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 576px;
+    
+}
+
+.cerrarprogramaesquizofrenia2:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramaesquizofrenia3{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 296px;
+    
+}
+
+.cerrarprogramaesquizofrenia3:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramaesquizofrenia4{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 576px;
+    
+}
+
+.cerrarprogramaesquizofrenia4:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* nav cerrar programa esquizoafectivo*/
+.cerrarprogramaesquizoafectivo1{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 681px;
+    
+}
+
+.cerrarprogramaesquizoafectivo1:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramaesquizoafectivo2{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 701px;
+    
+}
+
+.cerrarprogramaesquizoafectivo2:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramaesquizoafectivo3{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 420px;
+    
+}
+
+.cerrarprogramaesquizoafectivo3:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.cerrarprogramaesquizoafectivo4{
+    list-style: none;
+    text-decoration: none;
+    display: block;
+    padding-left: 22px;
+    padding-right: 22px;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 701px;
+    
+}
+
+.cerrarprogramaesquizoafectivo4:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+/* contenido central*/
+#content{
+    /*width: 1248px;*/
+    width: 1344px;
+    min-height: 685px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+#content2{
+    /*width: 1248px;*/
+    width: 1344px;
+    min-height: 665px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.box{
+    background: white;
+    width: 90%;
+    /*width: 90%;*/
+    min-height: 200px; /* poner el tamaño del cuadro box*/
+    padding: 20px;
+    border: 1px solid #dddddd;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+
+/* estilos de los formularios*/
+
+form{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1090.8px;
+}
+
+.box form label{
+    display: inline-block;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    /*font-size: 17px;*/
+    font-size: 19px;
+}
+
+.box form input{
+    display: inline-block;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    /*font-size: 17px;*/
+    font-size: 21px;
+}
+
+.box form input[type=radio] {
+    float: left;
+    height: 25px;
+    width: 25px;
+}
+
+.box form label {
+    margin-left: 25px;
+    display: block;
+}
+
+.box form input[type=checkbox] {
+    float: left;
+    height: 25px;
+    width: 25px;
+}
+
+
+
+
+.box form input[type="text"]{
+    width: 1076.8px;
+    padding: 8px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.box form input[type="textarea"]{
+    width: 1076.8px;
+    padding: 8px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: left;
+    resize: vertical;
+    overflow: auto;
+}
+
+.box form input[type="date"], .box form input[type="number"]{
+    width: 1076.8px;
+    padding: 8px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+textarea {
+    width: 1078.8px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    text-align: left;
+    resize: vertical;
+    overflow: auto;
+    font-size: 21px;
+}
+
+.textarea1{
+    resize:none;
+}
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+/* alineacion centrada botones de los formularios*/
+
+.botonguardar{
+    text-align: center;
+}
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+/*
+.box form input[type="submit"], 
+.box form input[type="button"], 
+.box form button{
+    text-decoration: none;
+    padding: 10px;
+    background: #B30033;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 70px;
+    width: 630px;
+    text-align: center;
+}
+
+.box form input[type="submit"]:hover, 
+.box form input[type="button"]:hover, 
+.box form button:hover{
+    cursor:pointer;
+    background:rgba(0, 128, 0, 0.5);
+}
+
+
+*/
+
+.botonsalirpaciente{
+    text-decoration: none;
+    padding: 10px;
+    background: #B30033;
+    font-size: 50px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 55px;
+    width: 350px;
+    text-align: center;
+}
+
+.botonsalirpaciente:hover{
+    cursor:pointer;
+    background:rgb(255, 100, 100);
+}
+
+
+.botongrandeinicio{
+    text-decoration: none;
+    padding: 10px;
+    background: #B30033;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 70px;
+    width: 650px;
+    text-align: center;
+}
+
+.botongrandeinicio:hover{
+    cursor:pointer;
+    background:rgba(0, 128, 0, 0.5);
+}
+
+
+.botongrandeiniciocerrar{
+    text-decoration: none;
+    padding: 10px;
+    background: red;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 70px;
+    width: 650px;
+    text-align: center;
+}
+
+.botongrandeiniciocerrar:hover{
+    cursor:pointer;
+    background:rgb(255, 100, 100);
+}
+
+
+
+
+
+
+.botonformularioregistrocrear{
+    text-decoration: none;
+    padding: 10px;
+    background: green;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 55px;
+    width: 300px;
+    text-align: center;
+}
+
+.botonformularioregistrocrear:hover{
+    cursor:pointer;
+    background:rgba(0, 128, 0, 0.5);
+}
+
+
+
+.botonformularioregistroguardar{
+    text-decoration: none;
+    padding: 10px;
+    background: green;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 55px;
+    width: 300px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.botonformularioregistroguardar:hover{
+    cursor:pointer;
+    background:rgba(0, 128, 0, 0.5);
+}
+
+
+.botonformularioregistrovolver{
+    text-decoration: none;
+    padding: 10px;
+    background: red;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 55px;
+    width: 300px;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.botonformularioregistrovolver:hover{
+    cursor:pointer;
+    background:rgb(255, 100, 100);
+}
+
+
+
+
+
+
+.botonformularioregistrovolver1{
+    text-decoration: none;
+    padding: 10px;
+    background: #B30033;
+    font-size: 25px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline;
+    height: 55px;
+    width: 300px;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.botonformularioregistrovolver1:hover{
+    cursor:pointer;
+    background:#af828f;
+}
+
+
+
+.botonguardarresultadospdf{
+    text-decoration: none;
+    padding: 10px;
+    background: green;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 55px;
+    width: 400px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.botonguardarresultadospdf:hover{
+    cursor:pointer;
+    background:rgba(0, 128, 0, 0.5);
+}
+
+
+.botonresultadosvolver{
+    text-decoration: none;
+    padding: 10px;
+    background: #B30033;
+    font-size: 50px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 55px;
+    width: 350px;
+    text-align: center;
+}
+
+.botonresultadosvolver:hover{
+    cursor:pointer;
+    background:rgb(255, 100, 100);
+}
+
+
+
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+/* mensajes flash */
+.crear{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    background: rgba(0, 128, 0, 0.5);
+    color: black;
+    text-align: center;
+    /*margin-bottom: 10px;*/
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.modificar{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    background: rgba(255, 166, 0, 0.5);
+    color: black;
+    text-align: center;
+    /*margin-bottom: 10px;*/
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.borrar{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    background: rgba(255, 0, 0, 0.5);
+    color: black;
+    text-align: center;
+    /*margin-bottom: 10px;*/
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.exportar{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 13px;
+    background: grey;
+    color: black;
+    text-align: center;
+    /* margin-bottom: 10px; */
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* titulos */
+.titulo{
+    color: #444444;
+    letter-spacing: 1px;
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.titulo2{
+    color: #444444;
+    letter-spacing: 1px;
+    font-size: 30px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* botones de inicio*/
+.botonesinicio{
+    text-align: center;
+} 
+
+.botonesinicio2{
+    text-align: center;
+    display:inline-block;
+}  
+
+.liinicio{
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* botones de lista de pacientes*/
+.btn3{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px;
+    background: #B30033;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn3:hover{
+    background: #af828f;
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+
+
+/* botones de editar escalas*/
+.btn8{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn8:hover{
+    background: rgba(0, 128, 0, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+/* botones de eliminar pacientes completo*/
+.btn7{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px;
+    background: red;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn7:hover{
+    background: rgb(255, 100, 100);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+.btn9{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px;
+    background: purple;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn9:hover{
+    background: rgba(128, 0, 128, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+.btn10{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px;
+    background: orange;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn10:hover{
+    background: rgba(255, 166, 0, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+/* botones de lista formularios del paciente*/
+.btn5{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px;
+    background: green;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn5:hover{
+    background: rgba(0, 128, 0, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+.btn11{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px;
+    background: teal;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn11:hover{
+    background: rgba(0, 128, 128, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+.btn12{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px;
+    background: blue;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn12:hover{
+    background: rgba(0, 0, 255, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+
+.btn15{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px;
+    background: brown;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn15:hover{
+    background: rgba(165, 42, 42, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+.btn16{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px;
+    background: gray;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn16:hover{
+    background: rgba(128, 128, 128, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+
+
+
+
+/* botones escalas terapeutas*/
+.btn6{
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px;
+    background: goldenrod;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.btn6:hover{
+    background: rgba(218, 165, 32, 0.5);
+    box-shadow: 0px 0px 0px 5px  #B30033 insert;
+    color: white;
+    border-radius: 5px;
+    transition: all 3ms;
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+
+
+
+/* tablas generales*/
+
+table{
+    table-layout: fixed;
+    width: 100%;
+}
+
+.divtable{
+    text-align: center;
+    /*width: 1090.8px;*/
+}
+
+.theadtable{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* titulo numero historial clinico*/
+.titulostablas1{
+    font-size: 20px;
+    width: 145px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* titulo nombre paciente*/
+.titulostablas2{
+    font-size: 20px;
+    width: auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+/* titulo botones listado de pacientes*/
+.titulostablas3{
+    width: 131px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.titulostablas4{
+    width: 126px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.titulostablas5{
+    width: 97px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+
+/* titulo preguntas*/
+
+.titulostablas6{
+    font-size: 20px;
+    width: auto;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.titulostablas15{
+    text-align: center;
+    font-size: 20px;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+/* titulo si no*/
+.titulostablas7{
+    width: 80px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.table2{
+    table-layout: auto;
+    margin: auto;
+    width: 85%;
+}
+
+.divtable1{
+    display: block;
+    text-align: center;
+    /*width: 1090.8px;*/
+}
+
+
+/* titulo atrapamiento, derrota*/
+.titulostablas8{
+    font-size: 20px;
+    width: 60px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.titulostablas12{
+    font-size: 20px;
+    width: 40px;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+
+.titulostablas13{
+    font-size: 20px;
+    width: 140px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.titulostablas14{
+    font-size: 20px;
+    width: 210px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+
+
+
+
+.table3{
+    table-layout: auto;
+    margin: auto;
+    width: 60%;
+}
+
+
+.table4{
+    table-layout: auto;
+    margin: auto;
+    width: 75%;
+}
+
+
+
+/* titulo verdadero falso*/
+
+.titulostablas9{
+    font-size: 20px;
+    width: 196px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+
+
+.table5{
+    table-layout: auto;
+    margin: auto;
+    width: 98%;
+}
+
+
+
+/* titulo duke*/
+.titulostablas10{
+    font-size: 20px;
+    width: 70px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.table6{
+    table-layout: auto;
+    margin: auto;
+    width: 100%;
+}
+
+
+.titulostablas11{
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.table7{
+    table-layout: auto;
+    margin: auto;
+    width: 100%;
+}
+
+.table8{
+    table-layout: auto;
+    margin: auto;
+    width: 80%;
+}
+
+.table9{
+    table-layout: auto;
+    margin: auto;
+    width: 90%;
+}
+
+.table10{
+    table-layout: auto;
+    margin: auto;
+    width: 85%;
+}
+
+.table11{
+    table-layout: auto;
+    margin: auto;
+    width: 55%;
+}
+
+.table12{
+    table-layout: auto;
+    margin: auto;
+    width: 75%;
+}
+
+.table13{
+    table-layout: auto;
+    margin: auto;
+    width: 75%;
+}
+
+
+/* cuerpo de tabla listados de pacientes*/
+
+.tbodytable{
+    /*width: 80px;*/
+    text-align: center;
+    font-size: 18px;
+    width: min-content;
+}
+
+/* contenido de las tablas botones*/
+.contenidotabla{
+    padding: 0px;
+    padding-left: 5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+/* contenido columnas nombrepaciente y numero de historial clinico*/
+.contenidotabla0{
+    padding: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-weight: bold;
+}
+
+
+.contenidotabla4{
+    padding-left: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* cuerpo de tablas escalas de pacientes, pregunta alineada a la izquierda, contenido tabla centrado*/
+
+.tbodytable1{
+    /*width: 80px;*/
+    text-align: left;
+    font-size: 18px;
+    width: min-content;
+}
+
+.contenidotabla1{
+    text-align: center;
+    padding: 0px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.contenidotabla2{
+    text-align: left;
+    padding: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.contenidotabla3{
+    text-align: center;
+    padding: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.acierto{
+    color: green;  
+}
+
+.fallo{
+    color: red;  
+}
+
+
+
+/* pie de página */
+footer{
+    width: 1344px;
+    background-color: #B30033;
+    margin: 0px auto;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-shadow: 0px 0px 15px gray;
+    margin-bottom: 20px;
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/*  Para mostrar y ocultar los textbox del formulario de registro*/
+#genero4 {
+    display: none;
+}
+
+#genero3:checked ~ #genero4 {
+    display: inline-block;
+}
+
+
+#provinciaresidencia6 {
+    display: none;
+}
+
+#provinciaresidencia5:checked ~ #provinciaresidencia6 {
+    display: inline-block;
+}
+
+
+#situacionprofesional8 {
+    display: none;
+}
+
+#situacionprofesional7:checked ~ #situacionprofesional8 {
+    display: inline-block;
+}
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/*  Para mostrar y ocultar los textbox del formulario de antecedentes*/
+
+
+#antecedentespersonalestoxicos8 {
+    display: none;
+}
+
+#antecedentespersonalestoxicos7:checked ~ #antecedentespersonalestoxicos8 {
+    display: inline-block;
+}
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+

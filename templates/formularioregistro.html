@@ -1,0 +1,332 @@
+
+<!--formularioregistro.html-->
+
+{% extends tipolayout %}
+
+{% block nav %}
+
+    <li>
+        <a href="/" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Inicio</a>
+    </li>
+
+    {% if tipopaciente == "depresion"%}
+        <li>
+            <a href="/listapacientes/depresion" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Depresivo Mayor</a>
+        </li>
+        <li>
+            <a class="cerrarprogramadepresion4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
+        </li>
+
+    {% elif tipopaciente == "bipolar"%}
+        <li>
+            <a href="/listapacientes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Bipolar</a>
+        </li>
+        <li>
+            <a class="cerrarprogramabipolares4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
+        </li>
+
+    {% elif tipopaciente == "esquizofrenia"%}
+        <li>
+            <a href="/listapacientes/esquizofrenia" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno del Espectro de la Esquizofrenia</a>
+        </li>
+        <li>
+            <a class="cerrarprogramaesquizofrenia4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
+        </li>
+    {% elif tipopaciente == "esquizoafectivo"%}
+        <li>
+            <a href="/listapacientes/esquizoafectivo" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Esquizoafectivo</a>
+        </li>
+        <li>
+            <a class="cerrarprogramaesquizoafectivo4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
+        </li>
+
+    {% endif %}
+
+{% endblock %}
+
+
+
+{% block title %}
+    {% if not idpaciente %}
+        Formulario de Registro de Pacientes
+    {% else %}
+        Editar Formulario de Registro de Pacientes
+    {% endif %}
+{% endblock %}
+
+
+
+{% block scripts %}
+
+<script type="text/javascript">
+
+    // funcion que evita dobles clicks de raton y teclado
+    function clickStopper(e)
+    {
+      //alert("click was blocked"); // ** you can remove this line **
+      e.preventDefault(); // equivalent to 'return false'
+    }
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<div>
+    {% if not idpaciente %}
+        <h1 class="titulo2">FORMULARIO DE REGISTRO DEL PACIENTE:</h1>
+    {% else %}
+        <h1 class="titulo2">EDITAR FORMULARIO DE REGISTRO DEL PACIENTE:</h1>
+    {% endif %}
+    <br>
+
+
+    <!--crear mensajes flash-->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %} 
+            {% for category, message in messages %}
+                <div class="{{category}}">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+        {%endif%}
+    {% endwith %}
+    
+    <br>
+
+</div>
+
+<div>
+    <form action="" method="post" autocomplete="off" >
+        
+        <!-- Entradas del formulario de registro -->
+        <div>
+
+            <h3>Identificador del Paciente:</h3>
+            <br>
+            
+            <div>
+                <h4>1. Identificador del paciente (NHC):</h4>
+                <input type="text" id="nhcpaciente1" name="nhcpaciente" placeholder="Indica el número NHC" value="{{formularioregistro.nhcpaciente}}">
+            </div>
+            <br>
+            
+            <br>
+            <h3>Datos Sociodemogáficos:</h3>
+            <br>
+
+            <div>
+                <h4>2. Edad:</h4>
+                <input type="date" id="edad1" name="edad" value="{{formularioregistro.edad}}">
+                <!--<input type="number" id="edad1" name="edad" placeholder="0 - 120" min="0" max="120" value="{{formularioregistro.edad}}">-->
+            </div>
+            <br>
+
+            <div>
+                <h4>3. Género:</h4>
+
+                <input type="radio" id="genero1" name="genero" value="Hombre." {% if "Hombre." == formularioregistro.genero %} checked {% endif %}>
+                <label for="genero1">Hombre.</label>
+                <br>
+
+                <input type="radio" id="genero2" name="genero" value="Mujer." {% if "Mujer." == formularioregistro.genero %} checked {% endif %}>
+                <label for="genero2">Mujer.</label>
+                <br>
+
+                <input type="radio" id="genero3" name="genero" value="Otro:" {% if "Otro:" == formularioregistro.genero %} checked {% endif %}>
+                <label for="genero3">Otro:</label>
+
+                <input type="text" id="genero4" name="textogenero1" placeholder="Indica otro tipo de género" {% if formularioregistro.genero == "Otro:" %} value="{{formularioregistro.textogenero}}" {% else %} value="" {% endif %}>
+                <input type="hidden" id="genero5" name="textogenero2" value="">
+
+            </div>
+            <br>
+
+            <div>
+                <h4>4. Etnia:</h4>
+
+                <input type="radio" id="etnia1" name="etnia" value="Caucásico o blanco." {% if "Caucásico o blanco." == formularioregistro.etnia %} checked {% endif %}>
+                <label for="etnia1">Caucásico o blanco.</label>
+                <br>
+
+                <input type="radio" id="etnia2" name="etnia" value="Americano o rojo (nativo americano)." {% if "Americano o rojo (nativo americano)." == formularioregistro.etnia %} checked {% endif %}>
+                <label for="etnia2">Americano o rojo (nativo americano).</label>
+                <br>
+
+                <input type="radio" id="etnia3" name="etnia" value="Etiópico o negro." {% if "Etiópico o negro." == formularioregistro.etnia %} checked {% endif %}>
+                <label for="etnia3">Etiópico o negro.</label>
+                <br>
+
+                <input type="radio" id="etnia4" name="etnia" value="Malayo o pardo (del sudeste de Asia)." {% if "Malayo o pardo (del sudeste de Asia)." == formularioregistro.etnia %} checked {% endif %}>
+                <label for="etnia4">Malayo o pardo (del sudeste de Asia).</label>
+                <br>
+                
+                <input type="radio" id="etnia4" name="etnia" value="Mongólico o amarillo." {% if "Mongólico o amarillo." == formularioregistro.etnia %} checked {% endif %}>
+                <label for="etnia4">Mongólico o amarillo.</label>
+
+            </div>
+            <br>
+
+            <div>
+                <h4>5. Estado civil:</h4>
+
+                <input type="radio" id="estadocivil1" name="estadocivil" value="Soltero/a." {% if "Soltero/a." == formularioregistro.estadocivil %} checked {% endif %}>
+                <label for="estadocivil1">Soltero/a.</label>
+                <br>
+
+                <input type="radio" id="estadocivil2" name="estadocivil" value="Casado/a." {% if "Casado/a." == formularioregistro.estadocivil %} checked {% endif %}>
+                <label for="estadocivil2">Casado/a.</label>
+                <br>
+
+                <input type="radio" id="estadocivil3" name="estadocivil" value="Separado/a." {% if "Separado/a." == formularioregistro.estadocivil %} checked {% endif %}>
+                <label for="estadocivil3">Separado/a.</label>
+                <br>
+
+                <input type="radio" id="estadocivil4" name="estadocivil" value="Divorciado/a." {% if "Divorciado/a." == formularioregistro.estadocivil %} checked {% endif %}>
+                <label for="estadocivil4">Divorciado/a.</label>
+                <br>
+
+                <input type="radio" id="estadocivil5" name="estadocivil" value="Viudo." {% if "Viudo." == formularioregistro.estadocivil %} checked {% endif %}>
+                <label for="estadocivil5">Viudo.</label>
+
+            </div>
+            <br>
+
+            <div>
+                <h4>7. Provincia de residencia:</h4>
+
+                <input type="radio" id="provinciaresidencia1" name="provinciaresidencia" value="Madrid." {% if "Madrid." == formularioregistro.provinciaresidencia %} checked {% endif %}>
+                <label for="provinciaresidencia1">Madrid.</label>
+                <br>
+
+                <input type="radio" id="provinciaresidencia2" name="provinciaresidencia" value="Cuenca." {% if "Cuenca." == formularioregistro.provinciaresidencia %} checked {% endif %}>
+                <label for="provinciaresidencia2">Cuenca.</label>
+                <br>
+
+                <input type="radio" id="provinciaresidencia3" name="provinciaresidencia" value="Albacete." {% if "Albacete." == formularioregistro.provinciaresidencia %} checked {% endif %}>
+                <label for="provinciaresidencia3">Albacete.</label>
+                <br>
+
+                <input type="radio" id="provinciaresidencia4" name="provinciaresidencia" value="Ciudad Real." {% if "Ciudad Real." == formularioregistro.provinciaresidencia %} checked {% endif %}>
+                <label for="provinciaresidencia4">Ciudad Real.</label>
+                <br>
+
+                <input type="radio" id="provinciaresidencia5" name="provinciaresidencia" value="Otro:" {% if "Otro:" == formularioregistro.provinciaresidencia %} checked {% endif %}>
+                <label for="provinciaresidencia5">Otro:</label>
+
+                <input type="text" id="provinciaresidencia6" name="textoprovinciaresidencia1" placeholder="Indica la provincia de residencia" {% if formularioregistro.provinciaresidencia == "Otro:" %} value="{{formularioregistro.textoprovinciaresidencia}}" {% else %} value="" {% endif %}>
+                <input type="hidden" id="provinciaresidencia7" name="textoprovinciaresidencia2" value="">
+
+            </div>
+            <br>
+
+            <div>
+                <h4>8. Lugar de residencia:</h4>
+
+                <input type="radio" id="residencia1" name="residencia" value="Urbano." {% if "Urbano." == formularioregistro.residencia %} checked {% endif %}>
+                <label for="residencia1">Urbano.</label>
+                <br>
+
+                <input type="radio" id="residencia2" name="residencia" value="Rural." {% if "Rural." == formularioregistro.residencia %} checked {% endif %}>
+                <label for="residencia2">Rural.</label>
+
+            </div>
+            <br>
+
+            <div>
+                <h4>9. Nivel educativo:</h4>
+
+                <input type="radio" id="estudios1" name="estudios" value="Bajo: Estudios preescolares, estudios de educación primaria, primera etapa de educación secundaria (1º- 2º ESO) ó FP básica." {% if "Bajo: Estudios preescolares, estudios de educación primaria, primera etapa de educación secundaria (1º- 2º ESO) ó FP básica." == formularioregistro.estudios %} checked {% endif %}>
+                <label for="estudios1">Bajo: Estudios preescolares, estudios de educación primaria, primera etapa de educación secundaria (1º- 2º ESO) ó FP básica.</label>
+                <br>
+
+                <input type="radio" id="estudios2" name="estudios" value="Medio: 3º-4º ESO ó Bachillerato ó Formación Profesional de grado medio." {% if "Medio: 3º-4º ESO ó Bachillerato ó Formación Profesional de grado medio." == formularioregistro.estudios %} checked {% endif %}>
+                <label for="estudios2">Medio: 3º-4º ESO ó Bachillerato ó Formación Profesional de grado medio.</label>
+                <br>
+
+                <input type="radio" id="estudios3" name="estudios" value="Alto: Formación Profesional de grado superior, estudios universitarios,  postgrado, doctorado." {% if "Alto: Formación Profesional de grado superior, estudios universitarios,  postgrado, doctorado." == formularioregistro.estudios %} checked {% endif %}>
+                <label for="estudios3">Alto: Formación Profesional de grado superior, estudios universitarios,  postgrado, doctorado.</label>
+
+            </div>
+            <br>
+
+
+            <div>
+                <h4>10. Situación profesional:</h4>
+
+                <input type="radio" id="situacionprofesional1" name="situacionprofesional" value="Activo." {% if "Activo." == formularioregistro.situacionprofesional %} checked {% endif %}>
+                <label for="situacionprofesional1">Activo.</label>
+                <br>
+
+                <input type="radio" id="situacionprofesional2" name="situacionprofesional" value="Parado." {% if "Parado." == formularioregistro.situacionprofesional %} checked {% endif %}>
+                <label for="situacionprofesional2">Parado.</label>
+                <br>
+
+                <input type="radio" id="situacionprofesional3" name="situacionprofesional" value="Incapacidad Laboral Temporal (ILT)." {% if "Incapacidad Laboral Temporal (ILT)." == formularioregistro.situacionprofesional %} checked {% endif %}>
+                <label for="situacionprofesional3">Incapacidad Laboral Temporal (ILT).</label>
+                <br>
+
+                <input type="radio" id="situacionprofesional4" name="situacionprofesional" value="Pensionista." {% if "Pensionista." == formularioregistro.situacionprofesional %} checked {% endif %}>
+                <label for="situacionprofesional4">Pensionista.</label>
+                <br>
+
+                <input type="radio" id="situacionprofesional5" name="situacionprofesional" value="Amo/a de casa." {% if "Amo/a de casa." == formularioregistro.situacionprofesional %} checked {% endif %}>
+                <label for="situacionprofesional5">Amo/a de casa.</label>
+                <br>
+
+                <input type="radio" id="situacionprofesional6" name="situacionprofesional" value="Estudiante." {% if "Estudiante." == formularioregistro.situacionprofesional %} checked {% endif %}>
+                <label for="situacionprofesional6">Estudiante.</label>
+                <br>
+
+                <input type="radio" id="situacionprofesional7" name="situacionprofesional" value="Otro:" {% if "Otro:" == formularioregistro.situacionprofesional %} checked {% endif %}>
+                <label for="situacionprofesional7">Otro:</label>
+
+                <input type="text" id="situacionprofesional8" name="textosituacionprofesional1" placeholder="Indica otro tipo de situación profesional" {% if formularioregistro.situacionprofesional == "Otro:" %} value="{{formularioregistro.textosituacionprofesional}}" {% else %} value="" {% endif %}>
+                <input type="hidden" id="situacionprofesional9" name="textosituacionprofesional2" value="">
+
+            </div>
+            <br>
+
+            <div>
+                <h4>11. Profesión:</h4>
+                <input type="text" id="profesion1" name="profesion" placeholder="Indica la profesión" value="{{formularioregistro.profesion}}">
+            </div>
+            <br>
+
+
+        </div>
+        <br>
+
+
+        </div>
+        <br>
+
+
+
+
+        <!-- Botones de formulario -->
+        <div class="botonguardar">
+            {% if not idpaciente %}
+                <input class="botonformularioregistrocrear" type="submit" id="botonformularioregistrocrear" name="botonformularioregistrocrear" value="Crear Paciente" onclick="this.addEventListener('click', clickStopper, false);" />
+
+            {% else %}
+                <input class="botonformularioregistroguardar" type="submit" id="botonformularioregistroguardar" name="botonformularioregistroguardar" value="Guardar Cambios" onclick="this.addEventListener('click', clickStopper, false);" />
+                <input class="botonformularioregistrovolver" type="submit" id="botonformularioregistrovolver" name="botonformularioregistrovolver" value="Volver Sin Guardar" onclick="return confirm('¿Estas seguro de que descartar los cambios del formulario? Al presionar aceptar se eliminarán los cambios introducidos en este formulario')" />
+            
+            {% endif %}
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}
+
+
+
+

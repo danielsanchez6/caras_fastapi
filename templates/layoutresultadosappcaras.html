@@ -1,0 +1,241 @@
+<!-- Seleccionar el layout adecuado en cada caso -->
+{% extends tipolayout %}
+
+
+<!-- Seleccionar el estado del paciente en cada caso -->
+{% block title %}Resultados Aplicación Caras Pantalla: Paciente {{estadopaciente}}.{% endblock %}
+
+
+<!-- Indicar si es necesario colocar algun boton en el nav referente a este formulario -->
+{% block nav %}{% endblock %}
+
+
+<!-- Indicar si es necesario colocar script en javascript referente a este formulario -->
+{% block scripts %}{% endblock %}
+
+
+
+<!-- Para escribir el titulo del formulario, indicar el estado del paciente en cada caso -->
+{% block contenttitle %}
+
+<div>
+    {% if estadopaciente == "estable" %}
+
+        <h1 class="titulo2">Resultados Aplicación Caras Pantalla: Paciente Estable.</h1>
+    
+
+    {% elif estadopaciente == "inestable" %}
+
+            <h1 class="titulo2">Resultados Aplicación Caras Pantalla: Paciente Inestable.</h1>
+
+    {% endif %}
+    <br>
+
+
+    <!--crear mensajes flash-->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %} 
+            {% for category, message in messages %}
+                <div class="{{category}}">
+                    {{ message }}
+                </div>
+    
+                <br>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+
+</div>
+
+{% endblock %}
+
+
+<!-- Escribir el contenido del formulario -->
+{% block contentform %}
+
+<br>
+<br>
+
+
+<div>
+    <h3> Porcentaje de aciertos por cada tipo de emoción mostrada:</h3>
+</div>
+<br>
+<br>
+
+
+
+
+
+
+<!--mostrar gráfico -->
+
+
+<canvas id="my_Chart" width="450" height="210"></canvas>
+
+
+    
+<!--script para mostrar gráfico -->
+<script>
+    // data define for bar chart
+    var myData = {
+        labels: ["Neutral", "Sorpresa", "Miedo", "Ira", "Asco", "Alegría", "Tristeza"],
+        datasets: [{
+            fill: false,
+            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#cd3e95", "#cd763e"],
+            borderColor: 'black',
+            data: {{ porcentajes | safe }}
+        }]
+    };
+    // Options define for display value on top of bars
+    var myoption = {
+        legend: {
+            display: false
+        },
+        scales: {
+                    xAxes: [{
+                            display: true,
+                            ticks: {
+                                fontSize: 21
+                            }
+                        }],
+
+                    yAxes: [{
+                            display: true,
+                            ticks: {
+                                fontSize: 21,
+                                stepSize: 12.5,
+                                beginAtZero: true,
+                                max: 100,
+                            }
+                        }]
+                },
+        tooltips: {
+            enabled: false
+        },
+        hover: {
+            animationDuration: 1
+        },
+        animation: {
+            duration: 500,
+            easing: "easeOutQuart",
+            onComplete: function () {
+                var ctx = this.chart.ctx;
+                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                ctx.font = ctx.font.replace(/\d+px/, "20px");
+
+                this.data.datasets.forEach(function (dataset) {
+                    for (var i = 0; i < dataset.data.length; i++) {
+                        var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+                            scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                        ctx.fillStyle = '#444';
+                        var y_pos = model.y - 5;
+                        // Make sure data value does not get overflown and hidden
+                        // when the bar's value is too close to max value of scale
+                        // Note: The y value is reverse, it counts from top down
+                        // if ((scale_max - model.y) / scale_max >= 0.93)
+                        if ((scale_max - model.y) / scale_max >= 0.95)
+                            // y_pos = model.y + 20; 
+                            y_pos = model.y + 30; 
+                        ctx.fillText(dataset.data[i], model.x, y_pos);
+                    }
+                });               
+            }
+        }
+    };
+    // Code to draw Chart
+    var ctx = document.getElementById('my_Chart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',        // Define chart type
+        data: myData,    	// Chart data
+        options: myoption 	// Chart Options [This is optional paramenter use to add some extra things in the chart].
+    });
+    
+</script>
+
+<br>
+<br>
+<br>
+<br>
+
+<div>
+    <h3>Relación de emociones mostradas en la aplicación y respuestas del paciente:</h3>
+</div>
+<br>
+
+<div class="divtable1">
+
+    <table class="table13">
+        <thead class="theadtable">
+            <tr>
+                <!--colocar todo los valores de las tablas que se deseen mostar -->
+                <td class="titulostablas15">Nº Cara:</td>
+                <td class="titulostablas14">Emoción Mostrada:</td>
+                <td class="titulostablas14">Respuesta Paciente:</td>
+                <td class="titulostablas14">Acierto/Fallo:</td>
+            </tr>
+        </thead>
+
+        <tbody class="tbodytable1">
+
+            {% for cara in datosappcaras %}
+            <tr>
+                <!--colocar todo los valores de las tablas que se deseen mostar -->
+                <td class="contenidotabla4">{{ cara.ordenaparicion }}</td>
+                <td class="contenidotabla4">
+                    {% if cara.respuestacorrectafiltrada == "0" %}
+                    Neutral
+                    {% elif cara.respuestacorrectafiltrada == "1" %}
+                    Sorpresa
+                    {% elif cara.respuestacorrectafiltrada == "2" %}
+                    Miedo
+                    {% elif cara.respuestacorrectafiltrada == "3" %}
+                    Ira
+                    {% elif cara.respuestacorrectafiltrada == "4" %}
+                    Asco
+                    {% elif cara.respuestacorrectafiltrada == "5" %}
+                    Alegría
+                    {% elif cara.respuestacorrectafiltrada == "6" %}
+                    Tristeza
+                    {% endif %}
+                </td>
+                <td class="contenidotabla4">
+                    {% if cara.respuestausuario == "0" %}
+                    Neutral
+                    {% elif cara.respuestausuario == "1" %}
+                    Sorpresa
+                    {% elif cara.respuestausuario == "2" %}
+                    Miedo
+                    {% elif cara.respuestausuario == "3" %}
+                    Ira
+                    {% elif cara.respuestausuario == "4" %}
+                    Asco
+                    {% elif cara.respuestausuario == "5" %}
+                    Alegría
+                    {% elif cara.respuestausuario == "6" %}
+                    Tristeza
+                    {% endif %}
+
+                </td>
+
+                <td class="contenidotabla4">
+                    {% if cara.acierto == "1" %}
+                    <p class="acierto">Acierto</p>
+                    {% elif cara.acierto == "0" %}
+                    <p class="fallo">Fallo</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+<br>
+
+
+
+{% endblock %}

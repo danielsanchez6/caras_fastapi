@@ -1,0 +1,151 @@
+
+<!doctype html>
+<html lang="es">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/indice.ico') }}">
+
+
+    
+    <!-- script para activar graficos Chart.js -->
+    <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+
+
+    <!-- script para activar jQuery -->
+
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+
+
+    <!-- script para evitar un doble submit -->
+    
+    <script type="text/javascript">
+
+        // funcion que evita dobles clicks de raton y teclado
+        function clickStopper(e)
+        {
+          //alert("click was blocked"); // ** you can remove this line **
+          e.preventDefault(); // equivalent to 'return false'
+        }
+    
+    </script>
+
+    <!-- script para cada formulario de forma independiente -->
+    {% block scripts %}
+
+    {% endblock %}
+
+
+</head>
+
+<body>
+    <header>
+        <div id="logotipo">
+            <!--logotipos-->
+
+            <img class="logotipo1" src="{{ url_for('static', filename='img/indice2.png') }}"/>
+            <img class="logotipo3" src="{{ url_for('static', filename='img/indice3.png') }}"/> 
+            
+            <!--titulo de la aplicacion-->
+            <!--<h1>APP FORMULARIOS CARAS</h1>-->
+            <h2>RECONOCIMIENTO FACIAL DE EMOCIONES</h2>
+            
+            <!--logotipos-->
+            <img class="logotipo4" src="{{ url_for('static', filename='img/indice1.png') }}"/>   
+            <img class="logotipo2" src="{{ url_for('static', filename='img/indice.png') }}"/> 
+        </div>
+
+
+    </header>
+
+    <!-- panel de navegacion de la aplicacion -->
+    <nav>
+        <ul>
+            <li>
+                <a href="/" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Inicio</a>
+            </li>
+        
+            <li>
+                <a href="/listapacientes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Bipolar</a>
+            </li>
+        
+            <li>
+                <a href="/listaformulariospaciente/bipolar/{{ formulariosecundario.idpaciente }}/{{ formulariosecundario.nhcpaciente }}/{{ formulariosecundario.fechacreacion }}/" onclick="return confirm('¿Estas seguro de que deseas volver a las escalas del paciente? Al presionar aceptar se eliminarán los cambios introducidos en este formulario')">Volver a las Escalas del Paciente</a>
+            </li>
+        
+            <li>
+                <a class="cerrarprogramabipolares3" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
+            </li>
+
+            <!-- panel de navegacion de la aplicacion independiente para cada formulario -->
+            {% block nav %}
+
+            {% endblock %}
+        </ul>
+    </nav>
+
+    <div id="content">
+        <div class="box">
+
+            <div> 
+                <!-- titulo de cada formulario -->       
+                {% block contenttitle %}
+            
+                {% endblock %}
+            
+                <!-- indicacion del numero NHC de cada paciente -->
+                <h3>Identificador del paciente (NHC): {{ nhcpaciente }}</h3>
+            
+            </div>
+            <br>
+
+            <div>
+                <!-- creacion del formulario -->
+                <form action="" method="POST" autocomplete="off">
+                    
+                    <!-- codigo de cada formulario -->
+                    {% block contentform %}
+
+                    {% endblock %}
+
+                    <br>
+                    <br>
+                    <!-- Botones de formulario -->
+                    <div class="botonguardar">
+                        {% if formulariosecundario.estadoescala == "Sin rellenar" %}
+                        <input class="botonformularioregistroguardar" type="submit" id="botonescalaguardar" name="botonescalaguardar" value="Guardar" onclick="this.addEventListener('click', clickStopper, false);"/>
+                        
+                        {% elif formulariosecundario.estadoescala == "En Proceso o Finalizada" %}
+                            <input class="botonformularioregistroguardar" type="submit" id="botonescalaguardar" name="botonescalaguardar" value="Guardar Cambios" onclick="return confirm('¿Estas seguro de que deseas guardar los cambios del formulario? Al presionar aceptar se guardaran los cambios introducidos en este formulario')"/>
+
+                            <input class="botonformularioregistrovolver" type="submit" id="botonescalavolver" name="botonescalavolver" value="Volver Sin Guardar" onclick="return confirm('¿Estas seguro de que descartar los cambios del formulario? Al presionar aceptar se eliminarán los cambios introducidos en este formulario')" />
+                        {% endif %}
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <footer>
+        Unidad Multidisciplinar en Neurocognición y Emoción en Entornos Reales y Virtuales &copy; 2021.
+    </footer>
+
+</body>
+
+</html>
+
+
