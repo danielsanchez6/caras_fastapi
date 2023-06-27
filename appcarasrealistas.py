@@ -83,7 +83,7 @@ else:
 appcarasrealistas.secret_key = 'clave_secreta_flask'
 
 # configurar la ruta de las bases de datos
-appcarasrealistas.config['SQLALCHEMY_BINDS'] = {'datosbipolar': 'sqlite:///database/dbcarasdatosbipolar.db'}
+appcarasrealistas.config['SQLALCHEMY_BINDS'] = {'datosappcarasrealistas': 'sqlite:///database/dbappcarasrealistas.db'}
 appcarasrealistas.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
@@ -93,7 +93,7 @@ db = SQLAlchemy(appcarasrealistas)
 # para añadir el modelo a la base de datos desde terminal:
 # python
 # from appcarasrealistas import db
-# db.create_all(bind=['datosbipolar'])
+# db.create_all(bind=['datosappcarasrealistas'])
 # exit()
 
 
@@ -105,7 +105,7 @@ db = SQLAlchemy(appcarasrealistas)
 # Tabla datos formulario para paciente bipolar
 
 class Formularioregistrobipolar(db.Model):
-    __bind_key__ = 'datosbipolar'
+    __bind_key__ = 'datosappcarasrealistas'
     # identificador del paciente
     idpaciente = db.Column(db.Integer, primary_key=True)
 
@@ -134,7 +134,7 @@ class Formularioregistrobipolar(db.Model):
 # Tabla datos formulario secundario para paciente con bipolar (cantidad 2)
 
 class Formularioantecedentesbipolarestable(db.Model):
-    __bind_key__ = 'datosbipolar'
+    __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
     idpaciente = db.Column(db.Text)
@@ -180,7 +180,7 @@ class Formularioantecedentesbipolarestable(db.Model):
 # Tabla datos paciente bipolar en estado estable
 
 class Escalapanasbipolarestable(db.Model):
-    __bind_key__ = 'datosbipolar'
+    __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
     idpaciente = db.Column(db.Text)
@@ -218,7 +218,7 @@ class Escalapanasbipolarestable(db.Model):
 
 
 class Appcaraspantallabipolarestable(db.Model):
-    __bind_key__ = 'datosbipolar'
+    __bind_key__ = 'datosappcarasrealistas'
     idnumericoappcaras = db.Column(db.Integer, primary_key=True)
 
     # datos fijos en cada fila appcaras
@@ -249,7 +249,7 @@ class Appcaraspantallabipolarestable(db.Model):
 
 
 class Cuestionarioavataresbipolarestable(db.Model):
-    __bind_key__ = 'datosbipolar'
+    __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
     idpaciente = db.Column(db.Text)
@@ -1090,7 +1090,7 @@ def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=N
 def appcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
 
     if tipopaciente == "bipolar":
-        rutabasedatos = "dbcarasdatosbipolar.db"
+        rutabasedatos = "dbappcarasrealistas.db"
         
         if estadopaciente == "estable":
             tipopacienteapp = "Paciente_Bipolar_Estable"
@@ -1396,7 +1396,7 @@ def exportarbase():
     if not os.path.exists(direcciondestino):
         os.makedirs(direcciondestino)
 
-    shutil.copy('database/dbcarasdatosbipolar.db', direcciondestino)
+    shutil.copy('database/dbappcarasrealistas.db', direcciondestino)
     
     flash (f"Se han exportado las bases de datos correctamente en el directorio {path1} con fecha: {fechaexportacion} ", category="exportar")
     
