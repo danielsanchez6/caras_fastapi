@@ -102,7 +102,7 @@ db = SQLAlchemy(appcarasrealistas)
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# Tabla datos formulario para participante bipolar
+# Tabla datos formulario de registro para participante
 
 class Formularioregistrobipolar(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
@@ -131,7 +131,7 @@ class Formularioregistrobipolar(db.Model):
     
 
 
-# Tabla datos formulario secundario para participante con bipolar (cantidad 2)
+# Tabla datos formulario secundario para participante
 
 class Formularioantecedentesbipolarestable(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
@@ -147,10 +147,10 @@ class Formularioantecedentesbipolarestable(db.Model):
     fechacreacion = db.Column(db.Text)
     fechaultimamodificacion = db.Column(db.Text)
     
-    # datos antecedentes personales somáticos para participante con bipolar
+    # datos antecedentes personales somáticos para participante
     antecedentespersonalessomaticos = db.Column(db.Text)
     
-    # datos antecedentes personales psiquiatricos para participante bipolar
+    # datos antecedentes personales psiquiatricos para participante
     diagnosticodms5 = db.Column(db.Text)
     faseenfermedadactual = db.Column(db.Text)
     edadiniciosintomatologia = db.Column(db.Text)
@@ -177,7 +177,7 @@ class Formularioantecedentesbipolarestable(db.Model):
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# Tabla datos participante bipolar en estado estable
+# Tabla datos participante
 
 class Escalapanasbipolarestable(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
@@ -466,7 +466,7 @@ def mostrar_pdf(filepath):
 def inicio():
     if request.method =='POST':
 
-        if request.form.get('botoncrearinicio') == "Crear Participante con Trastorno Bipolar":
+        if request.form.get('botoncrearinicio') == "Crear Participante":
             return redirect(url_for('mostrarformularioregistro', tipoparticipante="bipolar"))
         
         # este se eliminará al final y se sustituye por el nav

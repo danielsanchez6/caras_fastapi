@@ -11,7 +11,7 @@
 
     {% if tipoparticipante == "bipolar"%}
         <li>
-            <a href="/listaparticipantes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Participantes con Trastorno Bipolar</a>
+            <a href="/listaparticipantes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Participantes</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
@@ -56,9 +56,9 @@
 
 <div>
     {% if not idparticipante %}
-        <h1 class="titulo2">FORMULARIO DE REGISTRO DEL ParticipantE:</h1>
+        <h1 class="titulo2">FORMULARIO DE REGISTRO:</h1>
     {% else %}
-        <h1 class="titulo2">EDITAR FORMULARIO DE REGISTRO DEL ParticipantE:</h1>
+        <h1 class="titulo2">EDITAR FORMULARIO DE REGISTRO:</h1>
     {% endif %}
     <br>
 
@@ -100,8 +100,8 @@
 
             <div>
                 <h4>2. Edad:</h4>
-                <input type="date" id="edad1" name="edad" value="{{formularioregistro.edad}}">
-                <!--<input type="number" id="edad1" name="edad" placeholder="0 - 120" min="0" max="120" value="{{formularioregistro.edad}}">-->
+                <!--<input type="date" id="edad1" name="edad" value="{{formularioregistro.edad}}">-->
+                <input type="number" id="edad1" name="edad" placeholder="0 - 120" min="0" max="120" value="{{formularioregistro.edad}}">
             </div>
             <br>
 

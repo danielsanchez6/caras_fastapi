@@ -65,7 +65,7 @@ header{
 }
 
 #logotipo{
-    width: 100%;
+    width: 105%;
     height: 250px;
     margin: 0 auto;
     padding-top: 10px;
@@ -840,7 +840,7 @@ textarea {
 
 */
 
-.botonsalirpaciente{
+.botonsalirparticipante{
     text-decoration: none;
     padding: 10px;
     background: #B30033;
@@ -854,7 +854,7 @@ textarea {
     text-align: center;
 }
 
-.botonsalirpaciente:hover{
+.botonsalirparticipante:hover{
     cursor:pointer;
     background:rgb(255, 100, 100);
 }
@@ -1137,7 +1137,7 @@ textarea {
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-/* botones de lista de pacientes*/
+/* botones de lista de participantes*/
 .btn3{
     text-decoration: none;
     font-size: 15px;
@@ -1183,7 +1183,7 @@ textarea {
     transition: all 3ms;
 }
 
-/* botones de eliminar pacientes completo*/
+/* botones de eliminar participantes completo*/
 .btn7{
     text-decoration: none;
     font-size: 15px;
@@ -1255,7 +1255,7 @@ textarea {
 
 
 
-/* botones de lista formularios del paciente*/
+/* botones de lista formularios del participante*/
 .btn5{
     text-decoration: none;
     font-size: 15px;
@@ -1425,7 +1425,7 @@ table{
     padding-right: 5px;
 }
 
-/* titulo nombre paciente*/
+/* titulo nombre participante*/
 .titulostablas2{
     font-size: 20px;
     width: auto;
@@ -1436,7 +1436,7 @@ table{
     padding-right: 5px
 }
 
-/* titulo botones listado de pacientes*/
+/* titulo botones listado de participantes*/
 .titulostablas3{
     width: 131px;
     text-align: center;
@@ -1665,7 +1665,7 @@ table{
 }
 
 
-/* cuerpo de tabla listados de pacientes*/
+/* cuerpo de tabla listados de participantes*/
 
 .tbodytable{
     /*width: 80px;*/
@@ -1682,7 +1682,7 @@ table{
     padding-bottom: 7px;
 }
 
-/* contenido columnas nombrepaciente y numero de historial clinico*/
+/* contenido columnas nombreparticipante y numero de historial clinico*/
 .contenidotabla0{
     padding: 5px;
     padding-top: 8px;
@@ -1698,7 +1698,7 @@ table{
 }
 
 
-/* cuerpo de tablas escalas de pacientes, pregunta alineada a la izquierda, contenido tabla centrado*/
+/* cuerpo de tablas escalas de participantes, pregunta alineada a la izquierda, contenido tabla centrado*/
 
 .tbodytable1{
     /*width: 80px;*/
