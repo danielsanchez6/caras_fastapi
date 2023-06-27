@@ -309,24 +309,12 @@ def crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion):
         db.session.commit()
         inicio = escala
 
-    if (nombretablabd == Escalamadrsbipolarestable) or (nombretablabd == Escalaymrsbipolarestable) or (nombretablabd == Escalapanasbipolarestable) or (nombretablabd == Escalafastbipolarestable):
+    if (nombretablabd == Escalapanasbipolarestable):
         escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
         db.session.add(escala)
         db.session.commit()
         inicio = escala
     
-    if (nombretablabd == Escalawhoqolbipolarestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalawhoqol27="", escalawhoqol28="", escalawhoqol29="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaeeagbipolarestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalaeeag1="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
     if (nombretablabd == Cuestionarioavataresbipolarestable):
         escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
         db.session.add(escala)
@@ -402,22 +390,16 @@ def borrarappcaras(nombretablabd, idpaciente, nhcpaciente):
 
 
 # funcion para obtener lista de todos los nhc del programa
-def nhclistatotal(database1, database2, database3, database4):
+def nhclistatotal(database1):
     nhclista1 = [database1.nhcpaciente for database1 in database1.query.all()]
-    nhclista2 = [database2.nhcpaciente for database2 in database2.query.all()]
-    nhclista3 = [database3.nhcpaciente for database3 in database3.query.all()]
-    nhclista4 = [database3.nhcpaciente for database3 in database3.query.all()]
-    nhclistasuma = nhclista1 + nhclista2 + nhclista3 + nhclista4
+    nhclistasuma = nhclista1
     return nhclistasuma
 
 
 # # funcion para obtener lista de todos los nhc del programa sin el nhc del paciente
-# def nhclistasinid(nombretablabd, idpaciente, database1, database2, database3, database4):
+# def nhclistasinid(nombretablabd, idpaciente, database1):
 #     nhclista1 = [database1.nhcpaciente for database1 in database1.query.all()]
-#     nhclista2 = [database2.nhcpaciente for database2 in database2.query.all()]
-#     nhclista3 = [database3.nhcpaciente for database3 in database3.query.all()]
-#     nhclista4 = [database3.nhcpaciente for database3 in database3.query.all()]
-#     nhclistasuma = nhclista1 + nhclista2 + nhclista3 + nhclista4
+#     nhclistasuma = nhclista1
     
 #     datospaciente = nombretablabd.query.get(idpaciente)
     
@@ -428,23 +410,15 @@ def nhclistatotal(database1, database2, database3, database4):
 
 
 # funcion para obtener lista de todos los nhc del programa sin el nhc del paciente
-def nhclistasinid(nombretablabd, nhcpaciente, database1, database2, database3, database4):
+def nhclistasinid(nombretablabd, nhcpaciente, database1):
     nhclista1 = [database1.nhcpaciente for database1 in database1.query.all()]
-    nhclista2 = [database2.nhcpaciente for database2 in database2.query.all()]
-    nhclista3 = [database3.nhcpaciente for database3 in database3.query.all()]
-    nhclista4 = [database3.nhcpaciente for database3 in database3.query.all()]
-    nhclistasuma = nhclista1 + nhclista2 + nhclista3 + nhclista4
+    nhclistasuma = nhclista1
     
     nhclistalimpio = list(filter((nhcpaciente).__ne__, nhclistasuma))
     return nhclistalimpio
 
 
-
-
-
-
-
-
+# mostrar el pdf en una nueva ventana del navegador
 def mostrar_pdf(filepath):
 
     with open(filepath,"rb") as f:
@@ -462,18 +436,25 @@ def mostrar_pdf(filepath):
     display(Javascript(js_code))
 
 
-
-
-
-
-
-
-
 # fin funciones ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -484,17 +465,9 @@ def mostrar_pdf(filepath):
 @appcarasrealistas.route("/", methods=["GET", "POST"])
 def inicio():
     if request.method =='POST':
-        if request.form.get('botoncrearinicio') == "Crear Paciente con Trastorno Depresivo Mayor":
-            return redirect(url_for('mostrarformularioregistro', tipopaciente="depresion"))
 
-        elif request.form.get('botoncrearinicio') == "Crear Paciente con Trastorno Bipolar":
+        if request.form.get('botoncrearinicio') == "Crear Paciente con Trastorno Bipolar":
             return redirect(url_for('mostrarformularioregistro', tipopaciente="bipolar"))
-
-        elif request.form.get('botoncrearinicio') == "Crear Paciente con Trastorno del Espectro de la Esquizofrenia":
-            return redirect(url_for('mostrarformularioregistro', tipopaciente="esquizofrenia"))
-
-        elif request.form.get('botoncrearinicio') == "Crear Paciente con Trastorno Esquizoafectivo":
-            return redirect(url_for('mostrarformularioregistro', tipopaciente="esquizoafectivo"))
         
         # este se eliminará al final y se sustituye por el nav
         if request.form.get('botonsalirinicio') == "Cerrar Programa":
@@ -560,35 +533,14 @@ def listaformulariospaciente(tipopaciente="", idpaciente=None, nhcpaciente="", f
 
         datosformularioantecedentesestable = buscarfirstpaciente(Formularioantecedentesbipolarestable, idpaciente, nhcpaciente, fechacreacion)
         datosescalapanasestable = buscarfirstpaciente(Escalapanasbipolarestable, idpaciente, nhcpaciente, fechacreacion)
-        datosescalafastestable = buscarfirstpaciente(Escalafastbipolarestable, idpaciente, nhcpaciente, fechacreacion)
-        datosescalawhoqolestable = buscarfirstpaciente(Escalawhoqolbipolarestable, idpaciente, nhcpaciente, fechacreacion)
-        datosescalaeeagestable = buscarfirstpaciente(Escalaeeagbipolarestable, idpaciente, nhcpaciente, fechacreacion)
         datoscuestionarioavataresestable = buscarfirstpaciente(Cuestionarioavataresbipolarestable, idpaciente, nhcpaciente, fechacreacion)
-        
         datosappcaraspantallaestable = buscarfirstpacienteappcaras(Appcaraspantallabipolarestable, idpaciente, nhcpaciente)
-        datosappcarasvrestable = buscarfirstpacienteappcaras(Appcarasvrbipolarestable, idpaciente, nhcpaciente)
-
-        datosescalamadrsestable = buscarfirstpaciente(Escalamadrsbipolarestable, idpaciente, nhcpaciente, fechacreacion) 
-        datosescalaymrsestable = buscarfirstpaciente(Escalaymrsbipolarestable, idpaciente, nhcpaciente, fechacreacion)
-
-
-        datosformularioantecedentesinestable = buscarfirstpaciente(Formularioantecedentesbipolarinestable, idpaciente, nhcpaciente, fechacreacion)
-        datosescalapanasinestable = buscarfirstpaciente(Escalapanasbipolarinestable, idpaciente, nhcpaciente, fechacreacion)
-        datosescalafastinestable = buscarfirstpaciente(Escalafastbipolarinestable, idpaciente, nhcpaciente, fechacreacion)
-        datosescalawhoqolinestable = buscarfirstpaciente(Escalawhoqolbipolarinestable, idpaciente, nhcpaciente, fechacreacion)
-        datosescalaeeaginestable = buscarfirstpaciente(Escalaeeagbipolarinestable, idpaciente, nhcpaciente, fechacreacion)
-        datoscuestionarioavataresinestable = buscarfirstpaciente(Cuestionarioavataresbipolarinestable, idpaciente, nhcpaciente, fechacreacion)
         
-        datosappcaraspantallainestable = buscarfirstpacienteappcaras(Appcaraspantallabipolarinestable, idpaciente, nhcpaciente)
-        datosappcarasvrinestable = buscarfirstpacienteappcaras(Appcarasvrbipolarinestable, idpaciente, nhcpaciente)
-
-        datosescalamadrsinestable = buscarfirstpaciente(Escalamadrsbipolarinestable, idpaciente, nhcpaciente, fechacreacion) 
-        datosescalaymrsinestable = buscarfirstpaciente(Escalaymrsbipolarinestable, idpaciente, nhcpaciente, fechacreacion)
 
         tipolayout = 'layoutinicio2.html'
-        return render_template("listaformulariospaciente.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, fechacreacion=fechacreacion, datosformularioantecedentesestable = datosformularioantecedentesestable, datosescalapanasestable = datosescalapanasestable, datosescalafastestable = datosescalafastestable, datosescalawhoqolestable = datosescalawhoqolestable, datosescalaeeagestable = datosescalaeeagestable, datoscuestionarioavataresestable = datoscuestionarioavataresestable, datosappcaraspantallaestable = datosappcaraspantallaestable, datosappcarasvrestable = datosappcarasvrestable, datosescalamadrsestable = datosescalamadrsestable, datosescalaymrsestable = datosescalaymrsestable, datosformularioantecedentesinestable = datosformularioantecedentesinestable, datosescalapanasinestable = datosescalapanasinestable, datosescalafastinestable = datosescalafastinestable, datosescalawhoqolinestable = datosescalawhoqolinestable, datosescalaeeaginestable = datosescalaeeaginestable, datoscuestionarioavataresinestable = datoscuestionarioavataresinestable, datosappcaraspantallainestable = datosappcaraspantallainestable, datosappcarasvrinestable = datosappcarasvrinestable, datosescalamadrsinestable = datosescalamadrsinestable, datosescalaymrsinestable = datosescalaymrsinestable)
-
-
+        return render_template("listaformulariospaciente.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, fechacreacion=fechacreacion, 
+                                datosformularioantecedentesestable = datosformularioantecedentesestable, datosescalapanasestable = datosescalapanasestable,
+                                datoscuestionarioavataresestable = datoscuestionarioavataresestable, datosappcaraspantallaestable = datosappcaraspantallaestable)
 
 # fin pagina lista formularios del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -613,8 +565,8 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
 
         if tipopaciente == "bipolar":
             nombretablabd = Formularioregistrobipolar
-            listaescalas = [Formularioantecedentesbipolarestable, Formularioantecedentesbipolarinestable, Escalamadrsbipolarestable, Escalaymrsbipolarestable, Escalapanasbipolarestable, Escalafastbipolarestable, Escalawhoqolbipolarestable, Escalaeeagbipolarestable, Cuestionarioavataresbipolarestable, Escalamadrsbipolarinestable, Escalaymrsbipolarinestable, Escalapanasbipolarinestable, Escalafastbipolarinestable, Escalawhoqolbipolarinestable, Escalaeeagbipolarinestable, Cuestionarioavataresbipolarinestable]
-            listaappcaras = [Appcaraspantallabipolarestable, Appcarasvrbipolarestable, Appcaraspantallabipolarinestable, Appcarasvrbipolarinestable]
+            listaescalas = [Formularioantecedentesbipolarestable, Escalapanasbipolarestable, Cuestionarioavataresbipolarestable]
+            listaappcaras = [Appcaraspantallabipolarestable]
 
         if request.form.get('botonformularioregistrocrear') == "Crear Paciente":
             #//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -651,7 +603,7 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
             # validacion nhc unico  y que sea distinto a "" y que sea un numero entero
             nhccomprobacion = request.form.get('nhcpaciente')
 
-            nhclista = nhclistatotal(Formularioregistrodepresion, Formularioregistrobipolar, Formularioregistroesquizofrenia, Formularioregistroesquizoafectivo)
+            nhclista = nhclistatotal(Formularioregistrobipolar)
 
             if (nhccomprobacion in nhclista) or (nhccomprobacion == "") or (not nhccomprobacion.isdigit()):
                 formularioregistro = formulariogeneral
@@ -690,8 +642,8 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
             nhcantiguo = formularioget.nhcpaciente
 
             # funcion para obtener lista de todos los nhc del programa sin el nhc del paciente
-            nhclista = nhclistasinid(nombretablabd, nhcantiguo, Formularioregistrodepresion, Formularioregistrobipolar, Formularioregistroesquizofrenia, Formularioregistroesquizoafectivo)
-            #nhclista = nhclistasinid(nombretablabd, idpaciente, Formularioregistrodepresion, Formularioregistrobipolar, Formularioregistroesquizofrenia, Formularioregistroesquizoafectivo)
+            nhclista = nhclistasinid(nombretablabd, nhcantiguo, Formularioregistrobipolar)
+            #nhclista = nhclistasinid(nombretablabd, idpaciente, Formularioregistrobipolar)
 
             #//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             # colocar los elementos delos formularios a modificar a partir del elemento de la tabla
@@ -828,8 +780,6 @@ def mostrarformularioantecedentes(tipopaciente="", estadopaciente="", idpaciente
             if tipopaciente == "bipolar":
                 if estadopaciente =="estable":
                     nombretablabd = Formularioantecedentesbipolarestable
-                elif estadopaciente =="inestable":
-                    nombretablabd = Formularioantecedentesbipolarinestable
             
 
             formularioget = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
@@ -922,9 +872,7 @@ def mostrarformularioantecedentes(tipopaciente="", estadopaciente="", idpaciente
     if tipopaciente == "bipolar":
         if estadopaciente =="estable":
             nombretablabd = Formularioantecedentesbipolarestable
-        elif estadopaciente =="inestable":
-            nombretablabd = Formularioantecedentesbipolarinestable
-        tipolayout = 'layoutescalasdepresion.html'
+        tipolayout = 'layoutescalasbipolar.html'
     
 
     formulariosecundario = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
@@ -957,8 +905,6 @@ def mostrarescalapanas(tipopaciente="", estadopaciente="", idpaciente=None, nhcp
             if tipopaciente == "bipolar":
                 if estadopaciente =="estable":
                     nombretablabd = Escalapanasbipolarestable
-                elif estadopaciente =="inestable":
-                    nombretablabd = Escalapanasbipolarinestable
 
             formularioget = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
             #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1009,8 +955,6 @@ def mostrarescalapanas(tipopaciente="", estadopaciente="", idpaciente=None, nhcp
     if tipopaciente == "bipolar":
         if estadopaciente =="estable":
             nombretablabd = Escalapanasbipolarestable
-        elif estadopaciente =="inestable":
-            nombretablabd = Escalapanasbipolarinestable
         tipolayout = 'layoutescalasbipolar.html'
 
     formulariosecundario = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
@@ -1035,8 +979,10 @@ def mostrarescalapanas(tipopaciente="", estadopaciente="", idpaciente=None, nhcp
 
 
 
-# cuestionario avatares ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+# cuestionario avatares ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @appcarasrealistas.route("/cuestionarioavatares/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/", methods=["GET", "POST"])
 def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
@@ -1047,8 +993,7 @@ def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=N
             if tipopaciente == "bipolar":
                 if estadopaciente =="estable":
                     nombretablabd = Cuestionarioavataresbipolarestable
-                elif estadopaciente =="inestable":
-                    nombretablabd = Cuestionarioavataresbipolarinestable
+
 
             formularioget = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
             #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1090,8 +1035,6 @@ def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=N
     if tipopaciente == "bipolar":
         if estadopaciente =="estable":
             nombretablabd = Cuestionarioavataresbipolarestable
-        elif estadopaciente =="inestable":
-            nombretablabd = Cuestionarioavataresbipolarinestable
         tipolayout = 'layoutescalasbipolar.html'
 
 
@@ -1102,8 +1045,6 @@ def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=N
         formulariosecundario = crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
 
     return render_template("/cuestionarioavatares.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, formulariosecundario=formulariosecundario)
-
-
 
 
 # fin formularios secundarios y escalas del paciente ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1118,8 +1059,32 @@ def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=N
 
 
 
-#  Appcaraspantalla del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  Appcaraspantalla del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @appcarasrealistas.route('/appcaraspantalla/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/', methods=['GET','POST'])
 def appcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
@@ -1130,9 +1095,7 @@ def appcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpac
         if estadopaciente == "estable":
             tipopacienteapp = "Paciente_Bipolar_Estable"
             nombretabla = "appcaraspantallabipolarestable"
-        elif estadopaciente == "inestable":
-            tipopacienteapp = "Paciente_Bipolar_Inestable"
-            nombretabla = "appcaraspantallabipolarinestable"
+
 
     # Abre la aplicacion de las caras y le envia la informacion necesaria a los pacientes
     Popen("start carasPantalla.exe "+ str(nhcpaciente) + " " + str(idpaciente) + " " + str(tipopacienteapp) + " " + str(rutabasedatos) + " " + str(nombretabla) , shell= True)
@@ -1145,10 +1108,7 @@ def appcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpac
 
 
 
-
-
 #  Resultados Appcaraspantalla del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 @appcarasrealistas.route('/resultadospacienteappcaraspantalla/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/', methods=['GET','POST'])
 def resultadospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
@@ -1163,41 +1123,17 @@ def resultadospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpac
         
         if estadopaciente == "estable":
             nombretablabd = Appcaraspantallabipolarestable
-        elif estadopaciente == "inestable":
-            nombretablabd = Appcaraspantallabipolarinestable
-
 
     # buscar aciertos por emocion
-    aciertosneutral = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "0")
-    countaciertosneutral = len(aciertosneutral)
-    porcentajeneutral = (countaciertosneutral * 100 )/ 8
+    emociones = ['0', '1', '2', '3', '4', '5', '6']
+    porcentajes = []
+    datosappcaras = []
 
-    aciertossorpresa = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "1")
-    countaciertossorpresa = len(aciertossorpresa)
-    porcentajesorpresa = (countaciertossorpresa * 100 )/ 8
-
-    aciertosmiedo = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "2")
-    countaciertosmiedo = len(aciertosmiedo)
-    porcentajemiedo = (countaciertosmiedo * 100 )/ 8
-
-    aciertosira = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "3")
-    countaciertosira = len(aciertosira)
-    porcentajeira = (countaciertosira * 100 )/ 8
-
-    aciertosasco = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "4")
-    countaciertosasco = len(aciertosasco)
-    porcentajeasco = (countaciertosasco * 100 )/ 8
-    
-    aciertosalegria = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "5")
-    countaciertosalegria = len(aciertosalegria)
-    porcentajealegria = (countaciertosalegria * 100 )/ 8
-
-    aciertostristeza = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "6")
-    countaciertostristeza = len(aciertostristeza)
-    porcentajetristeza = (countaciertostristeza * 100 )/ 8
-
-
-    porcentajes = [porcentajeneutral, porcentajesorpresa, porcentajemiedo, porcentajeira, porcentajeasco, porcentajealegria, porcentajetristeza]
+    for emocion in emociones:
+        aciertos = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, emocion)
+        countaciertos = len(aciertos)
+        porcentaje = (countaciertos * 100) / 8
+        porcentajes.append(porcentaje)
 
     datosappcaras = buscarallpacienteappcaras(nombretablabd, idpaciente, nhcpaciente)
 
@@ -1209,10 +1145,7 @@ def resultadospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpac
 
 
 
-
-
 #  Descargar Resultados Appcaraspantalla del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 @appcarasrealistas.route('/descargarresultadospacienteappcaraspantalla/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/', methods=['GET','POST'])
 def descargarresultadospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
@@ -1222,98 +1155,29 @@ def descargarresultadospacienteappcaraspantalla(tipopaciente="", estadopaciente=
         
         if estadopaciente == "estable":
             nombretablabd = Appcaraspantallabipolarestable
-        elif estadopaciente == "inestable":
-            nombretablabd = Appcaraspantallabipolarinestable
-
-
-
-    # buscar aciertos por emocion
-    aciertosneutral = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "0")
-    countaciertosneutral = len(aciertosneutral)
-    porcentajeneutral = (countaciertosneutral * 100 )/ 8
-
-    aciertossorpresa = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "1")
-    countaciertossorpresa = len(aciertossorpresa)
-    porcentajesorpresa = (countaciertossorpresa * 100 )/ 8
-
-    aciertosmiedo = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "2")
-    countaciertosmiedo = len(aciertosmiedo)
-    porcentajemiedo = (countaciertosmiedo * 100 )/ 8
-
-    aciertosira = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "3")
-    countaciertosira = len(aciertosira)
-    porcentajeira = (countaciertosira * 100 )/ 8
-
-    aciertosasco = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "4")
-    countaciertosasco = len(aciertosasco)
-    porcentajeasco = (countaciertosasco * 100 )/ 8
-    
-    aciertosalegria = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "5")
-    countaciertosalegria = len(aciertosalegria)
-    porcentajealegria = (countaciertosalegria * 100 )/ 8
-
-    aciertostristeza = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, "6")
-    countaciertostristeza = len(aciertostristeza)
-    porcentajetristeza = (countaciertostristeza * 100 )/ 8
-
-
-
-    # # busqueda del codigo de la aplicacion
-
-    # if len(nhcpaciente) == 1:
-    #     nhcmodificado = nhcpaciente
-    #     if estadopaciente == "estable":
-    #         codigoaplicacion = "RFN-EXXXXX"
-    #     elif estadopaciente == "inestable":
-    #         codigoaplicacion = "RFN-IXXXXX"
-    #     codigocreado = codigoaplicacion + nhcmodificado
-    #     codigo = codigocreado
-    
-    # elif len(nhcpaciente) == 2:
-    #     nhcmodificado = nhcpaciente
-    #     if estadopaciente == "estable":
-    #         codigoaplicacion = "RFN-EXXXX"
-    #     elif estadopaciente == "inestable":
-    #         codigoaplicacion = "RFN-IXXXX"
-    #     codigocreado = codigoaplicacion + nhcmodificado
-    #     codigo = codigocreado
-
-    # elif len(nhcpaciente) == 3:
-    #     nhcmodificado = nhcpaciente
-    #     if estadopaciente == "estable":
-    #         codigoaplicacion = "RFN-EXXX"
-    #     elif estadopaciente == "inestable":
-    #         codigoaplicacion = "RFN-IXXX"
-    #     codigocreado = codigoaplicacion + nhcmodificado
-    #     codigo = codigocreado
-
-    # elif len(nhcpaciente) == 4:
-    #     nhcmodificado = nhcpaciente
-    #     if estadopaciente == "estable":
-    #         codigoaplicacion = "RFN-EXX"
-    #     elif estadopaciente == "inestable":
-    #         codigoaplicacion = "RFN-IXX"
-    #     codigocreado = codigoaplicacion + nhcmodificado
-    #     codigo = codigocreado
-
-    # elif len(nhcpaciente) >= 4:
-    #     nhcmodificado = nhcpaciente[-4:]
-    #     if estadopaciente == "estable":
-    #         codigoaplicacion = "RFN-EXX"
-    #     elif estadopaciente == "inestable":
-    #         codigoaplicacion = "RFN-IXX"
-    #     codigocreado = codigoaplicacion + nhcmodificado
-    #     codigo = codigocreado
-
 
 
     # busqueda del codigo de la aplicacion
-
     if estadopaciente == "estable":
         codigoaplicacion = "-RFN-E"
-    elif estadopaciente == "inestable":
-        codigoaplicacion = "-RFN-I"
+
     codigo = nhcpaciente + codigoaplicacion
+
+
+
+    # buscar aciertos por emocion y definir datos del gráfico creado con plotly y kaleido
+    emociones = ['Neutral', 'Sorpresa', 'Miedo', 'Ira', 'Asco', 'Alegría', 'Tristeza']
+    porcentajes = []
+    label_ys = ['0.0', '12.5', '25.0', '37.5', '50.0', '62.5', '75.0', '87.5', '100.0']
+    label_y = [0.0, 12.5, 25.0, 37.5, 50.0, 62.5, 75.0, 87.5, 100.0]
+    label = []
+
+    for i in range(7):
+        aciertos = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, str(i))
+        countaciertos = len(aciertos)
+        porcentaje = (countaciertos * 100) / 8
+        porcentajes.append(porcentaje)
+        label.append(str(porcentaje) + '%')
 
 
 
@@ -1324,14 +1188,6 @@ def descargarresultadospacienteappcaraspantalla(tipopaciente="", estadopaciente=
     horatext = hora.replace('-', ':')
 
 
-    # datos del gráfico creado con plotly y kaleido
-
-    emociones = ['Neutral', 'Sorpresa', 'Miedo', 'Ira', 'Asco', 'Alegría', 'Tristeza']
-    porcentajes = [porcentajeneutral, porcentajesorpresa, porcentajemiedo, porcentajeira, porcentajeasco, porcentajealegria, porcentajetristeza]
-    label_ys=['0.0', '12.5', '25.0', '37.5', '50.0', '62.5', '75.0', '87.5', '100.0']
-    label_y=[0.0, 12.5, 25.0, 37.5, 50.0, 62.5, 75.0, 87.5, 100.0]
-    label = [str(porcentajeneutral) + '%', str(porcentajesorpresa) + '%', str(porcentajemiedo) +'%', str(porcentajeira) +'%', str(porcentajeasco) +'%', str(porcentajealegria) +'%', str(porcentajetristeza) +'%']
-    
 
     #datos del gráfico creado con plotly import plotly.express as px
     fig2 = px.bar(
@@ -1444,6 +1300,7 @@ def descargarresultadospacienteappcaraspantalla(tipopaciente="", estadopaciente=
 
 
 
+
 # reinicio app caraspantalla ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 # Para reinicio un paciente por completo
@@ -1455,8 +1312,6 @@ def borrardatospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpa
     if tipopaciente == "bipolar":
         if estadopaciente == "estable":
             listaappcaras = [Appcaraspantallabipolarestable]
-        elif estadopaciente == "inestable":
-            listaappcaras = [Appcaraspantallabipolarinestable]
 
     # borra los todos los datos del paciente de la aplicacion caras (sacar las escalas de las listas anteriores)
     for appcara in listaappcaras:
@@ -1474,6 +1329,22 @@ def borrardatospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpa
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # borrado completo del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 # Para borrar un paciente por completo
@@ -1484,8 +1355,8 @@ def borrarpaciente(tipopaciente="", idpaciente=None, nhcpaciente="", fechacreaci
         
 
     if tipopaciente == "bipolar":
-        listaescalas = [Formularioregistrobipolar, Formularioantecedentesbipolarestable, Formularioantecedentesbipolarinestable, Escalamadrsbipolarestable, Escalaymrsbipolarestable, Escalapanasbipolarestable, Escalafastbipolarestable, Escalawhoqolbipolarestable, Escalaeeagbipolarestable, Cuestionarioavataresbipolarestable, Escalamadrsbipolarinestable, Escalaymrsbipolarinestable, Escalapanasbipolarinestable, Escalafastbipolarinestable, Escalawhoqolbipolarinestable, Escalaeeagbipolarinestable, Cuestionarioavataresbipolarinestable]
-        listaappcaras = [Appcaraspantallabipolarestable, Appcarasvrbipolarestable, Appcaraspantallabipolarinestable, Appcarasvrbipolarinestable]
+        listaescalas = [Formularioregistrobipolar, Formularioantecedentesbipolarestable,Escalapanasbipolarestable, Cuestionarioavataresbipolarestable]
+        listaappcaras = [Appcaraspantallabipolarestable]
 
     # borra los todos los datos del paciente en los formularios secundarios y escalas
     for escala in listaescalas:
@@ -1497,15 +1368,11 @@ def borrarpaciente(tipopaciente="", idpaciente=None, nhcpaciente="", fechacreaci
 
 
 
-    flash ("Se ha eliminado el paciente correctamente", category="borrar")
+    flash ("Se ha eliminado el participante correctamente", category="borrar")
     return redirect(url_for('listapacientes', tipopaciente=tipopaciente))
 
 
 # fin borrado completo del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 
 
 
@@ -1515,8 +1382,9 @@ def borrarpaciente(tipopaciente="", idpaciente=None, nhcpaciente="", fechacreaci
 def exportarbase():
 
     # colocar la ruta donde se crea el directorio
-    parent_dir = 'c:/'
-    directory1 = 'Registro-Datos-Reconocimiento-Facial'
+    # parent_dir = 'c:/'
+    parent_dir = 'C:\\'
+    directory1 = 'Registro-Datos_App'
     path1 = os.path.join(parent_dir, directory1)
 
     fechaexportacion = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
@@ -1530,7 +1398,7 @@ def exportarbase():
 
     shutil.copy('database/dbcarasdatosbipolar.db', direcciondestino)
     
-    flash (f"Se han exportado las bases de datos correctamente en el directorio C:\Registro-Datos-Reconocimiento-Facial con fecha: {fechaexportacion} ", category="exportar")
+    flash (f"Se han exportado las bases de datos correctamente en el directorio {path1} con fecha: {fechaexportacion} ", category="exportar")
     
     return redirect(url_for('inicio'))
 
@@ -1540,12 +1408,7 @@ def exportarbase():
 
 
 
-
-
-
-
 # Boton cerrar programa ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 # Para cerrar el programa y el navegador:
 
@@ -1561,7 +1424,6 @@ def salir():
 
     pid = os.getpid()
     os.kill(pid, signal.SIGINT)
-
 
     return
 
