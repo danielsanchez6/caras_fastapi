@@ -245,45 +245,6 @@ class Appcaraspantallabipolarestable(db.Model):
     
     
 
-class Appcarasvrbipolarestable(db.Model):
-    __bind_key__ = 'datosbipolar'
-    idnumericoappcaras = db.Column(db.Integer, primary_key=True)
-
-    # datos fijos en cada fila appcaras
-    idnumericopaciente = db.Column(db.Text)
-    nhcpaciente = db.Column(db.Text)
-
-    # datos variables en cada fila appcaras
-
-    horainiciocara = db.Column(db.Text)
-
-    respuestacorrecta = db.Column(db.Text)
-    respuestacorrectafiltrada = db.Column(db.Text)
-    respuestausuario = db.Column(db.Text)
-    acierto = db.Column(db.Text)
-    tiemporesponder = db.Column(db.Text)
-    camara = db.Column(db.Text)
-    movimiento = db.Column(db.Text)
-    hmd = db.Column(db.Text)
-    coloravatar = db.Column(db.Text)
-    tiempofinal = db.Column(db.Text)
-    ordenaparicion = db.Column(db.Text)
-    generoavatar = db.Column(db.Text)
-    etniaavatar = db.Column(db.Text)
-    r_eye = db.Column(db.Text)
-    l_eye = db.Column(db.Text)
-    nose = db.Column(db.Text)
-    front = db.Column(db.Text)
-    mouth = db.Column(db.Text)
-    r_cheek = db.Column(db.Text)
-    l_cheek = db.Column(db.Text)
-    top_left = db.Column(db.Text)
-    top_right = db.Column(db.Text)
-    bottom_left = db.Column(db.Text)
-    bottom_right = db.Column(db.Text)
-    distancia = db.Column(db.Text)
-
-
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -314,6 +275,10 @@ class Cuestionarioavataresbipolarestable(db.Model):
     cuestionarioavatares9 = db.Column(db.Text)
 
 
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -325,80 +290,16 @@ def inicioformularioregistro(nombretablabd):
     return formulario
 
 
+
 # funcion get en sqlalchemy
 def getpacienteporid(nombretablabd, idpaciente):
     datopaciente = nombretablabd.query.get(idpaciente)
     return datopaciente
 
 
+
 # funcion para crear el paciente en cada escala
 def crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion):
-
-    # escalas depresion estable
-
-    if (nombretablabd == Formularioantecedentesdepresionestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaminicertsdepresionestable) or (nombretablabd == Escalaius12depresionestable) or (nombretablabd == Escalaebrddepresionestable) or (nombretablabd == Escalabdiiidepresionestable) or (nombretablabd == Escalashortstairdepresionestable) or (nombretablabd == Escalahrsddepresionestable) or (nombretablabd == Escalapanasdepresionestable) or (nombretablabd == Escalafastdepresionestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalawhoqoldepresionestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalawhoqol27="", escalawhoqol28="", escalawhoqol29="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaeeagdepresionestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalaeeag1="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-    
-    if (nombretablabd == Cuestionarioavataresdepresionestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    # escalas depresion inestable
-
-    if (nombretablabd == Formularioantecedentesdepresioninestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaminicertsdepresioninestable) or (nombretablabd == Escalaius12depresioninestable) or (nombretablabd == Escalaebrddepresioninestable) or (nombretablabd == Escalabdiiidepresioninestable) or (nombretablabd == Escalashortstairdepresioninestable) or (nombretablabd == Escalahrsddepresioninestable) or (nombretablabd == Escalapanasdepresioninestable) or (nombretablabd == Escalafastdepresioninestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalawhoqoldepresioninestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalawhoqol27="", escalawhoqol28="", escalawhoqol29="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaeeagdepresioninestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalaeeag1="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Cuestionarioavataresdepresioninestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="depresion", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    # ///////////////////////////////////////////////////////////////////////////////////////
 
     # escalas bipolar estable
 
@@ -432,173 +333,8 @@ def crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion):
         db.session.commit()
         inicio = escala
 
-    # escalas bipolar inestable
-
-    if (nombretablabd == Formularioantecedentesbipolarinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalamadrsbipolarinestable) or (nombretablabd == Escalaymrsbipolarinestable) or (nombretablabd == Escalapanasbipolarinestable) or (nombretablabd == Escalafastbipolarinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalawhoqolbipolarinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalawhoqol27="", escalawhoqol28="", escalawhoqol29="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaeeagbipolarinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalaeeag1="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Cuestionarioavataresbipolarinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-
-
-    # ///////////////////////////////////////////////////////////////////////////////////////
-
-    # escalas esquizofrenia estable
-
-    if (nombretablabd == Formularioantecedentesesquizofreniaestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalapanssesquizofreniaestable) or (nombretablabd == Escalapanasesquizofreniaestable) or (nombretablabd == Escalafastesquizofreniaestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalawhoqolesquizofreniaestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalawhoqol27="", escalawhoqol28="", escalawhoqol29="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaeeagesquizofreniaestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalaeeag1="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Cuestionarioavataresesquizofreniaestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    # escalas esquizofrenia inestable
-
-    if (nombretablabd == Formularioantecedentesesquizofreniainestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalapanssesquizofreniainestable) or (nombretablabd == Escalapanasesquizofreniainestable) or (nombretablabd == Escalafastesquizofreniainestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalawhoqolesquizofreniainestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalawhoqol27="", escalawhoqol28="", escalawhoqol29="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaeeagesquizofreniainestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalaeeag1="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Cuestionarioavataresesquizofreniainestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizofrenia", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    # ///////////////////////////////////////////////////////////////////////////////////////
-
-    # escalas esquizoafectivo estable
-
-    if (nombretablabd == Formularioantecedentesesquizoafectivoestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalapanssesquizoafectivoestable) or (nombretablabd == Escalamadrsesquizoafectivoestable) or (nombretablabd == Escalaymrsesquizoafectivoestable) or (nombretablabd == Escalapanasesquizoafectivoestable) or (nombretablabd == Escalafastesquizoafectivoestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalawhoqolesquizoafectivoestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalawhoqol27="", escalawhoqol28="", escalawhoqol29="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaeeagesquizoafectivoestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalaeeag1="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Cuestionarioavataresesquizoafectivoestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    # escalas esquizoafectivo inestable
-
-    if (nombretablabd == Formularioantecedentesesquizoafectivoinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalapanssesquizoafectivoinestable) or (nombretablabd == Escalamadrsesquizoafectivoinestable) or (nombretablabd == Escalaymrsesquizoafectivoinestable) or (nombretablabd == Escalapanasesquizoafectivoinestable) or (nombretablabd == Escalafastesquizoafectivoinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalawhoqolesquizoafectivoinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalawhoqol27="", escalawhoqol28="", escalawhoqol29="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Escalaeeagesquizoafectivoinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", escalaeeag1="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
-    if (nombretablabd == Cuestionarioavataresesquizoafectivoinestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="esquizoafectivo", estadopaciente="inestable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
-        db.session.add(escala)
-        db.session.commit()
-        inicio = escala
-
     return inicio
+
 
 
 # funcion para modificar los nhc de los formularios secundarios y de las escalas
@@ -608,6 +344,8 @@ def modificarnhc(nombretablabd, idpaciente, nhcantiguo, nhcnuevo, fechacreacion)
         n.nhcpaciente = nhcnuevo
         db.session.add(n)
         db.session.commit()
+
+
 
 # funcion para modificar los nhc de los formularios appcaras
 def modificarnhccaras(nombretablabd, idpaciente, nhcantiguo, nhcnuevo):
@@ -619,22 +357,26 @@ def modificarnhccaras(nombretablabd, idpaciente, nhcantiguo, nhcnuevo):
 
 
 
-
-
-
 # funcion para buscar el primer registro el paciente en cada escala
 def buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion):
     buscarfirst = nombretablabd.query.filter_by(fechacreacion = fechacreacion).filter_by(idpaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).first()
     return buscarfirst
 
+
+
+# funcion para buscar el primer registro el paciente en cada escala
 def buscarfirstpacienteappcaras(nombretablabd, idpaciente, nhcpaciente):
     buscarfirst = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).first()
     return buscarfirst
 
+
+# funcion para buscar el primer registro el paciente en cada escala
 def buscarallpacienteappcaras(nombretablabd, idpaciente, nhcpaciente):
     buscarall = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).all()
     return buscarall
 
+
+# funcion para buscar el primer registro el paciente en cada escala
 def buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, emocion):
     #buscarallaciertos = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).filter_by(respuestacorrecta = emocion).filter_by(acierto = "1").all()
     buscarallaciertos = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).filter_by(respuestacorrectafiltrada = emocion).filter_by(acierto = "1").all()
