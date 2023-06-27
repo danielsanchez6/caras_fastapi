@@ -58,28 +58,683 @@
     <p>A continuación aparecen una serie de palabras que describen sentimientos. Lea cada palabra e indique con un círculo la intensidad con la que siente cada uno de los 20 sentimientos durante la última semana, incluido  el día de hoy. Conteste lo más sinceramente posible. </p>
 </div>
 <br>
+
+
 <div class="divtable1">
     <h5>Opciones: 1. Nada o casi nada, 2. Un poco, 3. Bastante, 4. Mucho, 5. Muchísimo.</h5>
     <table class="table3">
         <thead class="theadtable">
             <tr>
+                <!--colocar todo los valores de las tablas que se deseen mostar -->
                 <td class="titulostablas6">Preguntas:</td>
-                {% for i in range(1, 6) %}
-                    <td class="titulostablas12">{{ i }}</td>
-                {% endfor %}
+                <td class="titulostablas12">1</td>
+                <td class="titulostablas12">2</td>
+                <td class="titulostablas12">3</td>
+                <td class="titulostablas12">4</td>
+                <td class="titulostablas12">5</td>
             </tr>
         </thead>
+
         <tbody class="tbodytable1">
-            {% for question_num, question_text in questions %}
-                <tr>
-                    <td class="contenidotabla">{{ question_num }}. {{ question_text }}</td>
-                    {% for i in range(1, 6) %}
-                        <td class="contenidotabla1">
-                            <input type="radio" id="escalapanas{{ question_num }}{{ i }}" name="escalapanas{{ question_num }}" value="{{ i }}. {{ options[i-1] }}" {% if formulariosecundario['escalapanas' + question_num] == options[i-1] %} checked {% endif %}>
-                        </td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
+            <tr>
+                <td class="contenidotabla">1. Interés.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas1" name="escalapanas1" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas1 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas1">1</label>   -->                            
+                    </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas2" name="escalapanas1" value="2. Un poco." {% if formulariosecundario.escalapanas1 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas2">2</label>   -->                            
+                    </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas3" name="escalapanas1" value="3. Bastante." {% if formulariosecundario.escalapanas1 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas3">3</label>   -->                            
+                    </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas4" name="escalapanas1" value="4. Mucho." {% if formulariosecundario.escalapanas1 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas4">4</label>   -->                            
+                    </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas5" name="escalapanas1" value="5. Muchísimo." {% if formulariosecundario.escalapanas1 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas5">5</label>   -->                            
+                    </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">2. Tensión.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas6" name="escalapanas2" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas2 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas6">1</label>   -->                            
+                    </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas7" name="escalapanas2" value="2. Un poco." {% if formulariosecundario.escalapanas2 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas7">2</label>   -->                            
+                    </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas8" name="escalapanas2" value="3. Bastante." {% if formulariosecundario.escalapanas2 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas8">3</label>   -->                            
+                    </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas9" name="escalapanas2" value="4. Mucho." {% if formulariosecundario.escalapanas2 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas9">4</label>   -->                            
+                    </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas10" name="escalapanas2" value="5. Muchísimo." {% if formulariosecundario.escalapanas2 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas10">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">3. Animación.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas11" name="escalapanas3" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas3 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas11">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas12" name="escalapanas3" value="2. Un poco." {% if formulariosecundario.escalapanas3 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas12">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas13" name="escalapanas3" value="3. Bastante." {% if formulariosecundario.escalapanas3 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas13">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas14" name="escalapanas3" value="4. Mucho." {% if formulariosecundario.escalapanas3 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas14">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas15" name="escalapanas3" value="5. Muchísimo." {% if formulariosecundario.escalapanas3 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas15">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">4. Disgusto.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas16" name="escalapanas4" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas4 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas16">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas17" name="escalapanas4" value="2. Un poco." {% if formulariosecundario.escalapanas4 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas17">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas18" name="escalapanas4" value="3. Bastante." {% if formulariosecundario.escalapanas4 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas18">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas19" name="escalapanas4" value="4. Mucho." {% if formulariosecundario.escalapanas4 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas19">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas20" name="escalapanas4" value="5. Muchísimo." {% if formulariosecundario.escalapanas4 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas20">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">5. Energía.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas21" name="escalapanas5" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas5 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas21">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas22" name="escalapanas5" value="2. Un poco." {% if formulariosecundario.escalapanas5 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas22">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas23" name="escalapanas5" value="3. Bastante." {% if formulariosecundario.escalapanas5 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas23">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas24" name="escalapanas5" value="4. Mucho." {% if formulariosecundario.escalapanas5 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas24">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas25" name="escalapanas5" value="5. Muchísimo." {% if formulariosecundario.escalapanas5 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas25">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">6. Culpa.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas26" name="escalapanas6" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas6 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas26">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas27" name="escalapanas6" value="2. Un poco." {% if formulariosecundario.escalapanas6 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas27">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas28" name="escalapanas6" value="3. Bastante." {% if formulariosecundario.escalapanas6 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas28">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas29" name="escalapanas6" value="4. Mucho." {% if formulariosecundario.escalapanas6 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas29">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas30" name="escalapanas6" value="5. Muchísimo." {% if formulariosecundario.escalapanas6 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas30">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">7. Susto.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas31" name="escalapanas7" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas7 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas31">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas32" name="escalapanas7" value="2. Un poco." {% if formulariosecundario.escalapanas7 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas32">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas33" name="escalapanas7" value="3. Bastante." {% if formulariosecundario.escalapanas7 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas33">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas34" name="escalapanas7" value="4. Mucho." {% if formulariosecundario.escalapanas7 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas34">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas35" name="escalapanas7" value="5. Muchísimo." {% if formulariosecundario.escalapanas7 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas35">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">8. Enojo.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas36" name="escalapanas8" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas8 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas36">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas37" name="escalapanas8" value="2. Un poco." {% if formulariosecundario.escalapanas8 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas37">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas38" name="escalapanas8" value="3. Bastante." {% if formulariosecundario.escalapanas8 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas38">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas39" name="escalapanas8" value="4. Mucho." {% if formulariosecundario.escalapanas8 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas39">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas40" name="escalapanas8" value="5. Muchísimo." {% if formulariosecundario.escalapanas8 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas40">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">9. Entusiasmo.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas41" name="escalapanas9" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas9 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas41">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas42" name="escalapanas9" value="2. Un poco." {% if formulariosecundario.escalapanas9 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas42">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas43" name="escalapanas9" value="3. Bastante." {% if formulariosecundario.escalapanas9 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas43">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas44" name="escalapanas9" value="4. Mucho." {% if formulariosecundario.escalapanas9 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas44">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas45" name="escalapanas9" value="5. Muchísimo." {% if formulariosecundario.escalapanas9 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas45">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">10. Orgullo.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas46" name="escalapanas10" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas10 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas46">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas47" name="escalapanas10" value="2. Un poco." {% if formulariosecundario.escalapanas10 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas47">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas48" name="escalapanas10" value="3. Bastante." {% if formulariosecundario.escalapanas10 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas48">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas49" name="escalapanas10" value="4. Mucho." {% if formulariosecundario.escalapanas10 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas49">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas50" name="escalapanas10" value="5. Muchísimo." {% if formulariosecundario.escalapanas10 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas50">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">11. Irritación.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas51" name="escalapanas11" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas11 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas51">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas52" name="escalapanas11" value="2. Un poco." {% if formulariosecundario.escalapanas11 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas52">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas53" name="escalapanas11" value="3. Bastante." {% if formulariosecundario.escalapanas11 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas53">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas54" name="escalapanas11" value="4. Mucho." {% if formulariosecundario.escalapanas11 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas54">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas55" name="escalapanas11" value="5. Muchísimo." {% if formulariosecundario.escalapanas11 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas55">5</label>   -->
+                </td>
+
+            </tr>
+            
+
+
+            
+            <tr>
+                <td class="contenidotabla">12. Disposición.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas56" name="escalapanas12" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas12 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas56">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas57" name="escalapanas12" value="2. Un poco." {% if formulariosecundario.escalapanas12 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas57">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas58" name="escalapanas12" value="3. Bastante." {% if formulariosecundario.escalapanas12 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas58">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas59" name="escalapanas12" value="4. Mucho." {% if formulariosecundario.escalapanas12 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas59">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas60" name="escalapanas12" value="5. Muchísimo." {% if formulariosecundario.escalapanas12 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas60">5</label>   -->
+                </td>
+
+            </tr>
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">13. Vergüenza.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas61" name="escalapanas13" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas13 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas61">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas62" name="escalapanas13" value="2. Un poco." {% if formulariosecundario.escalapanas13 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas62">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas63" name="escalapanas13" value="3. Bastante." {% if formulariosecundario.escalapanas13 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas63">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas64" name="escalapanas13" value="4. Mucho." {% if formulariosecundario.escalapanas13 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas64">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas65" name="escalapanas13" value="5. Muchísimo." {% if formulariosecundario.escalapanas13 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas65">5</label>   -->
+                </td>
+
+            </tr>
+
+
+            
+            
+            <tr>
+                <td class="contenidotabla">14. Inspiración.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas66" name="escalapanas14" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas14 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas66">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas67" name="escalapanas14" value="2. Un poco." {% if formulariosecundario.escalapanas14 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas67">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas68" name="escalapanas14" value="3. Bastante." {% if formulariosecundario.escalapanas14 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas68">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas69" name="escalapanas14" value="4. Mucho." {% if formulariosecundario.escalapanas14 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas69">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas70" name="escalapanas14" value="5. Muchísimo." {% if formulariosecundario.escalapanas14 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas70">5</label>   -->
+                </td>
+
+            </tr>
+
+
+
+            
+            <tr>
+                <td class="contenidotabla">15. Nerviosismo.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas71" name="escalapanas15" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas15 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas71">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas72" name="escalapanas15" value="2. Un poco." {% if formulariosecundario.escalapanas15 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas72">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas73" name="escalapanas15" value="3. Bastante." {% if formulariosecundario.escalapanas15 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas73">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas74" name="escalapanas15" value="4. Mucho." {% if formulariosecundario.escalapanas15 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas74">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas75" name="escalapanas15" value="5. Muchísimo." {% if formulariosecundario.escalapanas15 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas75">5</label>   -->
+                </td>
+
+            </tr>
+
+
+            
+            
+            <tr>
+                <td class="contenidotabla">16. Decisión.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas76" name="escalapanas16" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas16 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas76">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas77" name="escalapanas16" value="2. Un poco." {% if formulariosecundario.escalapanas16 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas77">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas78" name="escalapanas16" value="3. Bastante." {% if formulariosecundario.escalapanas16 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas78">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas79" name="escalapanas16" value="4. Mucho." {% if formulariosecundario.escalapanas16 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas79">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas80" name="escalapanas16" value="5. Muchísimo." {% if formulariosecundario.escalapanas16 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas80">5</label>   -->
+                </td>
+
+            </tr>
+
+            <tr>
+                <td class="contenidotabla">17. Atención.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas81" name="escalapanas17" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas17 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas81">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas82" name="escalapanas17" value="2. Un poco." {% if formulariosecundario.escalapanas17 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas82">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas83" name="escalapanas17" value="3. Bastante." {% if formulariosecundario.escalapanas17 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas83">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas84" name="escalapanas17" value="4. Mucho." {% if formulariosecundario.escalapanas17 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas84">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas85" name="escalapanas17" value="5. Muchísimo." {% if formulariosecundario.escalapanas17 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas85">5</label>   -->
+                </td>
+
+            </tr>
+
+            <tr>
+                <td class="contenidotabla">18. Intranquilidad.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas86" name="escalapanas18" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas18 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas86">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas87" name="escalapanas18" value="2. Un poco." {% if formulariosecundario.escalapanas18 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas87">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas88" name="escalapanas18" value="3. Bastante." {% if formulariosecundario.escalapanas18 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas88">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas89" name="escalapanas18" value="4. Mucho." {% if formulariosecundario.escalapanas18 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas89">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas90" name="escalapanas18" value="5. Muchísimo." {% if formulariosecundario.escalapanas18 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas90">5</label>   -->
+                </td>
+
+            </tr>
+
+
+
+            <tr>
+                <td class="contenidotabla">19. Actividad.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas91" name="escalapanas19" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas19 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas91">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas92" name="escalapanas19" value="2. Un poco." {% if formulariosecundario.escalapanas19 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas92">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas93" name="escalapanas19" value="3. Bastante." {% if formulariosecundario.escalapanas19 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas93">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas94" name="escalapanas19" value="4. Mucho." {% if formulariosecundario.escalapanas19 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas94">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas95" name="escalapanas19" value="5. Muchísimo." {% if formulariosecundario.escalapanas19 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas95">5</label>   -->
+                </td>
+
+            </tr>
+
+
+            <tr>
+                <td class="contenidotabla">20. Temor.</td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas96" name="escalapanas20" value="1. Nada o casi nada." {% if formulariosecundario.escalapanas20 == "1. Nada o casi nada."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas96">1</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas97" name="escalapanas20" value="2. Un poco." {% if formulariosecundario.escalapanas20 == "2. Un poco."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas97">2</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas98" name="escalapanas20" value="3. Bastante." {% if formulariosecundario.escalapanas20 == "3. Bastante."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas98">3</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas99" name="escalapanas20" value="4. Mucho." {% if formulariosecundario.escalapanas20 == "4. Mucho."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas99">4</label>   -->
+                </td>
+
+                <td class="contenidotabla1">
+                    <input type="radio" id="escalapanas100" name="escalapanas20" value="5. Muchísimo." {% if formulariosecundario.escalapanas20 == "5. Muchísimo."  %} checked {% endif %}>
+                    <!-- <label for="escalapanas100">5</label>   -->
+                </td>
+
+            </tr>
+
+
         </tbody>
     </table>
 </div>
@@ -90,38 +745,3 @@
 
 
 
-
-<!-- colocar en python
-
-questions = [
-    ('1', 'Interés.'),
-    ('2', 'Tensión.'),
-    ('3', 'Animación.'),
-    ('4', 'Disgusto.'),
-    ('5', 'Energía.'),
-    ('6', 'Culpa.'),
-    ('7', 'Susto.'),
-    ('8', 'Enojo.'),
-    ('9', 'Entusiasmo.'),
-    ('10', 'Orgullo.'),
-    ('11', 'Irritación.'),
-    ('12', 'Disposición.'),
-    ('13', 'Vergüenza.'),
-    ('14', 'Inspiración.'),
-    ('15', 'Nerviosismo.'),
-    ('16', 'Decisión.'),
-    ('17', 'Atención.'),
-    ('18', 'Intranquilidad.'),
-    ('19', 'Actividad.'),
-    ('20', 'Temor.')
-]
-
-options = [
-    '1. Nada o casi nada.',
-    '2. Un poco.',
-    '3. Bastante.',
-    '4. Mucho.',
-    '5. Muchísimo.'
-]
-
--->

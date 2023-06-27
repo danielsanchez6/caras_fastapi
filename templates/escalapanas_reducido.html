@@ -1,0 +1,127 @@
+<!-- Seleccionar el layout adecuado en cada caso -->
+{% extends tipolayout %}
+
+
+<!-- Seleccionar el estado del paciente en cada caso -->
+{% block title %}Escala PANAS: Paciente {{formulariosecundario.estadopaciente}}.{% endblock %}
+
+
+<!-- Indicar si es necesario colocar algun boton en el nav referente a este formulario -->
+{% block nav %}{% endblock %}
+
+
+<!-- Indicar si es necesario colocar script en javascript referente a este formulario -->
+{% block scripts %}{% endblock %}
+
+
+
+<!-- Para escribir el titulo del formulario, indicar el estado del paciente en cada caso -->
+{% block contenttitle %}
+
+<div>
+    {% if formulariosecundario.estadopaciente == "estable" %}
+
+        {% if formulariosecundario.estadoescala == "Sin rellenar" %}
+            <h1 class="titulo2">Escala PANAS: Paciente Estable.</h1>
+        
+        {% elif formulariosecundario.estadoescala == "En Proceso o Finalizada" %}
+            <h1 class="titulo2">Editar Escala PANAS: Paciente Estable.</h1>
+        {% endif %}
+
+    {% endif %}
+    <br>
+
+
+    <!--crear mensajes flash-->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %} 
+            {% for category, message in messages %}
+                <div class="{{category}}">
+                    {{ message }}
+                </div>
+    
+                <br>
+            {% endfor %}
+        {%endif%}
+    {% endwith %}
+    
+
+</div>
+
+{% endblock %}
+
+
+<!-- Escribir el contenido del formulario -->
+{% block contentform %}
+
+<div>
+    <p>A continuación aparecen una serie de palabras que describen sentimientos. Lea cada palabra e indique con un círculo la intensidad con la que siente cada uno de los 20 sentimientos durante la última semana, incluido  el día de hoy. Conteste lo más sinceramente posible. </p>
+</div>
+<br>
+<div class="divtable1">
+    <h5>Opciones: 1. Nada o casi nada, 2. Un poco, 3. Bastante, 4. Mucho, 5. Muchísimo.</h5>
+    <table class="table3">
+        <thead class="theadtable">
+            <tr>
+                <td class="titulostablas6">Preguntas:</td>
+                {% for i in range(1, 6) %}
+                    <td class="titulostablas12">{{ i }}</td>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody class="tbodytable1">
+            {% for question_num, question_text in questions %}
+                <tr>
+                    <td class="contenidotabla">{{ question_num }}. {{ question_text }}</td>
+                    {% for i in range(1, 6) %}
+                        <td class="contenidotabla1">
+                            <input type="radio" id="escalapanas{{ question_num }}{{ i }}" name="escalapanas{{ question_num }}" value="{{ i }}. {{ options[i-1] }}" {% if formulariosecundario['escalapanas' + question_num] == options[i-1] %} checked {% endif %}>
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<br>
+
+{% endblock %}
+
+
+
+
+
+<!-- colocar en python
+
+questions = [
+    ('1', 'Interés.'),
+    ('2', 'Tensión.'),
+    ('3', 'Animación.'),
+    ('4', 'Disgusto.'),
+    ('5', 'Energía.'),
+    ('6', 'Culpa.'),
+    ('7', 'Susto.'),
+    ('8', 'Enojo.'),
+    ('9', 'Entusiasmo.'),
+    ('10', 'Orgullo.'),
+    ('11', 'Irritación.'),
+    ('12', 'Disposición.'),
+    ('13', 'Vergüenza.'),
+    ('14', 'Inspiración.'),
+    ('15', 'Nerviosismo.'),
+    ('16', 'Decisión.'),
+    ('17', 'Atención.'),
+    ('18', 'Intranquilidad.'),
+    ('19', 'Actividad.'),
+    ('20', 'Temor.')
+]
+
+options = [
+    '1. Nada o casi nada.',
+    '2. Un poco.',
+    '3. Bastante.',
+    '4. Mucho.',
+    '5. Muchísimo.'
+]
+
+-->
