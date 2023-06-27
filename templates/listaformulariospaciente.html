@@ -9,35 +9,12 @@
         <a href="/">Inicio</a>
     </li>
 
-    {% if tipopaciente == "depresion"%}
-        <li>
-            <a href="/listapacientes/depresion">Lista de Pacientes con Trastorno Depresivo Mayor</a>
-        </li>
-        <li>
-            <a class="cerrarprogramadepresion2" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
-        </li>
-
-    {% elif tipopaciente == "bipolar"%}
+    {% if tipopaciente == "bipolar"%}
         <li>
             <a href="/listapacientes/bipolar">Lista de Pacientes con Trastorno Bipolar</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares2" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
-        </li>
-
-    {% elif tipopaciente == "esquizofrenia"%}
-        <li>
-            <a href="/listapacientes/esquizofrenia">Lista de Pacientes con Trastorno del Espectro de la Esquizofrenia</a>
-        </li>
-        <li>
-            <a class="cerrarprogramaesquizofrenia2" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
-        </li>
-    {% elif tipopaciente == "esquizoafectivo"%}
-        <li>
-            <a href="/listapacientes/esquizoafectivo">Lista de Pacientes con Trastorno Esquizoafectivo</a>
-        </li>
-        <li>
-            <a class="cerrarprogramaesquizoafectivo2" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
         </li>
 
     {% endif %}
@@ -51,14 +28,8 @@
 {% block content %}
 
     <!--titulo de inicio-->
-    {% if tipopaciente == "depresion"%}
-        <h1 class="titulo2">Escalas Paciente Con Trastorno Depresivo Mayor:</h1>
-    {% elif tipopaciente == "bipolar"%}
+    {% if tipopaciente == "bipolar"%}
         <h1 class="titulo2">Escalas Paciente Con Trastorno Bipolar:</h1>
-    {% elif tipopaciente == "esquizofrenia"%}
-        <h1 class="titulo2">Escalas Paciente Con Trastorno del Espectro de la Esquizofrenia:</h1>
-    {% elif tipopaciente == "esquizoafectivo"%}
-        <h1 class="titulo2">Escalas Paciente Con Trastorno Esquizoafectivo:</h1>
     {% endif %}
 
 
@@ -89,10 +60,6 @@
             <thead class="theadtable">
                 <tr>
                     <!--colocar todo los valores de las tablas que se deseen mostar -->
-                    <td class="titulostablas6">Paciente Inestable:</td>
-                    <td class="titulostablas13">Estado:</td>
-                    <td class="titulostablas9">Fecha Modificación:</td>
-                    <td class="titulostablas11"></td>
                     <td class="titulostablas6">Paciente Estable:</td>
                     <td class="titulostablas13">Estado:</td>
                     <td class="titulostablas9">Fecha Modificación:</td>
@@ -105,18 +72,6 @@
                 <!-- Formulario Antecedentes -->
 
                 <tr>
-                    <td class="contenidotabla3">
-                        <a class="btn3" href="/formularioantecedentes/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Formulario Antecendentes</a>
-                    </td>
-                    <td class="contenidotabla3">
-                        {{ datosformularioantecedentesinestable.estadoescala }}
-                    </td>
-                    <td class="contenidotabla3">
-                        {{ datosformularioantecedentesinestable.fechaultimamodificacion }}
-                    </td>
-
-                    <td class="contenidotabla3"></td>
-
                     <td class="contenidotabla3">
                         <a class="btn3" href="/formularioantecedentes/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Formulario Antecendentes</a>
                     </td>
@@ -133,313 +88,10 @@
                 <!-- Escalas -->
 
 
-<!-- Escala MINICERTS -->
 
-            {% if tipopaciente == "depresion"%}
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaminicerts/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala MINICERTS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaminicertsinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaminicertsinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaminicerts/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala MINICERTS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaminicertsestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaminicertsestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-<!-- Escala IUS12 -->
-
-            {% if tipopaciente == "depresion"%}
+<!-- Escala PANAS -->
 
             <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaius12/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala IUS-12</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaius12inestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaius12inestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaius12/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala IUS-12</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaius12estable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaius12estable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-<!-- Escala EBRD -->
-
-
-            {% if tipopaciente == "depresion"%}
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaebrd/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala EBRd</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaebrdinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaebrdinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaebrd/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala EBRd</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaebrdestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaebrdestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-<!-- Escala BDIII -->
-
-            {% if tipopaciente == "depresion"%}
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalabdiii/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala BDI-II</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalabdiiiinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalabdiiiinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalabdiii/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala BDI-II</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalabdiiiestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalabdiiiestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-<!-- Escala SHORTSTAIR -->
-
-            {% if tipopaciente == "depresion"%}
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalashortstair/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala SHORT STAI-R</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalashortstairinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalashortstairinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalashortstair/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala SHORT STAI-R</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalashortstairestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalashortstairestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-
-<!-- Escala HRSD -->
-
-            {% if tipopaciente == "depresion"%}
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalahrsd/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala HRSD</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalahrsdinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalahrsdinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalahrsd/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala HRSD</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalahrsdestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalahrsdestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-
-<!-- Escala MADRS -->
-
-            {% if (tipopaciente == "bipolar") or (tipopaciente == "esquizoafectivo") %}
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalamadrs/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala MADRS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalamadrsinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalamadrsinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalamadrs/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala MADRS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalamadrsestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalamadrsestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-
-<!-- Escala YMRS -->
-
-            {% if (tipopaciente == "bipolar") or (tipopaciente == "esquizoafectivo") %}
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaymrs/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala YMRS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaymrsinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaymrsinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaymrs/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala YMRS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaymrsestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaymrsestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-<!-- Escala PANSS -->
-
-            {% if (tipopaciente == "esquizofrenia") or (tipopaciente == "esquizoafectivo") %}
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalapanss/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala PANSS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalapanssinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalapanssinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalapanss/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala PANSS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalapanssestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalapanssestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-            {% endif %}
-
-
-
-<!-- escala oculta PANAS
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalapanas/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala PANAS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalapanasinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalapanasinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
                 <td class="contenidotabla3">
                     <a class="btn5" href="/escalapanas/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala PANAS</a>
                 </td>
@@ -451,236 +103,13 @@
                 </td>
             </tr>
 
--->
 
 
-<!-- Escala FAST -->
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalafast/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala FAST</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalafastinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalafastinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalafast/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala FAST</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalafastestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalafastestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-
-<!-- Escala WHOQOL -->
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalawhoqol/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala WHOQOL-BREF</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalawhoqolinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalawhoqolinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalawhoqol/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala WHOQOL-BREF</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalawhoqolestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalawhoqolestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-
-
-<!-- Escala EEAG -->
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaeeag/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala EEAG</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaeeaginestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaeeaginestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalaeeag/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala EEAG</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaeeagestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalaeeagestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-
-
-
-<!-- Aplicacion Servidor Empatica 4 -->
-
-
-
-<tr>
-    <td class="contenidotabla3">
-        <a class="btn15" href="/servidorempatica/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App Servidor Pulsera</a>
-    </td>
-    <td class="contenidotabla3">
-
-    </td>
-    <td class="contenidotabla3">
-
-    </td>
-
-    <td class="contenidotabla3"></td>
-
-    <td class="contenidotabla3">
-        <a class="btn15" href="/servidorempatica/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App Servidor Pulsera</a>
-    </td>
-    <td class="contenidotabla3">
-
-    </td>
-    <td class="contenidotabla3">
-
-    </td>
-</tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Aplicacion Empatica 4 -->
-
-
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn15" href="/empatica/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App Pulsera</a>
-                </td>
-                <td class="contenidotabla3">
-
-                </td>
-                <td class="contenidotabla3">
-
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn15" href="/empatica/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App Pulsera</a>
-                </td>
-                <td class="contenidotabla3">
-
-                </td>
-                <td class="contenidotabla3">
-
-                </td>
-            </tr>
-        
-        
-        
-        
-
-
-<!-- Aplicacion Casco Emotiv -->
-
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn16" href="/emotivpro/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App Casco EEG</a>
-                </td>
-                <td class="contenidotabla3">
-
-                </td>
-                <td class="contenidotabla3">
-
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    <a class="btn16" href="/emotivpro/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App Casco EEG</a>
-                </td>
-                <td class="contenidotabla3">
-
-                </td>
-                <td class="contenidotabla3">
-
-                </td>
-            </tr>
-
-        
 
 
 <!-- Appcaraspantalla -->
 
             <tr>
-                <td class="contenidotabla3">
-                    {% if not datosappcaraspantallainestable.nhcpaciente %}
-                    <a class="btn11" href="/appcaraspantalla/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App No Inmersiva (RFN-I)</a>
-                    {% endif %}
-
-                    {% if datosappcaraspantallainestable.nhcpaciente %}
-                    <a class="btn7" href="/borrardatospacienteappcaraspantalla/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas borrar los datos actuales del paciente y reiniciar la aplicación? Si pulsas aceptar se borrarán los datos y se reiniciará la aplicación para volver a tomar los datos.')">Reinicio App No Inmersiva (RFN-I)</a>
-                    {% endif %}
-
-                </td>
-                <td class="contenidotabla3">
-
-                    {% if datosappcaraspantallainestable.nhcpaciente %}
-                    <a class="btn9" href="/resultadospacienteappcaraspantalla/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" >Ver Resultados (RFN-I)</a>
-                    {% endif %}
-
-                </td>
-                <td class="contenidotabla3">
-                    {% if datosappcaraspantallainestable.nhcpaciente %}
-                    <a class="btn10" href="/descargarresultadospacienteappcaraspantalla/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" onclick="this.addEventListener('click', clickStopper, false);">Descargar pdf (RFN-I)</a>
-                    {% endif %}
-                </td>
-
-                <td class="contenidotabla3"></td>
 
                 <td class="contenidotabla3">
                     {% if not datosappcaraspantallaestable.nhcpaciente %}
@@ -705,72 +134,9 @@
 
 
 
-
-<!-- Appcarasvr -->
-
-            <tr>
-                <td class="contenidotabla3">
-                    {% if not datosappcarasvrinestable.nhcpaciente %}
-                    <a class="btn12" href="/appcarasvr/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App Inmersiva (RFI-I)</a>
-                    {% endif %}
-
-                    {% if datosappcarasvrinestable.nhcpaciente %}
-                    <a class="btn7" href="/borrardatospacienteappcarasvr/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas borrar los datos actuales del paciente y reiniciar la aplicación? Si pulsas aceptar se borrarán los datos y se reiniciará la aplicación para volver a tomar los datos.')">Reinicio App Inmersiva (RFI-I)</a>
-                    {% endif %}
-
-                </td>
-                <td class="contenidotabla3">
-
-                    {% if datosappcarasvrinestable.nhcpaciente %}
-                    <a class="btn9" href="/resultadospacienteappcarasvr/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" >Ver Resultados (RFI-I)</a>
-                    {% endif %}
-
-                </td>
-                <td class="contenidotabla3">
-                    {% if datosappcarasvrinestable.nhcpaciente %}
-                    <a class="btn10" href="/descargarresultadospacienteappcarasvr/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" onclick="this.addEventListener('click', clickStopper, false);">Descargar pdf (RFN-I)</a>
-                    {% endif %}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
-                <td class="contenidotabla3">
-                    {% if not datosappcarasvrestable.nhcpaciente %}
-                    <a class="btn12" href="/appcarasvr/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App Inmersiva (RFI-E)</a>
-                    {% endif %}
-                    {% if datosappcarasvrestable.nhcpaciente %}
-                    <a class="btn7" href="/borrardatospacienteappcarasvr/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas borrar los datos actuales del paciente y reiniciar la aplicación? Si pulsas aceptar se borrarán los datos y se reiniciará la aplicación para volver a tomar los datos.')">Reinicio App Inmersiva (RFI-E)</a>
-                    {% endif %}
-                </td>
-                <td class="contenidotabla3">
-                    {% if datosappcarasvrestable.nhcpaciente %}
-                    <a class="btn9" href="/resultadospacienteappcarasvr/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" >Ver Resultados (RFI-E)</a>
-                    {% endif %}
-
-                </td>
-                <td class="contenidotabla3">
-                    {% if datosappcarasvrestable.nhcpaciente %}
-                    <a class="btn10" href="/descargarresultadospacienteappcarasvr/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" onclick="this.addEventListener('click', clickStopper, false);">Descargar pdf (RFI-E)</a>
-                    {% endif %}
-                </td>
-            </tr>
-
-
 <!-- Cuestionario Avatares -->
 
             <tr>
-                <td class="contenidotabla3">
-                    <a class="btn6" href="/cuestionarioavatares/{{ tipopaciente }}/inestable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Cuestionario Avatares</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datoscuestionarioavataresinestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datoscuestionarioavataresinestable.fechaultimamodificacion }}
-                </td>
-
-                <td class="contenidotabla3"></td>
-
                 <td class="contenidotabla3">
                     <a class="btn6" href="/cuestionarioavatares/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Cuestionario Avatares</a>
                 </td>

@@ -10,35 +10,12 @@
         <a href="/">Inicio</a>
     </li>
 
-    {% if tipopaciente == "depresion"%}
-        <li>
-            <a href="/formularioregistro/depresion">Crear Nuevo Paciente de Trastorno Depresivo Mayor</a>
-        </li>
-        <li>
-            <a class="cerrarprogramadepresion1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
-        </li>
-
-    {% elif tipopaciente == "bipolar"%}
+    {% if tipopaciente == "bipolar"%}
         <li>
             <a href="/formularioregistro/bipolar">Crear Nuevo Paciente de Trastorno Bipolar</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
-        </li>
-
-    {% elif tipopaciente == "esquizofrenia"%}
-        <li>
-            <a href="/formularioregistro/esquizofrenia">Crear Nuevo Paciente de Trastorno del Espectro de la Esquizofrenia</a>
-        </li>
-        <li>
-            <a class="cerrarprogramaesquizofrenia1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
-        </li>
-    {% elif tipopaciente == "esquizoafectivo"%}
-        <li>
-            <a href="/formularioregistro/esquizoafectivo">Crear Nuevo Paciente de Trastorno Esquizoafectivo</a>
-        </li>
-        <li>
-            <a class="cerrarprogramaesquizoafectivo1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
         </li>
 
     {% endif %}
@@ -52,16 +29,9 @@
 {% block content %}
 
     <!--titulo de inicio-->
-    {% if tipopaciente == "depresion"%}
-        <h1 class="titulo2">Lista de Pacientes con Trastorno Depresivo Mayor</h1>
-    {% elif tipopaciente == "bipolar"%}
+    {% if tipopaciente == "bipolar"%}
         <h1 class="titulo2">Lista de Pacientes con Trastorno Bipolar</h1>
-    {% elif tipopaciente == "esquizofrenia"%}
-        <h1 class="titulo2">Listado de Pacientes con Trastorno del Espectro de la Esquizofrenia</h1>
-    {% elif tipopaciente == "esquizoafectivo"%}
-        <h1 class="titulo2">Lista de Pacientes con Trastorno Esquizoafectivo</h1>
     {% endif %}
-
 
 
     <!--crear mensajes flash-->

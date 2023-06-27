@@ -9,35 +9,12 @@
         <a href="/" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Inicio</a>
     </li>
 
-    {% if tipopaciente == "depresion"%}
-        <li>
-            <a href="/listapacientes/depresion" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Depresivo Mayor</a>
-        </li>
-        <li>
-            <a class="cerrarprogramadepresion4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
-        </li>
-
-    {% elif tipopaciente == "bipolar"%}
+    {% if tipopaciente == "bipolar"%}
         <li>
             <a href="/listapacientes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Bipolar</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
-        </li>
-
-    {% elif tipopaciente == "esquizofrenia"%}
-        <li>
-            <a href="/listapacientes/esquizofrenia" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno del Espectro de la Esquizofrenia</a>
-        </li>
-        <li>
-            <a class="cerrarprogramaesquizofrenia4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
-        </li>
-    {% elif tipopaciente == "esquizoafectivo"%}
-        <li>
-            <a href="/listapacientes/esquizoafectivo" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Esquizoafectivo</a>
-        </li>
-        <li>
-            <a class="cerrarprogramaesquizoafectivo4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
         </li>
 
     {% endif %}

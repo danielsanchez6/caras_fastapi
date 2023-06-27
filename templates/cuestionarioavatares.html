@@ -27,16 +27,6 @@
         {% elif formulariosecundario.estadoescala == "En Proceso o Finalizada" %}
             <h1 class="titulo2">Editar Cuestionario Avatares: Paciente Estable.</h1>
         {% endif %}
-    
-
-    {% elif formulariosecundario.estadopaciente == "inestable" %}
-
-        {% if formulariosecundario.estadoescala == "Sin rellenar" %}
-            <h1 class="titulo2">Cuestionario Avatares: Paciente Inestable.</h1>
-        
-        {% elif formulariosecundario.estadoescala == "En Proceso o Finalizada" %}
-            <h1 class="titulo2">Editar Cuestionario Avatares: Paciente Inestable.</h1>
-        {% endif %}
 
     {% endif %}
     <br>

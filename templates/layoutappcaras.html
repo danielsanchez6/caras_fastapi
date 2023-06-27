@@ -12,8 +12,6 @@
 
     {% if tipoapp == "pantalla"%}
         App Caras Pantalla
-    {% elif tipoapp == "vr"%}
-        App Caras VR
     {% endif %}
 
 {% endblock %}
@@ -27,19 +25,9 @@
     <!--titulo de inicio-->
 
     {% if tipoapp == "pantalla"%}
-        {% if estadopaciente == "inestable"%}
-            <h1 class="titulo2">Ejecutando Aplicación Reconocimiento Facial de Emociones No Inmersivo en Estado Inestable (RFN-I)</h1>
-        {% elif estadopaciente == "estable"%}
+        {% if estadopaciente == "estable"%}
             <h1 class="titulo2">Ejecutando Aplicación Reconocimiento Facial de Emociones No Inmersivo en Estado Estable (RFN-E)</h1>
         {% endif %}
-
-    {% elif tipoapp == "vr"%}
-        {% if estadopaciente == "inestable"%}
-            <h1 class="titulo2">Ejecutando Aplicación Reconocimiento Facial de Emociones Inmersivo en Estado Inestable(RFI-I)</h1>
-        {% elif estadopaciente == "estable"%}
-            <h1 class="titulo2">Ejecutando Aplicación Reconocimiento Facial de Emociones Inmersivo en Estado Estable (RFI-E)</h1>
-        {% endif %}
-
     {% endif %}
     
     <br>
@@ -59,19 +47,7 @@
     <br>
  
     {% if tipoapp == "pantalla"%}
-
         <h3 class="titulo2">Si la aplicación Reconocimiento Facial de Emociones No Inmersivo ha finalizado, antes de continuar se deben realizar los siguientes pasos:</h3>
-        <br>
-        <h3 class="titulo2">- Finaliza la grabación de la aplicación EmotivPro</h3>
-        <br>
-        <h3 class="titulo2">- Finaliza la grabación de la aplicación App_Pulsera</h3>
-
-    {% elif tipoapp == "vr"%}
-
-        <h3 class="titulo2">Si la aplicación Reconocimiento Facial de Emociones Inmersivo ha finalizado, antes de continuar se deben realizar el siguiente paso:</h3>
-        <br>
-        <h3 class="titulo2">- Finaliza la grabación de la aplicación App_Pulsera</h3>
-
     {% endif %}
 
 
