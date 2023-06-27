@@ -9,9 +9,9 @@
         <a href="/" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Inicio</a>
     </li>
 
-    {% if tipopaciente == "bipolar"%}
+    {% if tipoparticipante == "bipolar"%}
         <li>
-            <a href="/listapacientes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Bipolar</a>
+            <a href="/listaparticipantes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Participantes con Trastorno Bipolar</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares4" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa? Al presionar aceptar se eliminarán los datos introducidos en este formulario y se cerrará el programa')">Cerrar Programa</a>
@@ -24,10 +24,10 @@
 
 
 {% block title %}
-    {% if not idpaciente %}
-        Formulario de Registro de Pacientes
+    {% if not idparticipante %}
+        Formulario de Registro de Participantes
     {% else %}
-        Editar Formulario de Registro de Pacientes
+        Editar Formulario de Registro de Participantes
     {% endif %}
 {% endblock %}
 
@@ -55,10 +55,10 @@
 {% block content %}
 
 <div>
-    {% if not idpaciente %}
-        <h1 class="titulo2">FORMULARIO DE REGISTRO DEL PACIENTE:</h1>
+    {% if not idparticipante %}
+        <h1 class="titulo2">FORMULARIO DE REGISTRO DEL ParticipantE:</h1>
     {% else %}
-        <h1 class="titulo2">EDITAR FORMULARIO DE REGISTRO DEL PACIENTE:</h1>
+        <h1 class="titulo2">EDITAR FORMULARIO DE REGISTRO DEL ParticipantE:</h1>
     {% endif %}
     <br>
 
@@ -85,12 +85,12 @@
         <!-- Entradas del formulario de registro -->
         <div>
 
-            <h3>Identificador del Paciente:</h3>
+            <h3>Identificador del Participante:</h3>
             <br>
             
             <div>
-                <h4>1. Identificador del paciente (NHC):</h4>
-                <input type="text" id="nhcpaciente1" name="nhcpaciente" placeholder="Indica el número NHC" value="{{formularioregistro.nhcpaciente}}">
+                <h4>1. Identificador del participante (NHC):</h4>
+                <input type="text" id="nhcparticipante1" name="nhcparticipante" placeholder="Indica el número NHC" value="{{formularioregistro.nhcparticipante}}">
             </div>
             <br>
             
@@ -289,8 +289,8 @@
 
         <!-- Botones de formulario -->
         <div class="botonguardar">
-            {% if not idpaciente %}
-                <input class="botonformularioregistrocrear" type="submit" id="botonformularioregistrocrear" name="botonformularioregistrocrear" value="Crear Paciente" onclick="this.addEventListener('click', clickStopper, false);" />
+            {% if not idparticipante %}
+                <input class="botonformularioregistrocrear" type="submit" id="botonformularioregistrocrear" name="botonformularioregistrocrear" value="Crear Participante" onclick="this.addEventListener('click', clickStopper, false);" />
 
             {% else %}
                 <input class="botonformularioregistroguardar" type="submit" id="botonformularioregistroguardar" name="botonformularioregistroguardar" value="Guardar Cambios" onclick="this.addEventListener('click', clickStopper, false);" />

@@ -102,20 +102,20 @@ db = SQLAlchemy(appcarasrealistas)
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# Tabla datos formulario para paciente bipolar
+# Tabla datos formulario para participante bipolar
 
 class Formularioregistrobipolar(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
-    # identificador del paciente
-    idpaciente = db.Column(db.Integer, primary_key=True)
+    # identificador del participante
+    idparticipante = db.Column(db.Integer, primary_key=True)
 
     fechacreacion = db.Column(db.Text)
     fechaultimamodificacion = db.Column(db.Text)
 
-    # numero historial clinico del paciente
-    nhcpaciente = db.Column(db.Text)
+    # numero historial clinico del participante
+    nhcparticipante = db.Column(db.Text)
     
-    # datos sociodemograficos del paciente
+    # datos sociodemograficos del participante
     edad = db.Column(db.Text)
     genero = db.Column(db.Text)
     textogenero = db.Column(db.Text)
@@ -131,26 +131,26 @@ class Formularioregistrobipolar(db.Model):
     
 
 
-# Tabla datos formulario secundario para paciente con bipolar (cantidad 2)
+# Tabla datos formulario secundario para participante con bipolar (cantidad 2)
 
 class Formularioantecedentesbipolarestable(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
-    idpaciente = db.Column(db.Text)
-    nhcpaciente = db.Column(db.Text)
+    idparticipante = db.Column(db.Text)
+    nhcparticipante = db.Column(db.Text)
 
-    tipopaciente = db.Column(db.Text)
-    estadopaciente = db.Column(db.Text)
+    tipoparticipante = db.Column(db.Text)
+    estadoparticipante = db.Column(db.Text)
     estadoescala = db.Column(db.Text)
     
     fechacreacion = db.Column(db.Text)
     fechaultimamodificacion = db.Column(db.Text)
     
-    # datos antecedentes personales somáticos para paciente con bipolar
+    # datos antecedentes personales somáticos para participante con bipolar
     antecedentespersonalessomaticos = db.Column(db.Text)
     
-    # datos antecedentes personales psiquiatricos para paciente bipolar
+    # datos antecedentes personales psiquiatricos para participante bipolar
     diagnosticodms5 = db.Column(db.Text)
     faseenfermedadactual = db.Column(db.Text)
     edadiniciosintomatologia = db.Column(db.Text)
@@ -177,17 +177,17 @@ class Formularioantecedentesbipolarestable(db.Model):
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# Tabla datos paciente bipolar en estado estable
+# Tabla datos participante bipolar en estado estable
 
 class Escalapanasbipolarestable(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
-    idpaciente = db.Column(db.Text)
-    nhcpaciente = db.Column(db.Text)
+    idparticipante = db.Column(db.Text)
+    nhcparticipante = db.Column(db.Text)
 
-    tipopaciente = db.Column(db.Text)
-    estadopaciente = db.Column(db.Text)
+    tipoparticipante = db.Column(db.Text)
+    estadoparticipante = db.Column(db.Text)
     estadoescala = db.Column(db.Text)
     
     fechacreacion = db.Column(db.Text)
@@ -222,8 +222,8 @@ class Appcaraspantallabipolarestable(db.Model):
     idnumericoappcaras = db.Column(db.Integer, primary_key=True)
 
     # datos fijos en cada fila appcaras
-    idnumericopaciente = db.Column(db.Text)
-    nhcpaciente = db.Column(db.Text)
+    idnumericoparticipante = db.Column(db.Text)
+    nhcparticipante = db.Column(db.Text)
 
     # datos variables en cada fila appcaras
 
@@ -252,11 +252,11 @@ class Cuestionarioavataresbipolarestable(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
-    idpaciente = db.Column(db.Text)
-    nhcpaciente = db.Column(db.Text)
+    idparticipante = db.Column(db.Text)
+    nhcparticipante = db.Column(db.Text)
 
-    tipopaciente = db.Column(db.Text)
-    estadopaciente = db.Column(db.Text)
+    tipoparticipante = db.Column(db.Text)
+    estadoparticipante = db.Column(db.Text)
     estadoescala = db.Column(db.Text)
     
     fechacreacion = db.Column(db.Text)
@@ -286,37 +286,37 @@ class Cuestionarioavataresbipolarestable(db.Model):
 
 # funciones para iniciar los formularios con los valores por defecto, para que se muestren bien los placeholders del html
 def inicioformularioregistro(nombretablabd):
-    formulario = nombretablabd(nhcpaciente ="", edad ="", textogenero ="", textoprovinciaresidencia ="", textosituacionprofesional ="", profesion ="")
+    formulario = nombretablabd(nhcparticipante ="", edad ="", textogenero ="", textoprovinciaresidencia ="", textosituacionprofesional ="", profesion ="")
     return formulario
 
 
 
 # funcion get en sqlalchemy
-def getpacienteporid(nombretablabd, idpaciente):
-    datopaciente = nombretablabd.query.get(idpaciente)
-    return datopaciente
+def getparticipanteporid(nombretablabd, idparticipante):
+    datoparticipante = nombretablabd.query.get(idparticipante)
+    return datoparticipante
 
 
 
-# funcion para crear el paciente en cada escala
-def crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion):
+# funcion para crear el participante en cada escala
+def crearparticipanteescala(nombretablabd, idparticipante, nhcparticipante, fechacreacion):
 
     # escalas bipolar estable
 
     if (nombretablabd == Formularioantecedentesbipolarestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
+        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="bipolar", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
         db.session.add(escala)
         db.session.commit()
         inicio = escala
 
     if (nombretablabd == Escalapanasbipolarestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
+        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="bipolar", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
         db.session.add(escala)
         db.session.commit()
         inicio = escala
     
     if (nombretablabd == Cuestionarioavataresbipolarestable):
-        escala = nombretablabd(idpaciente = idpaciente, nhcpaciente = nhcpaciente, tipopaciente="bipolar", estadopaciente="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
+        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="bipolar", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
         db.session.add(escala)
         db.session.commit()
         inicio = escala
@@ -326,63 +326,63 @@ def crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion):
 
 
 # funcion para modificar los nhc de los formularios secundarios y de las escalas
-def modificarnhc(nombretablabd, idpaciente, nhcantiguo, nhcnuevo, fechacreacion):
-    formulario = nombretablabd.query.filter_by(fechacreacion = fechacreacion).filter_by(idpaciente = idpaciente).filter_by(nhcpaciente = nhcantiguo).all()
+def modificarnhc(nombretablabd, idparticipante, nhcantiguo, nhcnuevo, fechacreacion):
+    formulario = nombretablabd.query.filter_by(fechacreacion = fechacreacion).filter_by(idparticipante = idparticipante).filter_by(nhcparticipante = nhcantiguo).all()
     for n in formulario:
-        n.nhcpaciente = nhcnuevo
+        n.nhcparticipante = nhcnuevo
         db.session.add(n)
         db.session.commit()
 
 
 
 # funcion para modificar los nhc de los formularios appcaras
-def modificarnhccaras(nombretablabd, idpaciente, nhcantiguo, nhcnuevo):
-    formulario = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcantiguo).all()
+def modificarnhccaras(nombretablabd, idparticipante, nhcantiguo, nhcnuevo):
+    formulario = nombretablabd.query.filter_by(idnumericoparticipante = idparticipante).filter_by(nhcparticipante = nhcantiguo).all()
     for n in formulario:
-        n.nhcpaciente = nhcnuevo
+        n.nhcparticipante = nhcnuevo
         db.session.add(n)
         db.session.commit()
 
 
 
-# funcion para buscar el primer registro el paciente en cada escala
-def buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion):
-    buscarfirst = nombretablabd.query.filter_by(fechacreacion = fechacreacion).filter_by(idpaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).first()
+# funcion para buscar el primer registro el participante en cada escala
+def buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion):
+    buscarfirst = nombretablabd.query.filter_by(fechacreacion = fechacreacion).filter_by(idparticipante = idparticipante).filter_by(nhcparticipante = nhcparticipante).first()
     return buscarfirst
 
 
 
-# funcion para buscar el primer registro el paciente en cada escala
-def buscarfirstpacienteappcaras(nombretablabd, idpaciente, nhcpaciente):
-    buscarfirst = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).first()
+# funcion para buscar el primer registro el participante en cada escala
+def buscarfirstparticipanteappcaras(nombretablabd, idparticipante, nhcparticipante):
+    buscarfirst = nombretablabd.query.filter_by(idnumericoparticipante = idparticipante).filter_by(nhcparticipante = nhcparticipante).first()
     return buscarfirst
 
 
-# funcion para buscar el primer registro el paciente en cada escala
-def buscarallpacienteappcaras(nombretablabd, idpaciente, nhcpaciente):
-    buscarall = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).all()
+# funcion para buscar el primer registro el participante en cada escala
+def buscarallparticipanteappcaras(nombretablabd, idparticipante, nhcparticipante):
+    buscarall = nombretablabd.query.filter_by(idnumericoparticipante = idparticipante).filter_by(nhcparticipante = nhcparticipante).all()
     return buscarall
 
 
-# funcion para buscar el primer registro el paciente en cada escala
-def buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, emocion):
-    #buscarallaciertos = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).filter_by(respuestacorrecta = emocion).filter_by(acierto = "1").all()
-    buscarallaciertos = nombretablabd.query.filter_by(idnumericopaciente = idpaciente).filter_by(nhcpaciente = nhcpaciente).filter_by(respuestacorrectafiltrada = emocion).filter_by(acierto = "1").all()
+# funcion para buscar el primer registro el participante en cada escala
+def buscarallaciertosparticipanteappcaras(nombretablabd, idparticipante, nhcparticipante, emocion):
+    #buscarallaciertos = nombretablabd.query.filter_by(idnumericoparticipante = idparticipante).filter_by(nhcparticipante = nhcparticipante).filter_by(respuestacorrecta = emocion).filter_by(acierto = "1").all()
+    buscarallaciertos = nombretablabd.query.filter_by(idnumericoparticipante = idparticipante).filter_by(nhcparticipante = nhcparticipante).filter_by(respuestacorrectafiltrada = emocion).filter_by(acierto = "1").all()
     return buscarallaciertos
 
 
 
 
 
-# funcion para borrar el paciente en los formularios secundarios y en las escalas
-def borrarescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion):
-    formulario = nombretablabd.query.filter_by(fechacreacion = fechacreacion).filter_by(nhcpaciente = nhcpaciente).filter_by(idpaciente = idpaciente).all()
+# funcion para borrar el participante en los formularios secundarios y en las escalas
+def borrarescala(nombretablabd, idparticipante, nhcparticipante, fechacreacion):
+    formulario = nombretablabd.query.filter_by(fechacreacion = fechacreacion).filter_by(nhcparticipante = nhcparticipante).filter_by(idparticipante = idparticipante).all()
     for n in formulario:
         db.session.delete(n)
         db.session.commit()
 
-def borrarappcaras(nombretablabd, idpaciente, nhcpaciente):
-    borrarappcaras = nombretablabd.query.filter_by(nhcpaciente=nhcpaciente).filter_by(idnumericopaciente=idpaciente).all()
+def borrarappcaras(nombretablabd, idparticipante, nhcparticipante):
+    borrarappcaras = nombretablabd.query.filter_by(nhcparticipante=nhcparticipante).filter_by(idnumericoparticipante=idparticipante).all()
     for n in borrarappcaras:
         db.session.delete(n)
         db.session.commit()
@@ -391,30 +391,30 @@ def borrarappcaras(nombretablabd, idpaciente, nhcpaciente):
 
 # funcion para obtener lista de todos los nhc del programa
 def nhclistatotal(database1):
-    nhclista1 = [database1.nhcpaciente for database1 in database1.query.all()]
+    nhclista1 = [database1.nhcparticipante for database1 in database1.query.all()]
     nhclistasuma = nhclista1
     return nhclistasuma
 
 
-# # funcion para obtener lista de todos los nhc del programa sin el nhc del paciente
-# def nhclistasinid(nombretablabd, idpaciente, database1):
-#     nhclista1 = [database1.nhcpaciente for database1 in database1.query.all()]
+# # funcion para obtener lista de todos los nhc del programa sin el nhc del participante
+# def nhclistasinid(nombretablabd, idparticipante, database1):
+#     nhclista1 = [database1.nhcparticipante for database1 in database1.query.all()]
 #     nhclistasuma = nhclista1
     
-#     datospaciente = nombretablabd.query.get(idpaciente)
+#     datosparticipante = nombretablabd.query.get(idparticipante)
     
-#     nhceliminar = datospaciente.nhcpaciente
+#     nhceliminar = datosparticipante.nhcparticipante
 #     nhclistalimpio = list(filter((nhceliminar).__ne__, nhclistasuma))
     
 #     return nhclistalimpio
 
 
-# funcion para obtener lista de todos los nhc del programa sin el nhc del paciente
-def nhclistasinid(nombretablabd, nhcpaciente, database1):
-    nhclista1 = [database1.nhcpaciente for database1 in database1.query.all()]
+# funcion para obtener lista de todos los nhc del programa sin el nhc del participante
+def nhclistasinid(nombretablabd, nhcparticipante, database1):
+    nhclista1 = [database1.nhcparticipante for database1 in database1.query.all()]
     nhclistasuma = nhclista1
     
-    nhclistalimpio = list(filter((nhcpaciente).__ne__, nhclistasuma))
+    nhclistalimpio = list(filter((nhcparticipante).__ne__, nhclistasuma))
     return nhclistalimpio
 
 
@@ -460,14 +460,14 @@ def mostrar_pdf(filepath):
 
 # pagina de inicio /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# inicio (en esta pagina hay que definir los botones grandes que crean cada tipo de paciente)
+# inicio (en esta pagina hay que definir los botones grandes que crean cada tipo de participante)
 
 @appcarasrealistas.route("/", methods=["GET", "POST"])
 def inicio():
     if request.method =='POST':
 
-        if request.form.get('botoncrearinicio') == "Crear Paciente con Trastorno Bipolar":
-            return redirect(url_for('mostrarformularioregistro', tipopaciente="bipolar"))
+        if request.form.get('botoncrearinicio') == "Crear Participante con Trastorno Bipolar":
+            return redirect(url_for('mostrarformularioregistro', tipoparticipante="bipolar"))
         
         # este se eliminará al final y se sustituye por el nav
         if request.form.get('botonsalirinicio') == "Cerrar Programa":
@@ -487,62 +487,62 @@ def inicio():
 
 
 
-# pagina lista de pacientes ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# pagina lista de participantes ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# esta es la pagina de la lista de pacientes registrados en la aplicacion mediante el formulario de registro
+# esta es la pagina de la lista de participantes registrados en la aplicacion mediante el formulario de registro
 
-@appcarasrealistas.route("/listapacientes/<string:tipopaciente>/", methods=["GET", "POST"])
-def listapacientes(tipopaciente=""):
+@appcarasrealistas.route("/listaparticipantes/<string:tipoparticipante>/", methods=["GET", "POST"])
+def listaparticipantes(tipoparticipante=""):
 
-    if tipopaciente == "bipolar":
+    if tipoparticipante == "bipolar":
         nombretablabd = Formularioregistrobipolar
         tipolayout = 'layoutinicio2.html'
     
-    # Para obtener todos los pacientes de registrados y mandarlos al html para generar la lista
-    listapacientes = nombretablabd.query.all()
-    numeropacientes = len(listapacientes)
+    # Para obtener todos los participantes de registrados y mandarlos al html para generar la lista
+    listaparticipantes = nombretablabd.query.all()
+    numeroparticipantes = len(listaparticipantes)
 
-    return render_template("listapacientes.html", tipolayout=tipolayout, tipopaciente=tipopaciente, listapacientes=listapacientes, numeropacientes=numeropacientes)
-
-
-
-# fin pagina lista de pacientes ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    return render_template("listaparticipantes.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, listaparticipantes=listaparticipantes, numeroparticipantes=numeroparticipantes)
 
 
+
+# fin pagina lista de participantes ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
 
-# pagina lista formularios del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# para generar la lista de formularios secundarios y escalas del paciente, es decir, los formularios y escalas que pertenecen a cada paciente
 
-@appcarasrealistas.route("/listaformulariospaciente/<string:tipopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/", methods=["GET", "POST"])
-def listaformulariospaciente(tipopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
+# pagina lista formularios del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# para generar la lista de formularios secundarios y escalas del participante, es decir, los formularios y escalas que pertenecen a cada participante
+
+@appcarasrealistas.route("/listaformulariosparticipante/<string:tipoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/", methods=["GET", "POST"])
+def listaformulariosparticipante(tipoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
     if request.method == 'POST':
 
-        if request.form.get('salirpaciente') == "Salir del Paciente":
+        if request.form.get('salirparticipante') == "Salir del Participante":
             
-            return redirect(url_for('listapacientes', tipopaciente=tipopaciente))
+            return redirect(url_for('listaparticipantes', tipoparticipante=tipoparticipante))
     
 
-    if tipopaciente == "bipolar":
+    if tipoparticipante == "bipolar":
         # hay que pasar los datos de todas las formularios secundarios y escalas en su version estable e inestable (21 escalas)
 
-        datosformularioantecedentesestable = buscarfirstpaciente(Formularioantecedentesbipolarestable, idpaciente, nhcpaciente, fechacreacion)
-        datosescalapanasestable = buscarfirstpaciente(Escalapanasbipolarestable, idpaciente, nhcpaciente, fechacreacion)
-        datoscuestionarioavataresestable = buscarfirstpaciente(Cuestionarioavataresbipolarestable, idpaciente, nhcpaciente, fechacreacion)
-        datosappcaraspantallaestable = buscarfirstpacienteappcaras(Appcaraspantallabipolarestable, idpaciente, nhcpaciente)
+        datosformularioantecedentesestable = buscarfirstparticipante(Formularioantecedentesbipolarestable, idparticipante, nhcparticipante, fechacreacion)
+        datosescalapanasestable = buscarfirstparticipante(Escalapanasbipolarestable, idparticipante, nhcparticipante, fechacreacion)
+        datoscuestionarioavataresestable = buscarfirstparticipante(Cuestionarioavataresbipolarestable, idparticipante, nhcparticipante, fechacreacion)
+        datosappcaraspantallaestable = buscarfirstparticipanteappcaras(Appcaraspantallabipolarestable, idparticipante, nhcparticipante)
         
 
         tipolayout = 'layoutinicio2.html'
-        return render_template("listaformulariospaciente.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, fechacreacion=fechacreacion, 
+        return render_template("listaformulariosparticipante.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, nhcparticipante=nhcparticipante, fechacreacion=fechacreacion, 
                                 datosformularioantecedentesestable = datosformularioantecedentesestable, datosescalapanasestable = datosescalapanasestable,
                                 datoscuestionarioavataresestable = datoscuestionarioavataresestable, datosappcaraspantallaestable = datosappcaraspantallaestable)
 
-# fin pagina lista formularios del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# fin pagina lista formularios del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -552,26 +552,26 @@ def listaformulariospaciente(tipopaciente="", idpaciente=None, nhcpaciente="", f
 
 
 
-# pagina formulario de registro del paciente ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# pagina formulario de registro del participante ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 # para crear y modificar el formulario de registro, y para crear el esquema de los formularios secundarios y escalas 
 
-@appcarasrealistas.route("/formularioregistro/<string:tipopaciente>/", methods=["GET", "POST"])
-@appcarasrealistas.route("/formularioregistro/<string:tipopaciente>/<int:idpaciente>/", methods=["GET", "POST"])
-def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
+@appcarasrealistas.route("/formularioregistro/<string:tipoparticipante>/", methods=["GET", "POST"])
+@appcarasrealistas.route("/formularioregistro/<string:tipoparticipante>/<int:idparticipante>/", methods=["GET", "POST"])
+def mostrarformularioregistro(tipoparticipante="", idparticipante=None ):
     if request.method == 'POST':
 
-        if tipopaciente == "bipolar":
+        if tipoparticipante == "bipolar":
             nombretablabd = Formularioregistrobipolar
             listaescalas = [Formularioantecedentesbipolarestable, Escalapanasbipolarestable, Cuestionarioavataresbipolarestable]
             listaappcaras = [Appcaraspantallabipolarestable]
 
-        if request.form.get('botonformularioregistrocrear') == "Crear Paciente":
+        if request.form.get('botonformularioregistrocrear') == "Crear Participante":
             #//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             # definir donde se guardan los datos que provienen del html en las columas del formulario de registro (cada formulario de registro tiene las suyas)
-            nhcpaciente = request.form.get('nhcpaciente')
+            nhcparticipante = request.form.get('nhcparticipante')
             edad = request.form.get('edad')
             genero = request.form.get('genero')
             if request.form.get('genero') == "Otro:":
@@ -595,13 +595,13 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
             profesion = request.form.get('profesion')
 
             #//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            # para definir la fecha de creacion del paciente
+            # para definir la fecha de creacion del participante
             fechacreacion = datetime.datetime.today().strftime('%d-%m-%Y %H:%M:%S')
 
-            formulariogeneral = nombretablabd(nhcpaciente=nhcpaciente, fechacreacion=fechacreacion, edad=edad, genero=genero, textogenero=textogenero, etnia=etnia, estadocivil=estadocivil, provinciaresidencia=provinciaresidencia, textoprovinciaresidencia=textoprovinciaresidencia, residencia=residencia, estudios=estudios, situacionprofesional=situacionprofesional, textosituacionprofesional=textosituacionprofesional, profesion=profesion)
+            formulariogeneral = nombretablabd(nhcparticipante=nhcparticipante, fechacreacion=fechacreacion, edad=edad, genero=genero, textogenero=textogenero, etnia=etnia, estadocivil=estadocivil, provinciaresidencia=provinciaresidencia, textoprovinciaresidencia=textoprovinciaresidencia, residencia=residencia, estudios=estudios, situacionprofesional=situacionprofesional, textosituacionprofesional=textosituacionprofesional, profesion=profesion)
 
             # validacion nhc unico  y que sea distinto a "" y que sea un numero entero
-            nhccomprobacion = request.form.get('nhcpaciente')
+            nhccomprobacion = request.form.get('nhcparticipante')
 
             nhclista = nhclistatotal(Formularioregistrobipolar)
 
@@ -610,44 +610,44 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
                 if (nhccomprobacion in nhclista):
                     flash ("El NHC introducido ya se encuentra en la base de datos, por favor introduce un NHC válido", category="borrar")
                 elif (nhccomprobacion == ""):
-                    flash ("Introduce el NHC del paciente", category="borrar")
+                    flash ("Introduce el NHC del participante", category="borrar")
                 elif (not nhccomprobacion.isdigit()):
                     flash ("El NHC debe ser un número entero", category="borrar")
                 
                 tipolayout = 'layoutinicio2.html'
-                return render_template("formularioregistro.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, formularioregistro=formularioregistro)
+                return render_template("formularioregistro.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, formularioregistro=formularioregistro)
             
             else:
                 db.session.add(formulariogeneral)
                 db.session.commit()
                 
-                # obtener el idpaciente del paciente creado
-                idpaciente = formulariogeneral.idpaciente
+                # obtener el idparticipante del participante creado
+                idparticipante = formulariogeneral.idparticipante
 
-                # obtener el nhcpaciente del paciente creado
-                nhcpaciente = formulariogeneral.nhcpaciente
+                # obtener el nhcparticipante del participante creado
+                nhcparticipante = formulariogeneral.nhcparticipante
                 
                 # colocar los todos formularios secundarios y escalas a crear por primera vez
                 for escala in listaescalas:
-                    crearpacienteescala(escala, idpaciente, nhcpaciente, fechacreacion)
+                    crearparticipanteescala(escala, idparticipante, nhcparticipante, fechacreacion)
 
-                flash (f"Se ha creado el paciente con NHC: {nhcpaciente} correctamente", category="crear")
-                # al pulsar crear nos lleva al las escalas del pacientes teniendo en cuenta el tipo de paciente (hay que modificar la ruta segun el tipo de paciente)
-                return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente,  idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion = fechacreacion))
+                flash (f"Se ha creado el participante con NHC: {nhcparticipante} correctamente", category="crear")
+                # al pulsar crear nos lleva al las escalas del participantes teniendo en cuenta el tipo de participante (hay que modificar la ruta segun el tipo de participante)
+                return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante,  idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion = fechacreacion))
 
 
         if request.form.get('botonformularioregistroguardar') == "Guardar Cambios":
-            formularioget = getpacienteporid(nombretablabd, idpaciente)
+            formularioget = getparticipanteporid(nombretablabd, idparticipante)
             # para obtener el nhc antiguo para realizar la busqueda en las escalas
-            nhcantiguo = formularioget.nhcpaciente
+            nhcantiguo = formularioget.nhcparticipante
 
-            # funcion para obtener lista de todos los nhc del programa sin el nhc del paciente
+            # funcion para obtener lista de todos los nhc del programa sin el nhc del participante
             nhclista = nhclistasinid(nombretablabd, nhcantiguo, Formularioregistrobipolar)
-            #nhclista = nhclistasinid(nombretablabd, idpaciente, Formularioregistrobipolar)
+            #nhclista = nhclistasinid(nombretablabd, idparticipante, Formularioregistrobipolar)
 
             #//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             # colocar los elementos delos formularios a modificar a partir del elemento de la tabla
-            formularioget.nhcpaciente = request.form.get('nhcpaciente')
+            formularioget.nhcparticipante = request.form.get('nhcparticipante')
             formularioget.edad = request.form.get('edad')
             formularioget.genero = request.form.get('genero')
             if request.form.get('genero') == "Otro:":
@@ -671,26 +671,26 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
             formularioget.profesion = request.form.get('profesion')
 
             #//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            # para definir la fecha de ultima modificacion del paciente
+            # para definir la fecha de ultima modificacion del participante
             formularioget.fechaultimamodificacion = datetime.datetime.today().strftime('%d-%m-%Y %H:%M:%S')
 
             # validacion nhc unico  y que sea distinto a "" y que sea un numero entero
-            nhccomprobacion = request.form.get('nhcpaciente')
+            nhccomprobacion = request.form.get('nhcparticipante')
 
 
-            # funcion para obtener lista de todos los nhc del programa sin el nhc del paciente
+            # funcion para obtener lista de todos los nhc del programa sin el nhc del participante
 
             if (nhccomprobacion in nhclista) or (nhccomprobacion == "") or (not nhccomprobacion.isdigit()):
                 formularioregistro = formularioget
                 if (nhccomprobacion in nhclista):
                     flash ("El NHC introducido ya se encuentra en la base de datos, por favor introduce un NHC válido", category="borrar")
                 elif (nhccomprobacion == ""):
-                    flash ("Introduce el NHC del paciente", category="borrar")
+                    flash ("Introduce el NHC del participante", category="borrar")
                 elif (not nhccomprobacion.isdigit()):
                     flash ("El NHC debe ser un número entero", category="borrar")
                 
                 tipolayout = 'layoutinicio2.html'
-                return render_template("formularioregistro.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, formularioregistro=formularioregistro)
+                return render_template("formularioregistro.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, formularioregistro=formularioregistro)
             
             else:
 
@@ -698,50 +698,47 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
                 db.session.commit()
 
                 # para obtener el nhc nuevo para introducirlo en las escalas
-                nhcnuevo = request.form.get('nhcpaciente')
+                nhcnuevo = request.form.get('nhcparticipante')
 
-                # para obtener la fecha de creacion para buscar el paciente en las escalas a modificar
+                # para obtener la fecha de creacion para buscar el participante en las escalas a modificar
                 fechacreacion = formularioget.fechacreacion
 
-                # colocar los formularios y escalas para modificar el idpaciente asociado y el nhc, buscarlos aplicando filtros, seleccionando la tabla mediante un bucle
+                # colocar los formularios y escalas para modificar el idparticipante asociado y el nhc, buscarlos aplicando filtros, seleccionando la tabla mediante un bucle
                 for escala in listaescalas:
-                    modificarnhc(escala, idpaciente, nhcantiguo, nhcnuevo, fechacreacion)
+                    modificarnhc(escala, idparticipante, nhcantiguo, nhcnuevo, fechacreacion)
                 for appcaras in listaappcaras:
-                    modificarnhccaras(appcaras, idpaciente, nhcantiguo, nhcnuevo)
+                    modificarnhccaras(appcaras, idparticipante, nhcantiguo, nhcnuevo)
 
 
-                flash ("Se ha modificado el Formulario de Registro del paciente correctamente", category="modificar")
-                # al pulsar guardar nos lleva al listado de pacientes del tipo del paciente (hay que modificar la ruta segun el tipo de paciente)
-                return redirect(url_for('listapacientes', tipopaciente=tipopaciente))
+                flash ("Se ha modificado el Formulario de Registro del participante correctamente", category="modificar")
+                # al pulsar guardar nos lleva al listado de participantes del tipo del participante (hay que modificar la ruta segun el tipo de participante)
+                return redirect(url_for('listaparticipantes', tipoparticipante=tipoparticipante))
         
 
         if request.form.get('botonformularioregistrovolver') == "Volver Sin Guardar":
-            # al pulsar volver nos lleva al listado de pacientes del tipo del paciente (hay que modificar la ruta segun el tipo de paciente)
-            return redirect(url_for('listapacientes', tipopaciente=tipopaciente))
+            # al pulsar volver nos lleva al listado de participantes del tipo del participante (hay que modificar la ruta segun el tipo de participante)
+            return redirect(url_for('listaparticipantes', tipoparticipante=tipoparticipante))
 
 
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    if tipopaciente == "bipolar":
+    if tipoparticipante == "bipolar":
         nombretablabd = Formularioregistrobipolar
         tipolayout = 'layoutinicio2.html'
 
 
-    if idpaciente:
-        # si existe idpaciente lo que hace es coger el paciente de formulario de registro para ese idpaciente, para pasar los datos al html y que los muestre
-        formularioregistro = getpacienteporid(nombretablabd, idpaciente)
+    if idparticipante:
+        # si existe idparticipante lo que hace es coger el participante de formulario de registro para ese idparticipante, para pasar los datos al html y que los muestre
+        formularioregistro = getparticipanteporid(nombretablabd, idparticipante)
 
     else:
         # colocar la funcion inicio de cada formmulario para que se muestren bien los placeholders en los html
         formularioregistro = inicioformularioregistro(nombretablabd)
 
-    return render_template("formularioregistro.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, formularioregistro=formularioregistro)
+    return render_template("formularioregistro.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, formularioregistro=formularioregistro)
 
 
-# fin pagina formulario de registro del paciente ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+# fin pagina formulario de registro del participante ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -761,7 +758,10 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
 
 
 
-# formularios secundarios y escalas del paciente ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+# formularios secundarios y escalas del participante ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -770,19 +770,19 @@ def mostrarformularioregistro(tipopaciente="", idpaciente=None ):
 
 
 
-@appcarasrealistas.route("/formularioantecedentes/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/", methods=["GET", "POST"])
-def mostrarformularioantecedentes(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
+@appcarasrealistas.route("/formularioantecedentes/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/", methods=["GET", "POST"])
+def mostrarformularioantecedentes(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
     if request.method == 'POST':
         
         if (request.form.get('botonescalaguardar') == "Guardar") or (request.form.get('botonescalaguardar') == "Guardar Cambios"):
             
-            #  hay que ver que la escala pertenezca a al tipo de paciente, sino no es necesaria colocar la condicion
-            if tipopaciente == "bipolar":
-                if estadopaciente =="estable":
+            #  hay que ver que la escala pertenezca a al tipo de participante, sino no es necesaria colocar la condicion
+            if tipoparticipante == "bipolar":
+                if estadoparticipante =="estable":
                     nombretablabd = Formularioantecedentesbipolarestable
             
 
-            formularioget = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+            formularioget = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
             #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             # colocar los parametros correspondientes para cada escala
 
@@ -861,27 +861,27 @@ def mostrarformularioantecedentes(tipopaciente="", estadopaciente="", idpaciente
             elif (request.form.get('botonescalaguardar') == "Guardar Cambios"):
                 flash ("Se ha modificado el formulario correctamente", category="modificar")
             
-            return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+            return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
         if request.form.get('botonescalavolver') == "Volver Sin Guardar":
-            return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+            return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
-    #  hay que ver que la escala pertenezca a al tipo de paciente, sino no es necesaria colocar la condicion
-    if tipopaciente == "bipolar":
-        if estadopaciente =="estable":
+    #  hay que ver que la escala pertenezca a al tipo de participante, sino no es necesaria colocar la condicion
+    if tipoparticipante == "bipolar":
+        if estadoparticipante =="estable":
             nombretablabd = Formularioantecedentesbipolarestable
         tipolayout = 'layoutescalasbipolar.html'
     
 
-    formulariosecundario = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+    formulariosecundario = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
     
     # verifica si existe la tabla y si no existe la crea
     if not formulariosecundario:
-        formulariosecundario = crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+        formulariosecundario = crearparticipanteescala(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
 
-    return render_template("formularioantecedentes.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, formulariosecundario=formulariosecundario)
+    return render_template("formularioantecedentes.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, nhcparticipante=nhcparticipante, formulariosecundario=formulariosecundario)
 
 
 
@@ -896,17 +896,17 @@ def mostrarformularioantecedentes(tipopaciente="", estadopaciente="", idpaciente
 # escala panas ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-@appcarasrealistas.route("/escalapanas/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/", methods=["GET", "POST"])
-def mostrarescalapanas(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
+@appcarasrealistas.route("/escalapanas/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/", methods=["GET", "POST"])
+def mostrarescalapanas(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
     if request.method == 'POST':
         
         if (request.form.get('botonescalaguardar') == "Guardar") or (request.form.get('botonescalaguardar') == "Guardar Cambios"):
             
-            if tipopaciente == "bipolar":
-                if estadopaciente =="estable":
+            if tipoparticipante == "bipolar":
+                if estadoparticipante =="estable":
                     nombretablabd = Escalapanasbipolarestable
 
-            formularioget = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+            formularioget = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
             #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             # colocar los parametros correspondientes para cada escala
             formularioget.escalapanas1 = request.form.get('escalapanas1')
@@ -943,27 +943,27 @@ def mostrarescalapanas(tipopaciente="", estadopaciente="", idpaciente=None, nhcp
             elif (request.form.get('botonescalaguardar') == "Guardar Cambios"):
                 flash ("Se ha modificado la escala correctamente", category="modificar")
             
-            return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+            return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
         if request.form.get('botonescalavolver') == "Volver Sin Guardar":
-            return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+            return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
-    #  hay que ver que la escala pertenezca a al tipo de paciente, sino no es necesaria colocar la condicion
+    #  hay que ver que la escala pertenezca a al tipo de participante, sino no es necesaria colocar la condicion
 
-    if tipopaciente == "bipolar":
-        if estadopaciente =="estable":
+    if tipoparticipante == "bipolar":
+        if estadoparticipante =="estable":
             nombretablabd = Escalapanasbipolarestable
         tipolayout = 'layoutescalasbipolar.html'
 
-    formulariosecundario = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+    formulariosecundario = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
     
     # verifica si existe la tabla y si no existe la crea
     if not formulariosecundario:
-        formulariosecundario = crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+        formulariosecundario = crearparticipanteescala(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
 
-    return render_template("/escalapanas.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, formulariosecundario=formulariosecundario)
+    return render_template("/escalapanas.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, nhcparticipante=nhcparticipante, formulariosecundario=formulariosecundario)
 
 
 
@@ -984,18 +984,18 @@ def mostrarescalapanas(tipopaciente="", estadopaciente="", idpaciente=None, nhcp
 
 # cuestionario avatares ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@appcarasrealistas.route("/cuestionarioavatares/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/", methods=["GET", "POST"])
-def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
+@appcarasrealistas.route("/cuestionarioavatares/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/", methods=["GET", "POST"])
+def mostrarcuestionarioavatares(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
     if request.method == 'POST':
         
         if (request.form.get('botonescalaguardar') == "Guardar") or (request.form.get('botonescalaguardar') == "Guardar Cambios"):
             
-            if tipopaciente == "bipolar":
-                if estadopaciente =="estable":
+            if tipoparticipante == "bipolar":
+                if estadoparticipante =="estable":
                     nombretablabd = Cuestionarioavataresbipolarestable
 
 
-            formularioget = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+            formularioget = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
             #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             # colocar los parametros correspondientes para cada escala
             formularioget.cuestionarioavatares1 = request.form.get('cuestionarioavatares1')
@@ -1023,33 +1023,31 @@ def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=N
             elif (request.form.get('botonescalaguardar') == "Guardar Cambios"):
                 flash ("Se ha modificado la escala correctamente", category="modificar")
             
-            return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+            return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
         if request.form.get('botonescalavolver') == "Volver Sin Guardar":
-            return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+            return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
-    #  hay que ver que la escala pertenezca a al tipo de paciente, sino no es necesaria colocar la condicion
+    #  hay que ver que la escala pertenezca a al tipo de participante, sino no es necesaria colocar la condicion
 
-    if tipopaciente == "bipolar":
-        if estadopaciente =="estable":
+    if tipoparticipante == "bipolar":
+        if estadoparticipante =="estable":
             nombretablabd = Cuestionarioavataresbipolarestable
         tipolayout = 'layoutescalasbipolar.html'
 
 
-    formulariosecundario = buscarfirstpaciente(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+    formulariosecundario = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
     
     # verifica si existe la tabla y si no existe la crea
     if not formulariosecundario:
-        formulariosecundario = crearpacienteescala(nombretablabd, idpaciente, nhcpaciente, fechacreacion)
+        formulariosecundario = crearparticipanteescala(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
 
-    return render_template("/cuestionarioavatares.html", tipolayout=tipolayout, tipopaciente=tipopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, formulariosecundario=formulariosecundario)
-
-
-# fin formularios secundarios y escalas del paciente ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    return render_template("/cuestionarioavatares.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, nhcparticipante=nhcparticipante, formulariosecundario=formulariosecundario)
 
 
+# fin formularios secundarios y escalas del participante ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1084,44 +1082,46 @@ def mostrarcuestionarioavatares(tipopaciente="", estadopaciente="", idpaciente=N
 
 
 
-#  Appcaraspantalla del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@appcarasrealistas.route('/appcaraspantalla/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/', methods=['GET','POST'])
-def appcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
 
-    if tipopaciente == "bipolar":
+#  Appcaraspantalla del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@appcarasrealistas.route('/appcaraspantalla/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=['GET','POST'])
+def appcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
+
+    if tipoparticipante == "bipolar":
         rutabasedatos = "dbappcarasrealistas.db"
         
-        if estadopaciente == "estable":
-            tipopacienteapp = "Paciente_Bipolar_Estable"
+        if estadoparticipante == "estable":
+            tipoparticipanteapp = "Participante_Bipolar_Estable"
             nombretabla = "appcaraspantallabipolarestable"
 
 
-    # Abre la aplicacion de las caras y le envia la informacion necesaria a los pacientes
-    Popen("start carasPantalla.exe "+ str(nhcpaciente) + " " + str(idpaciente) + " " + str(tipopacienteapp) + " " + str(rutabasedatos) + " " + str(nombretabla) , shell= True)
+    # Abre la aplicacion de las caras y le envia la informacion necesaria a los participantes
+    Popen("start carasPantalla.exe "+ str(nhcparticipante) + " " + str(idparticipante) + " " + str(tipoparticipanteapp) + " " + str(rutabasedatos) + " " + str(nombretabla) , shell= True)
 
-    return render_template('layoutappcaras.html', tipoapp='pantalla', estadopaciente=estadopaciente, tipopaciente=tipopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, fechacreacion=fechacreacion)
-
-
-#  fin Appcaraspantalla del paciente ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    return render_template('layoutappcaras.html', tipoapp='pantalla', estadoparticipante=estadoparticipante, tipoparticipante=tipoparticipante, idparticipante=idparticipante, nhcparticipante=nhcparticipante, fechacreacion=fechacreacion)
 
 
+#  fin Appcaraspantalla del participante ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#  Resultados Appcaraspantalla del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@appcarasrealistas.route('/resultadospacienteappcaraspantalla/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/', methods=['GET','POST'])
-def resultadospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
+
+#  Resultados Appcaraspantalla del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@appcarasrealistas.route('/resultadosparticipanteappcaraspantalla/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=['GET','POST'])
+def resultadosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
     if request.method == 'POST':
 
-        if request.form.get('resultadosvolver') == "Volver al Paciente":
-            return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+        if request.form.get('resultadosvolver') == "Volver al Participante":
+            return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
-    if tipopaciente == "bipolar":
+    if tipoparticipante == "bipolar":
         tipolayout = "layoutresultadosbipolar.html"
         
-        if estadopaciente == "estable":
+        if estadoparticipante == "estable":
             nombretablabd = Appcaraspantallabipolarestable
 
     # buscar aciertos por emocion
@@ -1130,38 +1130,38 @@ def resultadospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpac
     datosappcaras = []
 
     for emocion in emociones:
-        aciertos = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, emocion)
+        aciertos = buscarallaciertosparticipanteappcaras(nombretablabd, idparticipante, nhcparticipante, emocion)
         countaciertos = len(aciertos)
         porcentaje = (countaciertos * 100) / 8
         porcentajes.append(porcentaje)
 
-    datosappcaras = buscarallpacienteappcaras(nombretablabd, idpaciente, nhcpaciente)
+    datosappcaras = buscarallparticipanteappcaras(nombretablabd, idparticipante, nhcparticipante)
 
-    return render_template('layoutresultadosappcaras.html', porcentajes=porcentajes , datosappcaras=datosappcaras, tipolayout=tipolayout,  tipopaciente=tipopaciente, estadopaciente=estadopaciente, idpaciente=idpaciente, nhcpaciente=nhcpaciente, fechacreacion=fechacreacion)
-
-
-#  fin Resultados Appcaraspantalla del paciente ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    return render_template('layoutresultadosappcaras.html', porcentajes=porcentajes , datosappcaras=datosappcaras, tipolayout=tipolayout,  tipoparticipante=tipoparticipante, estadoparticipante=estadoparticipante, idparticipante=idparticipante, nhcparticipante=nhcparticipante, fechacreacion=fechacreacion)
 
 
+#  fin Resultados Appcaraspantalla del participante ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#  Descargar Resultados Appcaraspantalla del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@appcarasrealistas.route('/descargarresultadospacienteappcaraspantalla/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/', methods=['GET','POST'])
-def descargarresultadospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
 
-    if tipopaciente == "bipolar":
+#  Descargar Resultados Appcaraspantalla del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@appcarasrealistas.route('/descargarresultadosparticipanteappcaraspantalla/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=['GET','POST'])
+def descargarresultadosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
+
+    if tipoparticipante == "bipolar":
         tipolayout = "layoutresultadosbipolar.html"
         
-        if estadopaciente == "estable":
+        if estadoparticipante == "estable":
             nombretablabd = Appcaraspantallabipolarestable
 
 
     # busqueda del codigo de la aplicacion
-    if estadopaciente == "estable":
+    if estadoparticipante == "estable":
         codigoaplicacion = "-RFN-E"
 
-    codigo = nhcpaciente + codigoaplicacion
+    codigo = nhcparticipante + codigoaplicacion
 
 
 
@@ -1173,7 +1173,7 @@ def descargarresultadospacienteappcaraspantalla(tipopaciente="", estadopaciente=
     label = []
 
     for i in range(7):
-        aciertos = buscarallaciertospacienteappcaras(nombretablabd, idpaciente, nhcpaciente, str(i))
+        aciertos = buscarallaciertosparticipanteappcaras(nombretablabd, idparticipante, nhcparticipante, str(i))
         countaciertos = len(aciertos)
         porcentaje = (countaciertos * 100) / 8
         porcentajes.append(porcentaje)
@@ -1285,12 +1285,12 @@ def descargarresultadospacienteappcaraspantalla(tipopaciente="", estadopaciente=
     os.remove(f'static/pdf/{ codigo }.png')
     os.remove(f'static/pdf/{ codigo }.pdf')
 
-    flash(f"Se ha guardado el archivo '{ codigo }_Fecha_{ fecha }_Hora_{ hora }.pdf' en la carpeta 'Descargas' con los resultados de la 'Aplicación de Reconocimiento Facial en Realidad Virtual No Inmersiva', para el paciente con NHC: { nhcpaciente } en estado { estadopaciente }.", category="crear")
+    flash(f"Se ha guardado el archivo '{ codigo }_Fecha_{ fecha }_Hora_{ hora }.pdf' en la carpeta 'Descargas' con los resultados de la 'Aplicación de Reconocimiento Facial en Realidad Virtual No Inmersiva', para el participante con NHC: { nhcparticipante } en estado { estadoparticipante }.", category="crear")
 
-    return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+    return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
-#  fin descargar Resultados Appcaraspantalla del paciente ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#  fin descargar Resultados Appcaraspantalla del participante ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1303,22 +1303,22 @@ def descargarresultadospacienteappcaraspantalla(tipopaciente="", estadopaciente=
 
 # reinicio app caraspantalla ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# Para reinicio un paciente por completo
+# Para reinicio un participante por completo
 
-@appcarasrealistas.route('/borrardatospacienteappcaraspantalla/<string:tipopaciente>/<string:estadopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/', methods=["GET", "POST"])
-def borrardatospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
+@appcarasrealistas.route('/borrardatosparticipanteappcaraspantalla/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=["GET", "POST"])
+def borrardatosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
     # colocar los formulario y escalas que se desean eliminar
         
-    if tipopaciente == "bipolar":
-        if estadopaciente == "estable":
+    if tipoparticipante == "bipolar":
+        if estadoparticipante == "estable":
             listaappcaras = [Appcaraspantallabipolarestable]
 
-    # borra los todos los datos del paciente de la aplicacion caras (sacar las escalas de las listas anteriores)
+    # borra los todos los datos del participante de la aplicacion caras (sacar las escalas de las listas anteriores)
     for appcara in listaappcaras:
-        borrarappcaras(appcara, idpaciente, nhcpaciente)
+        borrarappcaras(appcara, idparticipante, nhcparticipante)
 
     flash ("Se han borrado los datos y reiniciado la Aplicación Caras No Inmersiva correctamente", category="borrar")
-    return redirect(url_for('listaformulariospaciente', tipopaciente=tipopaciente, idpaciente = idpaciente, nhcpaciente = nhcpaciente, fechacreacion=fechacreacion))
+    return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
 # fin reinicio appcaraspantalla ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1345,34 +1345,34 @@ def borrardatospacienteappcaraspantalla(tipopaciente="", estadopaciente="", idpa
 
 
 
-# borrado completo del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# borrado completo del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# Para borrar un paciente por completo
+# Para borrar un participante por completo
 
-@appcarasrealistas.route('/borrarpaciente/<string:tipopaciente>/<int:idpaciente>/<string:nhcpaciente>/<string:fechacreacion>/', methods=["GET", "POST"])
-def borrarpaciente(tipopaciente="", idpaciente=None, nhcpaciente="", fechacreacion=""):
+@appcarasrealistas.route('/borrarparticipante/<string:tipoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=["GET", "POST"])
+def borrarparticipante(tipoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
     # colocar los formulario y escalas que se desean eliminar
         
 
-    if tipopaciente == "bipolar":
+    if tipoparticipante == "bipolar":
         listaescalas = [Formularioregistrobipolar, Formularioantecedentesbipolarestable,Escalapanasbipolarestable, Cuestionarioavataresbipolarestable]
         listaappcaras = [Appcaraspantallabipolarestable]
 
-    # borra los todos los datos del paciente en los formularios secundarios y escalas
+    # borra los todos los datos del participante en los formularios secundarios y escalas
     for escala in listaescalas:
-        borrarescala(escala, idpaciente, nhcpaciente, fechacreacion)
+        borrarescala(escala, idparticipante, nhcparticipante, fechacreacion)
 
-    # borra los todos los datos del paciente de la aplicacion caras (sacar las escalas de las listas anteriores)
+    # borra los todos los datos del participante de la aplicacion caras (sacar las escalas de las listas anteriores)
     for appcara in listaappcaras:
-        borrarappcaras(appcara, idpaciente, nhcpaciente)
+        borrarappcaras(appcara, idparticipante, nhcparticipante)
 
 
 
     flash ("Se ha eliminado el participante correctamente", category="borrar")
-    return redirect(url_for('listapacientes', tipopaciente=tipopaciente))
+    return redirect(url_for('listaparticipantes', tipoparticipante=tipoparticipante))
 
 
-# fin borrado completo del paciente ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# fin borrado completo del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

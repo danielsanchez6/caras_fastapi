@@ -1,5 +1,5 @@
 
-<!--listapacientes.html-->
+<!--listaparticipantes.html-->
 
 {% extends tipolayout %}
 
@@ -10,9 +10,9 @@
         <a href="/">Inicio</a>
     </li>
 
-    {% if tipopaciente == "bipolar"%}
+    {% if tipoparticipante == "bipolar"%}
         <li>
-            <a href="/formularioregistro/bipolar">Crear Nuevo Paciente de Trastorno Bipolar</a>
+            <a href="/formularioregistro/bipolar">Crear Nuevo Participante de Trastorno Bipolar</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
@@ -23,14 +23,14 @@
 {% endblock %}
 
 
-{% block title %}Lista de Pacientes{% endblock %}
+{% block title %}Lista de Participantes{% endblock %}
 
 
 {% block content %}
 
     <!--titulo de inicio-->
-    {% if tipopaciente == "bipolar"%}
-        <h1 class="titulo2">Lista de Pacientes con Trastorno Bipolar</h1>
+    {% if tipoparticipante == "bipolar"%}
+        <h1 class="titulo2">Lista de Participantes con Trastorno Bipolar</h1>
     {% endif %}
 
 
@@ -47,7 +47,7 @@
     {% endwith %}
 
 
-    <h3>Número de pacientes en la lista: {{ numeropacientes }}</h3>
+    <h3>Número de participantes en la lista: {{ numeroparticipantes }}</h3>
     <br>
     <div class="divtable">
 
@@ -67,25 +67,25 @@
 
 
             <tbody class="tbodytable">
-                {% for paciente in listapacientes %}
+                {% for participante in listaparticipantes %}
                     <tr>
                         <!--colocar todo los valores de las tablas que se deseen mostar -->
-                        <td class="contenidotabla0">{{ paciente.nhcpaciente }}</td>
-                        <td class="contenidotabla0">{{ paciente.fechacreacion }}</td>
+                        <td class="contenidotabla0">{{ participante.nhcparticipante }}</td>
+                        <td class="contenidotabla0">{{ participante.fechacreacion }}</td>
 
                         <!--Formulario Principal datos sociodemográficos-->
                         <td class="contenidotabla3">
-                            <a class="btn3" href="/formularioregistro/{{ tipopaciente }}/{{ paciente.idpaciente }}">Editar Formulario de Registro</a>
+                            <a class="btn3" href="/formularioregistro/{{ tipoparticipante }}/{{ participante.idparticipante }}">Editar Formulario de Registro</a>
                         </td>
 
                         <td class="contenidotabla3">
-                            <!-- en el apartado de borrar hay que indicar /idpaciente/nhcpaciente/fechacreacion-->
-                            <a class="btn8" href="/listaformulariospaciente/{{ tipopaciente }}/{{ paciente.idpaciente }}/{{ paciente.nhcpaciente}}/{{ paciente.fechacreacion }}">Rellenar/Editar Escalas</a>
+                            <!-- en el apartado de borrar hay que indicar /idparticipante/nhcparticipante/fechacreacion-->
+                            <a class="btn8" href="/listaformulariosparticipante/{{ tipoparticipante }}/{{ participante.idparticipante }}/{{ participante.nhcparticipante}}/{{ participante.fechacreacion }}">Rellenar/Editar Escalas</a>
                         </td>
 
                         <td class="contenidotabla3">
-                            <!-- en el apartado de borrar hay que indicar /idpaciente/nhcpaciente/fechacreacion-->
-                            <a class="btn7" href="/borrarpaciente/{{ tipopaciente }}/{{ paciente.idpaciente }}/{{ paciente.nhcpaciente }}/{{ paciente.fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas eliminar el paciente: {{  paciente.nhcpaciente }}?')">Eliminar Paciente</a>
+                            <!-- en el apartado de borrar hay que indicar /idparticipante/nhcparticipante/fechacreacion-->
+                            <a class="btn7" href="/borrarparticipante/{{ tipoparticipante }}/{{ participante.idparticipante }}/{{ participante.nhcparticipante }}/{{ participante.fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas eliminar el participante: {{  participante.nhcparticipante }}?')">Eliminar Participante</a>
                         </td>
 
                     </tr>

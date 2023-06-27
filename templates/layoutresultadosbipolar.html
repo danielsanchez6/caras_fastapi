@@ -77,11 +77,11 @@
             </li>
         
             <li>
-                <a href="/listapacientes/bipolar" >Lista de Pacientes con Trastorno Bipolar</a>
+                <a href="/listaparticipantes/bipolar" >Lista de Participantes con Trastorno Bipolar</a>
             </li>
         
             <li>
-                <a href="/listaformulariospaciente/bipolar/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}/" >Volver a las Escalas del Paciente</a>
+                <a href="/listaformulariosparticipante/bipolar/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}/" >Volver a las Escalas del Participante</a>
             </li>
         
             <li>
@@ -104,8 +104,8 @@
             
                 {% endblock %}
             
-                <!-- indicacion del numero NHC de cada paciente -->
-                <h3>Identificador del paciente (NHC): {{ nhcpaciente }}</h3>
+                <!-- indicacion del numero NHC de cada participante -->
+                <h3>Identificador del participante (NHC): {{ nhcparticipante }}</h3>
             
             </div>
             <br>
@@ -123,7 +123,7 @@
                     <br>
                     <!-- Botones de formulario -->
                     <div class="botonguardar">
-                        <input class="botonresultadosvolver" type="submit" id="resultadosvolver" name="resultadosvolver" value="Volver al Paciente" />
+                        <input class="botonresultadosvolver" type="submit" id="resultadosvolver" name="resultadosvolver" value="Volver al Participante" />
                     </div>
 
                 </form>

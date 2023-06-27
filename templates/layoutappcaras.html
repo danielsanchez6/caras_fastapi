@@ -25,7 +25,7 @@
     <!--titulo de inicio-->
 
     {% if tipoapp == "pantalla"%}
-        {% if estadopaciente == "estable"%}
+        {% if estadoparticipante == "estable"%}
             <h1 class="titulo2">Ejecutando Aplicación Reconocimiento Facial de Emociones No Inmersivo en Estado Estable (RFN-E)</h1>
         {% endif %}
     {% endif %}
@@ -53,14 +53,14 @@
 
     <br>
 
-    <h3 class="titulo2">Presiona el siguiente botón para volver al paciente actual:</h3>
+    <h3 class="titulo2">Presiona el siguiente botón para volver al participante actual:</h3>
 
     <br>
     <br>
 
     <div class="botonguardar">
     
-        <a class="botonformularioregistrovolver1" href="/listaformulariospaciente/{{ tipopaciente }}/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}/" onclick="return confirm('¿Estas seguro de que deseas volver al paciente? Al presionar aceptar se redigirá al paciente actual')">Volver al paciente</a>
+        <a class="botonformularioregistrovolver1" href="/listaformulariosparticipante/{{ tipoparticipante }}/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}/" onclick="return confirm('¿Estas seguro de que deseas volver al participante? Al presionar aceptar se redigirá al participante actual')">Volver al participante</a>
 
     </div>
 

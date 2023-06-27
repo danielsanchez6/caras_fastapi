@@ -1,5 +1,5 @@
 
-<!--listaformulariospaciente.html-->
+<!--listaformulariosparticipante.html-->
 
 {% extends tipolayout %}
 
@@ -9,9 +9,9 @@
         <a href="/">Inicio</a>
     </li>
 
-    {% if tipopaciente == "bipolar"%}
+    {% if tipoparticipante == "bipolar"%}
         <li>
-            <a href="/listapacientes/bipolar">Lista de Pacientes con Trastorno Bipolar</a>
+            <a href="/listaparticipantes/bipolar">Lista de Participantes con Trastorno Bipolar</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares2" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
@@ -22,14 +22,14 @@
 {% endblock %}
 
 
-{% block title %}Lista formularios de cada paciente{% endblock %}
+{% block title %}Lista formularios de cada participante{% endblock %}
 
 
 {% block content %}
 
     <!--titulo de inicio-->
-    {% if tipopaciente == "bipolar"%}
-        <h1 class="titulo2">Escalas Paciente Con Trastorno Bipolar:</h1>
+    {% if tipoparticipante == "bipolar"%}
+        <h1 class="titulo2">Escalas Participante Con Trastorno Bipolar:</h1>
     {% endif %}
 
 
@@ -48,7 +48,7 @@
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
     <div>
-        <h3>Identificador del paciente (NHC): {{ nhcpaciente }}</h3>
+        <h3>Identificador del participante (NHC): {{ nhcparticipante }}</h3>
     </div>
     <br>
 
@@ -60,7 +60,7 @@
             <thead class="theadtable">
                 <tr>
                     <!--colocar todo los valores de las tablas que se deseen mostar -->
-                    <td class="titulostablas6">Paciente Estable:</td>
+                    <td class="titulostablas6">Participante Estable:</td>
                     <td class="titulostablas13">Estado:</td>
                     <td class="titulostablas9">Fecha Modificación:</td>
 
@@ -73,7 +73,7 @@
 
                 <tr>
                     <td class="contenidotabla3">
-                        <a class="btn3" href="/formularioantecedentes/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Formulario Antecendentes</a>
+                        <a class="btn3" href="/formularioantecedentes/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">Formulario Antecendentes</a>
                     </td>
                     <td class="contenidotabla3">
                         {{ datosformularioantecedentesestable.estadoescala }}
@@ -93,7 +93,7 @@
 
             <tr>
                 <td class="contenidotabla3">
-                    <a class="btn5" href="/escalapanas/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Escala PANAS</a>
+                    <a class="btn5" href="/escalapanas/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">Escala PANAS</a>
                 </td>
                 <td class="contenidotabla3">
                     {{ datosescalapanasestable.estadoescala }}
@@ -112,22 +112,22 @@
             <tr>
 
                 <td class="contenidotabla3">
-                    {% if not datosappcaraspantallaestable.nhcpaciente %}
-                    <a class="btn11" href="/appcaraspantalla/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">App No Inmersiva (RFN-E)</a>
+                    {% if not datosappcaraspantallaestable.nhcparticipante %}
+                    <a class="btn11" href="/appcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">App No Inmersiva (RFN-E)</a>
                     {% endif %}
-                    {% if datosappcaraspantallaestable.nhcpaciente %}
-                    <a class="btn7" href="/borrardatospacienteappcaraspantalla/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas borrar los datos actuales del paciente y reiniciar la aplicación? Si pulsas aceptar se borrarán los datos y se reiniciará la aplicación para volver a tomar los datos.')">Reinicio App No Inmersiva (RFN-E)</a>
+                    {% if datosappcaraspantallaestable.nhcparticipante %}
+                    <a class="btn7" href="/borrardatosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas borrar los datos actuales del participante y reiniciar la aplicación? Si pulsas aceptar se borrarán los datos y se reiniciará la aplicación para volver a tomar los datos.')">Reinicio App No Inmersiva (RFN-E)</a>
                     {% endif %}
                 </td>
                 <td class="contenidotabla3">
-                    {% if datosappcaraspantallaestable.nhcpaciente %}
-                    <a class="btn9" href="/resultadospacienteappcaraspantalla/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" >Ver Resultados (RFN-E)</a>
+                    {% if datosappcaraspantallaestable.nhcparticipante %}
+                    <a class="btn9" href="/resultadosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" >Ver Resultados (RFN-E)</a>
                     {% endif %}
 
                 </td>
                 <td class="contenidotabla3">
-                    {% if datosappcaraspantallaestable.nhcpaciente %}
-                    <a class="btn10" href="/descargarresultadospacienteappcaraspantalla/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}" onclick="this.addEventListener('click', clickStopper, false);">Descargar pdf (RFN-E)</a>
+                    {% if datosappcaraspantallaestable.nhcparticipante %}
+                    <a class="btn10" href="/descargarresultadosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" onclick="this.addEventListener('click', clickStopper, false);">Descargar pdf (RFN-E)</a>
                     {% endif %}
                 </td>
             </tr>
@@ -138,7 +138,7 @@
 
             <tr>
                 <td class="contenidotabla3">
-                    <a class="btn6" href="/cuestionarioavatares/{{ tipopaciente }}/estable/{{ idpaciente }}/{{ nhcpaciente }}/{{ fechacreacion }}">Cuestionario Avatares</a>
+                    <a class="btn6" href="/cuestionarioavatares/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">Cuestionario Avatares</a>
                 </td>
                 <td class="contenidotabla3">
                     {{ datoscuestionarioavataresestable.estadoescala }}
@@ -161,7 +161,7 @@
     <div class="botonguardar">
 
         <form action="" method="post">
-            <input class="botonsalirpaciente" type="submit" id="salirpaciente" name="salirpaciente" value="Salir del Paciente" />
+            <input class="botonsalirparticipante" type="submit" id="salirparticipante" name="salirparticipante" value="Salir del Participante" />
         </form>
         
     </div>

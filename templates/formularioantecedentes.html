@@ -2,8 +2,8 @@
 {% extends tipolayout %}
 
 
-<!-- Seleccionar el estado del paciente en cada caso -->
-{% block title %}Formulario Antecedentes: Paciente {{formulariosecundario.estadopaciente}}.{% endblock %}
+<!-- Seleccionar el estado del participante en cada caso -->
+{% block title %}Formulario Antecedentes: Participante {{formulariosecundario.estadoparticipante}}.{% endblock %}
 
 
 <!-- Indicar si es necesario colocar algun boton en el nav referente a este formulario -->
@@ -15,17 +15,17 @@
 
 
 
-<!-- Para escribir el titulo del formulario, indicar el estado del paciente en cada caso -->
+<!-- Para escribir el titulo del formulario, indicar el estado del participante en cada caso -->
 {% block contenttitle %}
 
 <div>
-    {% if formulariosecundario.estadopaciente == "estable" %}
+    {% if formulariosecundario.estadoparticipante == "estable" %}
 
         {% if formulariosecundario.estadoescala == "Sin rellenar" %}
-            <h1 class="titulo2">Formulario Antecedentes: Paciente Estable.</h1>
+            <h1 class="titulo2">Formulario Antecedentes: Participante Estable.</h1>
         
         {% elif formulariosecundario.estadoescala == "En Proceso o Finalizada" %}
-            <h1 class="titulo2">Editar Formulario Antecedentes: Paciente Estable.</h1>
+            <h1 class="titulo2">Editar Formulario Antecedentes: Participante Estable.</h1>
         {% endif %}
 
     {% endif %}

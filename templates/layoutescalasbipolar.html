@@ -77,11 +77,11 @@
             </li>
         
             <li>
-                <a href="/listapacientes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Pacientes con Trastorno Bipolar</a>
+                <a href="/listaparticipantes/bipolar" onclick="return confirm('¿Estas seguro de que deseas salir del formulario? Al presionar aceptar se eliminarán los datos introducidos en este formulario')">Lista de Participantes con Trastorno Bipolar</a>
             </li>
         
             <li>
-                <a href="/listaformulariospaciente/bipolar/{{ formulariosecundario.idpaciente }}/{{ formulariosecundario.nhcpaciente }}/{{ formulariosecundario.fechacreacion }}/" onclick="return confirm('¿Estas seguro de que deseas volver a las escalas del paciente? Al presionar aceptar se eliminarán los cambios introducidos en este formulario')">Volver a las Escalas del Paciente</a>
+                <a href="/listaformulariosparticipante/bipolar/{{ formulariosecundario.idparticipante }}/{{ formulariosecundario.nhcparticipante }}/{{ formulariosecundario.fechacreacion }}/" onclick="return confirm('¿Estas seguro de que deseas volver a las escalas del participante? Al presionar aceptar se eliminarán los cambios introducidos en este formulario')">Volver a las Escalas del Participante</a>
             </li>
         
             <li>
@@ -104,8 +104,8 @@
             
                 {% endblock %}
             
-                <!-- indicacion del numero NHC de cada paciente -->
-                <h3>Identificador del paciente (NHC): {{ nhcpaciente }}</h3>
+                <!-- indicacion del numero NHC de cada participante -->
+                <h3>Identificador del participante (NHC): {{ nhcparticipante }}</h3>
             
             </div>
             <br>
