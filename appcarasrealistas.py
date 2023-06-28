@@ -104,7 +104,7 @@ db = SQLAlchemy(appcarasrealistas)
 
 # Tabla datos formulario de registro para participante
 
-class Formularioregistrobipolar(db.Model):
+class Formularioregistro(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
     # identificador del participante
     idparticipante = db.Column(db.Integer, primary_key=True)
@@ -133,7 +133,7 @@ class Formularioregistrobipolar(db.Model):
 
 # Tabla datos formulario secundario para participante
 
-class Formularioantecedentesbipolarestable(db.Model):
+class Formularioantecedentes(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
@@ -179,7 +179,7 @@ class Formularioantecedentesbipolarestable(db.Model):
 
 # Tabla datos participante
 
-class Escalapanasbipolarestable(db.Model):
+class Escalapanas(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
@@ -217,7 +217,7 @@ class Escalapanasbipolarestable(db.Model):
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-class Appcaraspantallabipolarestable(db.Model):
+class Appcaraspantalla(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
     idnumericoappcaras = db.Column(db.Integer, primary_key=True)
 
@@ -248,7 +248,7 @@ class Appcaraspantallabipolarestable(db.Model):
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-class Cuestionarioavataresbipolarestable(db.Model):
+class Cuestionarioavatares(db.Model):
     __bind_key__ = 'datosappcarasrealistas'
     idescala = db.Column(db.Integer, primary_key=True)
     
@@ -301,22 +301,20 @@ def getparticipanteporid(nombretablabd, idparticipante):
 # funcion para crear el participante en cada escala
 def crearparticipanteescala(nombretablabd, idparticipante, nhcparticipante, fechacreacion):
 
-    # escalas bipolar estable
-
-    if (nombretablabd == Formularioantecedentesbipolarestable):
-        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="bipolar", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
+    if (nombretablabd == Formularioantecedentes):
+        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="control", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", antecedentespersonalessomaticos="", diagnosticodms5="", edadiniciosintomatologia="", anosevolucionenfermedad="", numerodescompensaciones="", numeroingresos="", numerodescompensaciones6meses="", tratamientopsicofarmacologico="", tratamientomedicoactual="", antecedentesfamiliarespsiquiatricos="", textoantecedentespersonalestoxicos="", numeroingresos6meses="")
         db.session.add(escala)
         db.session.commit()
         inicio = escala
 
-    if (nombretablabd == Escalapanasbipolarestable):
-        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="bipolar", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
+    if (nombretablabd == Escalapanas):
+        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="control", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="")
         db.session.add(escala)
         db.session.commit()
         inicio = escala
     
-    if (nombretablabd == Cuestionarioavataresbipolarestable):
-        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="bipolar", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
+    if (nombretablabd == Cuestionarioavatares):
+        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="control", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
         db.session.add(escala)
         db.session.commit()
         inicio = escala
@@ -466,8 +464,8 @@ def mostrar_pdf(filepath):
 def inicio():
     if request.method =='POST':
 
-        if request.form.get('botoncrearinicio') == "Crear Participante":
-            return redirect(url_for('mostrarformularioregistro', tipoparticipante="bipolar"))
+        if request.form.get('botoncrearinicio') == "Crear Nuevo Participante":
+            return redirect(url_for('mostrarformularioregistro', tipoparticipante="control"))
         
         # este se eliminará al final y se sustituye por el nav
         if request.form.get('botonsalirinicio') == "Cerrar Programa":
@@ -494,8 +492,8 @@ def inicio():
 @appcarasrealistas.route("/listaparticipantes/<string:tipoparticipante>/", methods=["GET", "POST"])
 def listaparticipantes(tipoparticipante=""):
 
-    if tipoparticipante == "bipolar":
-        nombretablabd = Formularioregistrobipolar
+    if tipoparticipante == "control":
+        nombretablabd = Formularioregistro
         tipolayout = 'layoutinicio2.html'
     
     # Para obtener todos los participantes de registrados y mandarlos al html para generar la lista
@@ -528,13 +526,13 @@ def listaformulariosparticipante(tipoparticipante="", idparticipante=None, nhcpa
             return redirect(url_for('listaparticipantes', tipoparticipante=tipoparticipante))
     
 
-    if tipoparticipante == "bipolar":
+    if tipoparticipante == "control":
         # hay que pasar los datos de todas las formularios secundarios y escalas en su version estable e inestable (21 escalas)
 
-        datosformularioantecedentesestable = buscarfirstparticipante(Formularioantecedentesbipolarestable, idparticipante, nhcparticipante, fechacreacion)
-        datosescalapanasestable = buscarfirstparticipante(Escalapanasbipolarestable, idparticipante, nhcparticipante, fechacreacion)
-        datoscuestionarioavataresestable = buscarfirstparticipante(Cuestionarioavataresbipolarestable, idparticipante, nhcparticipante, fechacreacion)
-        datosappcaraspantallaestable = buscarfirstparticipanteappcaras(Appcaraspantallabipolarestable, idparticipante, nhcparticipante)
+        datosformularioantecedentesestable = buscarfirstparticipante(Formularioantecedentes, idparticipante, nhcparticipante, fechacreacion)
+        datosescalapanasestable = buscarfirstparticipante(Escalapanas, idparticipante, nhcparticipante, fechacreacion)
+        datoscuestionarioavataresestable = buscarfirstparticipante(Cuestionarioavatares, idparticipante, nhcparticipante, fechacreacion)
+        datosappcaraspantallaestable = buscarfirstparticipanteappcaras(Appcaraspantalla, idparticipante, nhcparticipante)
         
 
         tipolayout = 'layoutinicio2.html'
@@ -563,10 +561,10 @@ def listaformulariosparticipante(tipoparticipante="", idparticipante=None, nhcpa
 def mostrarformularioregistro(tipoparticipante="", idparticipante=None ):
     if request.method == 'POST':
 
-        if tipoparticipante == "bipolar":
-            nombretablabd = Formularioregistrobipolar
-            listaescalas = [Formularioantecedentesbipolarestable, Escalapanasbipolarestable, Cuestionarioavataresbipolarestable]
-            listaappcaras = [Appcaraspantallabipolarestable]
+        if tipoparticipante == "control":
+            nombretablabd = Formularioregistro
+            listaescalas = [Formularioantecedentes, Escalapanas, Cuestionarioavatares]
+            listaappcaras = [Appcaraspantalla]
 
         if request.form.get('botonformularioregistrocrear') == "Crear Participante":
             #//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -603,7 +601,7 @@ def mostrarformularioregistro(tipoparticipante="", idparticipante=None ):
             # validacion nhc unico  y que sea distinto a "" y que sea un numero entero
             nhccomprobacion = request.form.get('nhcparticipante')
 
-            nhclista = nhclistatotal(Formularioregistrobipolar)
+            nhclista = nhclistatotal(Formularioregistro)
 
             if (nhccomprobacion in nhclista) or (nhccomprobacion == "") or (not nhccomprobacion.isdigit()):
                 formularioregistro = formulariogeneral
@@ -642,8 +640,8 @@ def mostrarformularioregistro(tipoparticipante="", idparticipante=None ):
             nhcantiguo = formularioget.nhcparticipante
 
             # funcion para obtener lista de todos los nhc del programa sin el nhc del participante
-            nhclista = nhclistasinid(nombretablabd, nhcantiguo, Formularioregistrobipolar)
-            #nhclista = nhclistasinid(nombretablabd, idparticipante, Formularioregistrobipolar)
+            nhclista = nhclistasinid(nombretablabd, nhcantiguo, Formularioregistro)
+            #nhclista = nhclistasinid(nombretablabd, idparticipante, Formularioregistro)
 
             #//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             # colocar los elementos delos formularios a modificar a partir del elemento de la tabla
@@ -722,8 +720,8 @@ def mostrarformularioregistro(tipoparticipante="", idparticipante=None ):
 
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    if tipoparticipante == "bipolar":
-        nombretablabd = Formularioregistrobipolar
+    if tipoparticipante == "control":
+        nombretablabd = Formularioregistro
         tipolayout = 'layoutinicio2.html'
 
 
@@ -777,9 +775,9 @@ def mostrarformularioantecedentes(tipoparticipante="", estadoparticipante="", id
         if (request.form.get('botonescalaguardar') == "Guardar") or (request.form.get('botonescalaguardar') == "Guardar Cambios"):
             
             #  hay que ver que la escala pertenezca a al tipo de participante, sino no es necesaria colocar la condicion
-            if tipoparticipante == "bipolar":
+            if tipoparticipante == "control":
                 if estadoparticipante =="estable":
-                    nombretablabd = Formularioantecedentesbipolarestable
+                    nombretablabd = Formularioantecedentes
             
 
             formularioget = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
@@ -869,10 +867,10 @@ def mostrarformularioantecedentes(tipoparticipante="", estadoparticipante="", id
 
 
     #  hay que ver que la escala pertenezca a al tipo de participante, sino no es necesaria colocar la condicion
-    if tipoparticipante == "bipolar":
+    if tipoparticipante == "control":
         if estadoparticipante =="estable":
-            nombretablabd = Formularioantecedentesbipolarestable
-        tipolayout = 'layoutescalasbipolar.html'
+            nombretablabd = Formularioantecedentes
+        tipolayout = 'layoutescalascontrol.html'
     
 
     formulariosecundario = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
@@ -902,9 +900,9 @@ def mostrarescalapanas(tipoparticipante="", estadoparticipante="", idparticipant
         
         if (request.form.get('botonescalaguardar') == "Guardar") or (request.form.get('botonescalaguardar') == "Guardar Cambios"):
             
-            if tipoparticipante == "bipolar":
+            if tipoparticipante == "control":
                 if estadoparticipante =="estable":
-                    nombretablabd = Escalapanasbipolarestable
+                    nombretablabd = Escalapanas
 
             formularioget = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
             #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -952,10 +950,10 @@ def mostrarescalapanas(tipoparticipante="", estadoparticipante="", idparticipant
 
     #  hay que ver que la escala pertenezca a al tipo de participante, sino no es necesaria colocar la condicion
 
-    if tipoparticipante == "bipolar":
+    if tipoparticipante == "control":
         if estadoparticipante =="estable":
-            nombretablabd = Escalapanasbipolarestable
-        tipolayout = 'layoutescalasbipolar.html'
+            nombretablabd = Escalapanas
+        tipolayout = 'layoutescalascontrol.html'
 
     formulariosecundario = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
     
@@ -990,9 +988,9 @@ def mostrarcuestionarioavatares(tipoparticipante="", estadoparticipante="", idpa
         
         if (request.form.get('botonescalaguardar') == "Guardar") or (request.form.get('botonescalaguardar') == "Guardar Cambios"):
             
-            if tipoparticipante == "bipolar":
+            if tipoparticipante == "control":
                 if estadoparticipante =="estable":
-                    nombretablabd = Cuestionarioavataresbipolarestable
+                    nombretablabd = Cuestionarioavatares
 
 
             formularioget = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
@@ -1032,10 +1030,10 @@ def mostrarcuestionarioavatares(tipoparticipante="", estadoparticipante="", idpa
 
     #  hay que ver que la escala pertenezca a al tipo de participante, sino no es necesaria colocar la condicion
 
-    if tipoparticipante == "bipolar":
+    if tipoparticipante == "control":
         if estadoparticipante =="estable":
-            nombretablabd = Cuestionarioavataresbipolarestable
-        tipolayout = 'layoutescalasbipolar.html'
+            nombretablabd = Cuestionarioavatares
+        tipolayout = 'layoutescalascontrol.html'
 
 
     formulariosecundario = buscarfirstparticipante(nombretablabd, idparticipante, nhcparticipante, fechacreacion)
@@ -1089,12 +1087,12 @@ def mostrarcuestionarioavatares(tipoparticipante="", estadoparticipante="", idpa
 @appcarasrealistas.route('/appcaraspantalla/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=['GET','POST'])
 def appcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
 
-    if tipoparticipante == "bipolar":
+    if tipoparticipante == "control":
         rutabasedatos = "dbappcarasrealistas.db"
         
         if estadoparticipante == "estable":
-            tipoparticipanteapp = "Participante_Bipolar_Estable"
-            nombretabla = "appcaraspantallabipolarestable"
+            tipoparticipanteapp = "Participante_control_Estable"
+            nombretabla = "appcaraspantalla"
 
 
     # Abre la aplicacion de las caras y le envia la informacion necesaria a los participantes
@@ -1118,11 +1116,11 @@ def resultadosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipan
             return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
-    if tipoparticipante == "bipolar":
-        tipolayout = "layoutresultadosbipolar.html"
+    if tipoparticipante == "control":
+        tipolayout = "layoutresultadoscontrol.html"
         
         if estadoparticipante == "estable":
-            nombretablabd = Appcaraspantallabipolarestable
+            nombretablabd = Appcaraspantalla
 
     # buscar aciertos por emocion
     emociones = ['0', '1', '2', '3', '4', '5', '6']
@@ -1150,11 +1148,11 @@ def resultadosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipan
 @appcarasrealistas.route('/descargarresultadosparticipanteappcaraspantalla/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=['GET','POST'])
 def descargarresultadosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
 
-    if tipoparticipante == "bipolar":
-        tipolayout = "layoutresultadosbipolar.html"
+    if tipoparticipante == "control":
+        tipolayout = "layoutresultadoscontrol.html"
         
         if estadoparticipante == "estable":
-            nombretablabd = Appcaraspantallabipolarestable
+            nombretablabd = Appcaraspantalla
 
 
     # busqueda del codigo de la aplicacion
@@ -1309,9 +1307,9 @@ def descargarresultadosparticipanteappcaraspantalla(tipoparticipante="", estadop
 def borrardatosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
     # colocar los formulario y escalas que se desean eliminar
         
-    if tipoparticipante == "bipolar":
+    if tipoparticipante == "control":
         if estadoparticipante == "estable":
-            listaappcaras = [Appcaraspantallabipolarestable]
+            listaappcaras = [Appcaraspantalla]
 
     # borra los todos los datos del participante de la aplicacion caras (sacar las escalas de las listas anteriores)
     for appcara in listaappcaras:
@@ -1354,9 +1352,9 @@ def borrarparticipante(tipoparticipante="", idparticipante=None, nhcparticipante
     # colocar los formulario y escalas que se desean eliminar
         
 
-    if tipoparticipante == "bipolar":
-        listaescalas = [Formularioregistrobipolar, Formularioantecedentesbipolarestable,Escalapanasbipolarestable, Cuestionarioavataresbipolarestable]
-        listaappcaras = [Appcaraspantallabipolarestable]
+    if tipoparticipante == "control":
+        listaescalas = [Formularioregistro, Formularioantecedentes,Escalapanas, Cuestionarioavatares]
+        listaappcaras = [Appcaraspantalla]
 
     # borra los todos los datos del participante en los formularios secundarios y escalas
     for escala in listaescalas:

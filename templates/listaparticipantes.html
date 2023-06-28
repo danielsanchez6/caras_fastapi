@@ -10,9 +10,9 @@
         <a href="/">Inicio</a>
     </li>
 
-    {% if tipoparticipante == "bipolar"%}
+    {% if tipoparticipante == "control"%}
         <li>
-            <a href="/formularioregistro/bipolar">Crear Nuevo Participante</a>
+            <a href="/formularioregistro/control">Crear Nuevo Participante</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares1" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
@@ -29,7 +29,7 @@
 {% block content %}
 
     <!--titulo de inicio-->
-    {% if tipoparticipante == "bipolar"%}
+    {% if tipoparticipante == "control"%}
         <h1 class="titulo2">Lista de Participantes</h1>
     {% endif %}
 

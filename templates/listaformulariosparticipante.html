@@ -9,9 +9,9 @@
         <a href="/">Inicio</a>
     </li>
 
-    {% if tipoparticipante == "bipolar"%}
+    {% if tipoparticipante == "control"%}
         <li>
-            <a href="/listaparticipantes/bipolar">Lista de Participantes</a>
+            <a href="/listaparticipantes/control">Lista de Participantes</a>
         </li>
         <li>
             <a class="cerrarprogramabipolares2" href="/salir" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')">Cerrar Programa</a>
@@ -28,7 +28,7 @@
 {% block content %}
 
     <!--titulo de inicio-->
-    {% if tipoparticipante == "bipolar"%}
+    {% if tipoparticipante == "control"%}
         <h1 class="titulo2">Escalas Participante:</h1>
     {% endif %}
 
@@ -60,7 +60,7 @@
             <thead class="theadtable">
                 <tr>
                     <!--colocar todo los valores de las tablas que se deseen mostar -->
-                    <td class="titulostablas6">Participante Estable:</td>
+                    <td class="titulostablas6">Participante:</td>
                     <td class="titulostablas13">Estado:</td>
                     <td class="titulostablas9">Fecha Modificación:</td>
 
