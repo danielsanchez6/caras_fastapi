@@ -47,8 +47,9 @@
 
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
+    <br>
     <div>
-        <h3>Identificador del participante (NHC): {{ nhcparticipante }}</h3>
+        <h3>Identificador del participante: {{ nhcparticipante }}</h3>
     </div>
     <br>
 
@@ -60,9 +61,9 @@
             <thead class="theadtable">
                 <tr>
                     <!--colocar todo los valores de las tablas que se deseen mostar -->
-                    <td class="titulostablas6">Participante:</td>
+                    <td class="titulostablas6"></td>
                     <td class="titulostablas13">Estado:</td>
-                    <td class="titulostablas9">Fecha Modificación:</td>
+                    <td class="titulostablas9">Fecha Última Modificación:</td>
 
                 </tr>
             </thead>
@@ -87,66 +88,65 @@
 
                 <!-- Escalas -->
 
+               
+                <!-- Escala PANAS -->
 
-
-<!-- Escala PANAS -->
-
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn5" href="/escalapanas/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">Escala PANAS</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalapanasestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datosescalapanasestable.fechaultimamodificacion }}
-                </td>
-            </tr>
-
-
+                <tr>
+                    <td class="contenidotabla3">
+                        <a class="btn5" href="/escalapanas/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">Escala PANAS</a>
+                    </td>
+                    <td class="contenidotabla3">
+                        {{ datosescalapanasestable.estadoescala }}
+                    </td>
+                    <td class="contenidotabla3">
+                        {{ datosescalapanasestable.fechaultimamodificacion }}
+                    </td>
+                </tr>
 
 
 
-<!-- Appcaraspantalla -->
-
-            <tr>
-
-                <td class="contenidotabla3">
-                    {% if not datosappcaraspantallaestable.nhcparticipante %}
-                    <a class="btn11" href="/appcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">App No Inmersiva (RFN-E)</a>
-                    {% endif %}
-                    {% if datosappcaraspantallaestable.nhcparticipante %}
-                    <a class="btn7" href="/borrardatosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas borrar los datos actuales del participante y reiniciar la aplicación? Si pulsas aceptar se borrarán los datos y se reiniciará la aplicación para volver a tomar los datos.')">Reinicio App No Inmersiva (RFN-E)</a>
-                    {% endif %}
-                </td>
-                <td class="contenidotabla3">
-                    {% if datosappcaraspantallaestable.nhcparticipante %}
-                    <a class="btn9" href="/resultadosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" >Ver Resultados (RFN-E)</a>
-                    {% endif %}
-
-                </td>
-                <td class="contenidotabla3">
-                    {% if datosappcaraspantallaestable.nhcparticipante %}
-                    <a class="btn10" href="/descargarresultadosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" onclick="this.addEventListener('click', clickStopper, false);">Descargar pdf (RFN-E)</a>
-                    {% endif %}
-                </td>
-            </tr>
 
 
+                <!-- Appcaraspantalla -->
 
-<!-- Cuestionario Avatares -->
+                <tr>
 
-            <tr>
-                <td class="contenidotabla3">
-                    <a class="btn6" href="/cuestionarioavatares/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">Cuestionario Avatares</a>
-                </td>
-                <td class="contenidotabla3">
-                    {{ datoscuestionarioavataresestable.estadoescala }}
-                </td>
-                <td class="contenidotabla3">
-                    {{ datoscuestionarioavataresestable.fechaultimamodificacion }}
-                </td>
-            </tr>
+                    <td class="contenidotabla3">
+                        {% if not datosappcaraspantallaestable.nhcparticipante %}
+                        <a class="btn11" href="/appcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">Ejecutar App Caras Hiperrealistas</a>
+                        {% endif %}
+                        {% if datosappcaraspantallaestable.nhcparticipante %}
+                        <a class="btn7" href="/borrardatosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" onclick="return confirm('¿Estas seguro de que deseas borrar los datos actuales del participante y reiniciar la aplicación? Si pulsas aceptar se borrarán los datos y se reiniciará la aplicación para volver a tomar los datos.')">Reinicio App Caras Hiperrealistas</a>
+                        {% endif %}
+                    </td>
+                    <td class="contenidotabla3">
+                        {% if datosappcaraspantallaestable.nhcparticipante %}
+                        <a class="btn9" href="/resultadosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" >Ver Resultados</a>
+                        {% endif %}
+
+                    </td>
+                    <td class="contenidotabla3">
+                        {% if datosappcaraspantallaestable.nhcparticipante %}
+                        <a class="btn10" href="/descargarresultadosparticipanteappcaraspantalla/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}" onclick="this.addEventListener('click', clickStopper, false);">Descargar pdf</a>
+                        {% endif %}
+                    </td>
+                </tr>
+
+
+
+                <!-- Cuestionario Avatares -->
+
+                <tr>
+                    <td class="contenidotabla3">
+                        <a class="btn6" href="/cuestionarioavatares/{{ tipoparticipante }}/estable/{{ idparticipante }}/{{ nhcparticipante }}/{{ fechacreacion }}">Cuestionario Avatares Hiperrealistas</a>
+                    </td>
+                    <td class="contenidotabla3">
+                        {{ datoscuestionarioavataresestable.estadoescala }}
+                    </td>
+                    <td class="contenidotabla3">
+                        {{ datoscuestionarioavataresestable.fechaultimamodificacion }}
+                    </td>
+                </tr>
 
 
                 

@@ -524,7 +524,7 @@ def listaformulariosparticipante(tipoparticipante="", idparticipante=None, nhcpa
     
 
     if tipoparticipante == "control":
-        # hay que pasar los datos de todas las formularios secundarios y escalas en su version estable e inestable (21 escalas)
+        # hay que pasar los datos de todas las formularios secundarios y escalas en su version estable e inestable
 
         datosformularioantecedentesestable = buscarfirstparticipante(Formularioantecedentes, idparticipante, nhcparticipante, fechacreacion)
         datosescalapanasestable = buscarfirstparticipante(Escalapanas, idparticipante, nhcparticipante, fechacreacion)
@@ -603,11 +603,11 @@ def mostrarformularioregistro(tipoparticipante="", idparticipante=None ):
             if (nhccomprobacion in nhclista) or (nhccomprobacion == "") or (not nhccomprobacion.isdigit()):
                 formularioregistro = formulariogeneral
                 if (nhccomprobacion in nhclista):
-                    flash ("El NHC introducido ya se encuentra en la base de datos, por favor introduce un NHC válido", category="borrar")
+                    flash ("El identificador ya se encuentra en la base de datos, por favor introduce un identificador válido", category="borrar")
                 elif (nhccomprobacion == ""):
-                    flash ("Introduce el NHC del participante", category="borrar")
+                    flash ("Introduce el identificador del participante", category="borrar")
                 elif (not nhccomprobacion.isdigit()):
-                    flash ("El NHC debe ser un número entero", category="borrar")
+                    flash ("El identificador debe ser un número entero positivo", category="borrar")
                 
                 tipolayout = 'layoutinicio2.html'
                 return render_template("formularioregistro.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, formularioregistro=formularioregistro)
@@ -626,7 +626,7 @@ def mostrarformularioregistro(tipoparticipante="", idparticipante=None ):
                 for escala in listaescalas:
                     crearparticipanteescala(escala, idparticipante, nhcparticipante, fechacreacion)
 
-                flash (f"Se ha creado el participante con NHC: {nhcparticipante} correctamente", category="crear")
+                flash (f"Se ha creado el participante con identificador: {nhcparticipante} correctamente", category="crear")
                 # al pulsar crear nos lleva al las escalas del participantes teniendo en cuenta el tipo de participante (hay que modificar la ruta segun el tipo de participante)
                 return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante,  idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion = fechacreacion))
 
@@ -678,11 +678,11 @@ def mostrarformularioregistro(tipoparticipante="", idparticipante=None ):
             if (nhccomprobacion in nhclista) or (nhccomprobacion == "") or (not nhccomprobacion.isdigit()):
                 formularioregistro = formularioget
                 if (nhccomprobacion in nhclista):
-                    flash ("El NHC introducido ya se encuentra en la base de datos, por favor introduce un NHC válido", category="borrar")
+                    flash ("El identificador ya se encuentra en la base de datos, por favor introduce un identificador válido", category="borrar")
                 elif (nhccomprobacion == ""):
-                    flash ("Introduce el NHC del participante", category="borrar")
+                    flash ("Introduce el identificador del participante", category="borrar")
                 elif (not nhccomprobacion.isdigit()):
-                    flash ("El NHC debe ser un número entero", category="borrar")
+                    flash ("El identificador debe ser un número entero y positivo", category="borrar")
                 
                 tipolayout = 'layoutinicio2.html'
                 return render_template("formularioregistro.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, idparticipante=idparticipante, formularioregistro=formularioregistro)
@@ -1277,7 +1277,7 @@ def descargarresultadosparticipanteappcaraspantalla(tipoparticipante="", estadop
     os.remove(f'static/pdf/{ codigo }.png')
     os.remove(f'static/pdf/{ codigo }.pdf')
 
-    flash(f"Se ha guardado el archivo '{ codigo }_Fecha_{ fecha }_Hora_{ hora }.pdf' en la carpeta 'Descargas' con los resultados de la 'Aplicación de Reconocimiento Facial en Realidad Virtual No Inmersiva', para el participante con NHC: { nhcparticipante } en estado { estadoparticipante }.", category="crear")
+    flash(f"Se ha guardado el archivo '{ codigo }_Fecha_{ fecha }_Hora_{ hora }.pdf' en la carpeta 'Descargas' con los resultados de la 'Aplicación de Reconocimiento Facial en Realidad Virtual No Inmersiva', para el participante con el identificador: { nhcparticipante } en estado { estadoparticipante }.", category="crear")
 
     return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 

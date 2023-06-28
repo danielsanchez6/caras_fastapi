@@ -69,7 +69,7 @@
 
 
     <div>
-        <h4>1. Antecedentes personales somáticos. En caso de tener una enfermedad médica, escriba cuál:</h4>
+        <h4>1. En caso de tener una enfermedad médica, escriba cuál:</h4>
         <textarea id="antecedentespersonalessomaticos1" name="antecedentespersonalessomaticos" rows="7" placeholder="Indica las enfermedades">{{formulariosecundario.antecedentespersonalessomaticos}}</textarea>
     </div>
     <br>
@@ -161,8 +161,45 @@
     <br>
 
 
+
+</div>
+<br>
+
+
+
+
+
+
+
+
+<!-- Preguntas Antecedentes familiares psiquiátricos -->
+<div>
+    <h3>ANTECEDENTES FAMILIARES PSIQUIÁTRICOS:</h3>
+    <br>
+
+
     <div>
-        <h4>11. Antecedentes personales tóxicos. Marque si consume alguna de estas sustancias:</h4>
+        <h4>1. Antecedentes familiares psiquiátricos:</h4>
+        <textarea id="antecedentesfamiliarespsiquiatricos1" name="antecedentesfamiliarespsiquiatricos" rows="7" placeholder="Indica los antecedentes familiares psiquiátricos">{{formulariosecundario.antecedentesfamiliarespsiquiatricos}}</textarea>
+    </div>
+    <br>
+
+</div>
+<br>
+
+
+
+
+
+
+<!-- Preguntas Antecedentes personales tóxicos -->
+<div>
+    <h3>ANTECEDENTES PERSONALES TÓXICOS:</h3>
+    <br>
+
+
+    <div>
+        <h4>1. Marque si consume alguna de estas sustancias:</h4>
 
         <input type="checkbox" id="antecedentespersonalestoxicos1" name="antecedentespersonalestoxicos1" value="Tabaco." {% if "Tabaco." == formulariosecundario.antecedentespersonalestoxicos1 %} checked {% endif %}>
         <label for="antecedentespersonalestoxicos1">Tabaco.</label>
@@ -204,7 +241,7 @@
     <br> 
 
     <div>
-        <h4>12. Cumple los criterios de abuso o dependencia en los últimos 3 meses:</h4>
+        <h4>2. Cumple los criterios de abuso o dependencia en los últimos 3 meses:</h4>
 
         <input type="radio" id="criteriosabuso1" name="criteriosabuso" value="Si." {% if "Si." == formulariosecundario.criteriosabuso %} checked {% endif %}>
         <label for="criteriosabuso1">Si.</label>
@@ -218,14 +255,13 @@
 
 
 
-    <div>
-        <h4>13. Antecedentes familiares psiquiátricos:</h4>
-        <textarea id="antecedentesfamiliarespsiquiatricos1" name="antecedentesfamiliarespsiquiatricos" rows="7" placeholder="Indica los antecedentes familiares psiquiátricos">{{formulariosecundario.antecedentesfamiliarespsiquiatricos}}</textarea>
-    </div>
-    <br>
-
 </div>
 <br>
+
+
+
+
+
 
 
 {% endblock %}
