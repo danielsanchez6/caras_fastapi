@@ -89,7 +89,7 @@ appcarasrealistas.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(appcarasrealistas)
 
-# crear las tablas y las columnas de la base de datos
+# crear las tablas y las columnas de la base de datosv
 # para añadir el modelo a la base de datos desde terminal:
 # python
 # from appcarasrealistas import db
@@ -1457,5 +1457,6 @@ if __name__ == '__main__':
 
 
 # /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
