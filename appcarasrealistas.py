@@ -484,7 +484,7 @@ def inicio():
 # pagina lista de participantes ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-RESULTS_PER_PAGE_OPTIONS = [5, 10, 20, "all"]
+RESULTS_PER_PAGE = 6
 
 @appcarasrealistas.route("/listaparticipantes/<string:tipoparticipante>/", methods=["GET", "POST"])
 def listaparticipantes(tipoparticipante=""):
@@ -496,18 +496,6 @@ def listaparticipantes(tipoparticipante=""):
     listaparticipantes = nombretablabd.query.all()
     numeroparticipantes = len(listaparticipantes)
 
-    # Get the current page from the query parameters
-    page = int(request.args.get('page', 1))
-
-    # Get the selected results per page value from the query parameters
-    results_per_page = request.args.get('results', RESULTS_PER_PAGE_OPTIONS[0])
-
-    # Convert "all" to the total number of participants
-    if results_per_page == "all":
-        results_per_page = numeroparticipantes
-    else:
-        results_per_page = int(results_per_page)
-
     # Get the search query from the query parameters
     search_query = request.args.get('search', '').strip()
 
@@ -516,11 +504,14 @@ def listaparticipantes(tipoparticipante=""):
         listaparticipantes = [participante for participante in listaparticipantes if search_query in participante.nhcparticipante]
 
     # Calculate the total number of pages
-    total_pages = math.ceil(len(listaparticipantes) / results_per_page)
+    total_pages = math.ceil(len(listaparticipantes) / RESULTS_PER_PAGE)
+
+    # Get the current page from the query parameters
+    page = int(request.args.get('page', 1))
 
     # Calculate the start and end indices for pagination
-    start_index = (page - 1) * results_per_page
-    end_index = start_index + results_per_page
+    start_index = (page - 1) * RESULTS_PER_PAGE
+    end_index = start_index + RESULTS_PER_PAGE
 
     # Get the paginated data
     paginated_participantes = listaparticipantes[start_index:end_index]
@@ -533,8 +524,6 @@ def listaparticipantes(tipoparticipante=""):
         numeroparticipantes=numeroparticipantes,
         total_pages=total_pages,
         current_page=page,
-        results_per_page=results_per_page,
-        results_per_page_options=RESULTS_PER_PAGE_OPTIONS,
         search_query=search_query
     )
 
