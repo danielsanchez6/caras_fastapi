@@ -7,7 +7,6 @@ import os
 import signal
 import sys
 import subprocess
-import math
 from subprocess import Popen
 
 
@@ -481,94 +480,24 @@ def inicio():
 
 
 
+
+
 # pagina lista de participantes ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-# RESULTS_PER_PAGE = 5  # Define the number of results per page
-
-# @appcarasrealistas.route("/listaparticipantes/<string:tipoparticipante>/", methods=["GET", "POST"])
-# def listaparticipantes(tipoparticipante=""):
-#     if tipoparticipante == "control":
-#         nombretablabd = Formularioregistro
-#         tipolayout = 'layoutinicio2.html'
-    
-#     # Fetch all participants from the database
-#     listaparticipantes = nombretablabd.query.all()
-#     numeroparticipantes = len(listaparticipantes)
-
-#     # Get the current page from the query parameters
-#     page = int(request.args.get('page', 1))
-
-#     # Calculate the start and end indices for pagination
-#     start_index = (page - 1) * RESULTS_PER_PAGE
-#     end_index = start_index + RESULTS_PER_PAGE
-
-#     # Get the paginated data
-#     paginated_participantes = listaparticipantes[start_index:end_index]
-
-#     # Calculate the total number of pages
-#     total_pages = math.ceil(numeroparticipantes / RESULTS_PER_PAGE)
-
-#     return render_template(
-#         "listaparticipantes.html",
-#         tipolayout=tipolayout,
-#         tipoparticipante=tipoparticipante,
-#         listaparticipantes=paginated_participantes,
-#         numeroparticipantes=numeroparticipantes,
-#         total_pages=total_pages,
-#         current_page=page
-#     )
-
-
-
-
-RESULTS_PER_PAGE_OPTIONS = [3, 5, 10, 20]  # Define available options for results per page
+# esta es la pagina de la lista de participantes registrados en la aplicacion mediante el formulario de registro
 
 @appcarasrealistas.route("/listaparticipantes/<string:tipoparticipante>/", methods=["GET", "POST"])
 def listaparticipantes(tipoparticipante=""):
+
     if tipoparticipante == "control":
         nombretablabd = Formularioregistro
         tipolayout = 'layoutinicio2.html'
     
-    # Fetch all participants from the database
+    # Para obtener todos los participantes de registrados y mandarlos al html para generar la lista
     listaparticipantes = nombretablabd.query.all()
     numeroparticipantes = len(listaparticipantes)
 
-    # Get the current page from the query parameters
-    page = int(request.args.get('page', 1))
-
-    # Get the selected results per page value from the query parameters
-    results_per_page = int(request.args.get('results', RESULTS_PER_PAGE_OPTIONS[0]))
-
-    # Calculate the start and end indices for pagination
-    start_index = (page - 1) * results_per_page
-    end_index = start_index + results_per_page
-
-    # Get the paginated data
-    paginated_participantes = listaparticipantes[start_index:end_index]
-
-    # Calculate the total number of pages
-    total_pages = math.ceil(numeroparticipantes / results_per_page)
-
-    return render_template(
-        "listaparticipantes.html",
-        tipolayout=tipolayout,
-        tipoparticipante=tipoparticipante,
-        listaparticipantes=paginated_participantes,
-        numeroparticipantes=numeroparticipantes,
-        total_pages=total_pages,
-        current_page=page,
-        results_per_page=results_per_page,
-        results_per_page_options=RESULTS_PER_PAGE_OPTIONS
-    )
-
-
-
-
-
-
-
-
+    return render_template("listaparticipantes.html", tipolayout=tipolayout, tipoparticipante=tipoparticipante, listaparticipantes=listaparticipantes, numeroparticipantes=numeroparticipantes)
 
 
 

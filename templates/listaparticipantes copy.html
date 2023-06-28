@@ -49,20 +49,6 @@
 
     <h3>Número de participantes en la lista: {{ numeroparticipantes }}</h3>
     <br>
-
-    <!-- Results per page selector -->
-    <form method="get" action="/listaparticipantes/{{ tipoparticipante }}/" class="results-per-page-form">
-        <label for="results-per-page-select">Resultados por página:</label>
-        <select id="results-per-page-select" name="results">
-            {% for option in results_per_page_options %}
-                <option value="{{ option }}" {% if option == results_per_page %}selected{% endif %}>{{ option }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Actualizar">
-    </form>
-
-
-
     <div class="divtable">
 
         <table>
@@ -108,27 +94,6 @@
             </tbody>
 
         </table>
-    </div>
-
-
-
-    <!-- Pagination links -->
-    <div class="pagination">
-        {% if current_page > 1 %}
-            <a href="/listaparticipantes/{{ tipoparticipante }}/?page={{ current_page - 1 }}&results={{ results_per_page }}">Previous</a>
-        {% endif %}
-        
-        {% for page_num in range(1, total_pages + 1) %}
-            {% if page_num == current_page %}
-                <span class="current-page">{{ page_num }}</span>
-            {% else %}
-                <a href="/listaparticipantes/{{ tipoparticipante }}/?page={{ page_num }}&results={{ results_per_page }}">{{ page_num }}</a>
-            {% endif %}
-        {% endfor %}
-        
-        {% if current_page < total_pages %}
-            <a href="/listaparticipantes/{{ tipoparticipante }}/?page={{ current_page + 1 }}&results={{ results_per_page }}">Next</a>
-        {% endif %}
     </div>
 
 
