@@ -5,10 +5,10 @@
 
 {% block nav %}
     <li>
-        <a href="/">Inicio</a>
+        <a class="inicio" href="/">Inicio</a>
     </li>
     <li>
-        <a href="/listaparticipantes/control">Lista de Participantes</a>
+        <a class="bipolares" href="/listaparticipantes/control">Lista de Participantes</a>
     </li>
     <li>
         <a class="exportarinicio" href="/exportarbase">Exportar la Base de Datos</a>
@@ -42,14 +42,9 @@
     <!--lista de de botones de inicio-->
     <div class="botonesinicio">
         <ul class="botonesinicio2" >
-
-            <li class="liinicio"></li>
-
             <li class="liinicio">
                 <input class="botongrandeinicio" type="submit" id="botoncrearinicio2" name="botoncrearinicio" value="Crear Nuevo Participante" />
             </li>
-
-            <li class="liinicio"></li>
 
             <li class="liinicio">
                 <input class="botongrandeiniciocerrar" type="submit" id="botonsalirinicio1" name="botonsalirinicio" value="Cerrar Programa" onclick="return confirm('¿Estas seguro de que deseas cerrar el programa?')" />
@@ -59,8 +54,6 @@
     </div>
     </form>
 
-    <div>
-    </div>
 {% endblock %}
 
 
