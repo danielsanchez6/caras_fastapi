@@ -265,14 +265,11 @@ class Cuestionarioavatares(db.Model):
     cuestionarioavatares1 = db.Column(db.Text)
     cuestionarioavatares2 = db.Column(db.Text)
     cuestionarioavatares3 = db.Column(db.Text)
-    cuestionarioavatares4 = db.Column(db.Text)
-    cuestionarioavatares5_1 = db.Column(db.Text)
-    cuestionarioavatares5_2 = db.Column(db.Text)
-    cuestionarioavatares5_3 = db.Column(db.Text)
+    cuestionarioavatares4_1 = db.Column(db.Text)
+    cuestionarioavatares4_2 = db.Column(db.Text)
+    cuestionarioavatares5 = db.Column(db.Text)
     cuestionarioavatares6 = db.Column(db.Text)
-    cuestionarioavatares7 = db.Column(db.Text)
-    cuestionarioavatares8 = db.Column(db.Text)
-    cuestionarioavatares9 = db.Column(db.Text)
+
 
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -314,7 +311,7 @@ def crearparticipanteescala(nombretablabd, idparticipante, nhcparticipante, fech
         inicio = escala
     
     if (nombretablabd == Cuestionarioavatares):
-        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="control", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares9="")
+        escala = nombretablabd(idparticipante = idparticipante, nhcparticipante = nhcparticipante, tipoparticipante="control", estadoparticipante="estable", estadoescala="Sin rellenar", fechacreacion=fechacreacion, fechaultimamodificacion="", cuestionarioavatares6="")
         db.session.add(escala)
         db.session.commit()
         inicio = escala
@@ -999,14 +996,11 @@ def mostrarcuestionarioavatares(tipoparticipante="", estadoparticipante="", idpa
             formularioget.cuestionarioavatares1 = request.form.get('cuestionarioavatares1')
             formularioget.cuestionarioavatares2 = request.form.get('cuestionarioavatares2')
             formularioget.cuestionarioavatares3 = request.form.get('cuestionarioavatares3')
-            formularioget.cuestionarioavatares4 = request.form.get('cuestionarioavatares4')
-            formularioget.cuestionarioavatares5_1 = request.form.get('cuestionarioavatares5_1')
-            formularioget.cuestionarioavatares5_2 = request.form.get('cuestionarioavatares5_2')
-            formularioget.cuestionarioavatares5_3 = request.form.get('cuestionarioavatares5_3')
+            formularioget.cuestionarioavatares4_1 = request.form.get('cuestionarioavatares4_1')
+            formularioget.cuestionarioavatares4_2 = request.form.get('cuestionarioavatares4_2')
+            formularioget.cuestionarioavatares5 = request.form.get('cuestionarioavatares5')
             formularioget.cuestionarioavatares6 = request.form.get('cuestionarioavatares6')
-            formularioget.cuestionarioavatares7 = request.form.get('cuestionarioavatares7')
-            formularioget.cuestionarioavatares8 = request.form.get('cuestionarioavatares8')
-            formularioget.cuestionarioavatares9 = request.form.get('cuestionarioavatares9')
+
 
             #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             formularioget.fechaultimamodificacion = datetime.datetime.today().strftime('%d-%m-%Y %H:%M:%S')

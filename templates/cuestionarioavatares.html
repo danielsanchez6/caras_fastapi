@@ -3,7 +3,7 @@
 
 
 <!-- Seleccionar el estado del participante en cada caso -->
-{% block title %}Cuestionario Avatares: Participante {{formulariosecundario.estadoparticipante}}.{% endblock %}
+{% block title %}Cuestionario Avatares.{% endblock %}
 
 
 <!-- Indicar si es necesario colocar algun boton en el nav referente a este formulario -->
@@ -59,8 +59,8 @@
 
 <div>
 
-    <h4>1. ¿Has tenido la sensación de estar cerca de una persona?</h4>
-    
+    <h4>1. ¿Has tenido la impresión de qué mirabas a una persona real o a una imagen?</h4>
+        
     <table class="table11">
 
         <thead class="theadtable">
@@ -78,13 +78,11 @@
             </tr>
         </thead>
 
-
-
         <tbody class="tbodytable1">
 
             <tr>
 
-                <td class="titulostablas6">No</td>
+                <td class="titulostablas6">Imagen</td>
 
                 <td class="contenidotabla1">
                     <input type="radio" id="cuestionarioavatares1" name="cuestionarioavatares1" value="1" {% if formulariosecundario.cuestionarioavatares1 == "1"  %} checked {% endif %}>
@@ -111,7 +109,7 @@
                     <!-- <label for="cuestionarioavatares5">5</label> -->
                 </td>
 
-                <td class="titulostablas6">Si</td>
+                <td class="titulostablas6">Persona real</td>
 
             </tr>
 
@@ -121,10 +119,11 @@
 <br>
 
 
+
 <div>
 
-    <h4>2. ¿Has tenido la impresión de qué mirabas a una persona real o a una imagen?</h4>
-        
+    <h4>2. ¿Has pensado que las emociones eran reales / irreales?</h4>
+    
     <table class="table11">
 
         <thead class="theadtable">
@@ -146,7 +145,7 @@
 
             <tr>
 
-                <td class="titulostablas6">Imagen</td>
+                <td class="titulostablas6">Irreales</td>
 
                 <td class="contenidotabla1">
                     <input type="radio" id="cuestionarioavatares6" name="cuestionarioavatares2" value="1" {% if formulariosecundario.cuestionarioavatares2 == "1"  %} checked {% endif %}>
@@ -173,7 +172,7 @@
                     <!-- <label for="cuestionarioavatares10">5</label> -->
                 </td>
 
-                <td class="titulostablas6">Persona real</td>
+                <td class="titulostablas6">Reales</td>
 
             </tr>
 
@@ -182,12 +181,9 @@
 </div>
 <br>
 
-
-
 <div>
-
-    <h4>3. ¿Has pensado que las emociones eran reales / irreales?</h4>
-    
+    <h4>3. ¿Has pensado que las emociones eran fáciles o difíciles de reconocer?</h4>
+                
     <table class="table11">
 
         <thead class="theadtable">
@@ -209,7 +205,7 @@
 
             <tr>
 
-                <td class="titulostablas6">Irreales</td>
+                <td class="titulostablas6">Difícil</td>
 
                 <td class="contenidotabla1">
                     <input type="radio" id="cuestionarioavatares11" name="cuestionarioavatares3" value="1" {% if formulariosecundario.cuestionarioavatares3 == "1"  %} checked {% endif %}>
@@ -236,66 +232,6 @@
                     <!-- <label for="cuestionarioavatares15">5</label> -->
                 </td>
 
-                <td class="titulostablas6">Reales</td>
-
-            </tr>
-
-        </tbody>
-    </table>
-</div>
-<br>
-
-<div>
-    <h4>4. ¿Has pensado que las emociones eran fáciles o difíciles de reconocer?</h4>
-                
-    <table class="table11">
-
-        <thead class="theadtable">
-
-            <tr>
-
-                <td class="titulostablas12"> </td>
-                <td class="titulostablas12">1</td>
-                <td class="titulostablas12">2</td>
-                <td class="titulostablas12">3</td>
-                <td class="titulostablas12">4</td>
-                <td class="titulostablas12">5</td>
-                <td class="titulostablas12"> </td>
-
-            </tr>
-        </thead>
-
-        <tbody class="tbodytable1">
-
-            <tr>
-
-                <td class="titulostablas6">Difícil</td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares16" name="cuestionarioavatares4" value="1" {% if formulariosecundario.cuestionarioavatares4 == "1"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares16">1</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares17" name="cuestionarioavatares4" value="2" {% if formulariosecundario.cuestionarioavatares4 == "2"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares17">2</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares18" name="cuestionarioavatares4" value="3" {% if formulariosecundario.cuestionarioavatares4 == "3"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares18">3</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares19" name="cuestionarioavatares4" value="4" {% if formulariosecundario.cuestionarioavatares4 == "4"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares19">4</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares20" name="cuestionarioavatares4" value="5" {% if formulariosecundario.cuestionarioavatares4 == "5"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares20">5</label> -->
-                </td>
-
                 <td class="titulostablas6">Fácil</td>
 
             </tr>
@@ -306,10 +242,10 @@
 <br>
 
 <div>
-    <h4>5. ¿Qué característica consideras que te ha ayudado más al reconocimiento de emociones?</h4>
+    <h4>4. ¿Qué característica consideras que te ha ayudado más al reconocimiento de emociones?</h4>
                 
     <div>
-        <h4>5.1 Realismo de la imagen.</h4>
+        <h4>4.1 Realismo de la imagen.</h4>
                     
         <table class="table11">
 
@@ -335,148 +271,87 @@
                     <td class="titulostablas6">Poco</td>
 
                     <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares21" name="cuestionarioavatares5_1" value="1" {% if formulariosecundario.cuestionarioavatares5_1 == "1"  %} checked {% endif %}>
+                        <input type="radio" id="cuestionarioavatares16" name="cuestionarioavatares4_1" value="1" {% if formulariosecundario.cuestionarioavatares4_1 == "1"  %} checked {% endif %}>
+                        <!-- <label for="cuestionarioavatares16">1</label> -->
+                    </td>
+
+                    <td class="contenidotabla1">
+                        <input type="radio" id="cuestionarioavatares17" name="cuestionarioavatares4_1" value="2" {% if formulariosecundario.cuestionarioavatares4_1 == "2"  %} checked {% endif %}>
+                        <!-- <label for="cuestionarioavatares17">2</label> -->
+                    </td>
+
+                    <td class="contenidotabla1">
+                        <input type="radio" id="cuestionarioavatares18" name="cuestionarioavatares4_1" value="3" {% if formulariosecundario.cuestionarioavatares4_1 == "3"  %} checked {% endif %}>
+                        <!-- <label for="cuestionarioavatares18">3</label> -->
+                    </td>
+
+                    <td class="contenidotabla1">
+                        <input type="radio" id="cuestionarioavatares19" name="cuestionarioavatares4_1" value="4" {% if formulariosecundario.cuestionarioavatares4_1 == "4"  %} checked {% endif %}>
+                        <!-- <label for="cuestionarioavatares19">4</label> -->
+                    </td>
+
+                    <td class="contenidotabla1">
+                        <input type="radio" id="cuestionarioavatares20" name="cuestionarioavatares4_1" value="5" {% if formulariosecundario.cuestionarioavatares4_1 == "5"  %} checked {% endif %}>
+                        <!-- <label for="cuestionarioavatares20">5</label> -->
+                    </td>
+
+                    <td class="titulostablas6">Mucho</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <div>
+        <h4>4.2 Movimiento de la cara.</h4>
+                    
+        <table class="table11">
+
+            <thead class="theadtable">
+
+                <tr>
+
+                    <td class="titulostablas12"> </td>
+                    <td class="titulostablas12">1</td>
+                    <td class="titulostablas12">2</td>
+                    <td class="titulostablas12">3</td>
+                    <td class="titulostablas12">4</td>
+                    <td class="titulostablas12">5</td>
+                    <td class="titulostablas12"> </td>
+
+                </tr>
+            </thead>
+
+            <tbody class="tbodytable1">
+
+                <tr>
+
+                    <td class="titulostablas6">Poco</td>
+
+                    <td class="contenidotabla1">
+                        <input type="radio" id="cuestionarioavatares21" name="cuestionarioavatares4_2" value="1" {% if formulariosecundario.cuestionarioavatares4_2 == "1"  %} checked {% endif %}>
                         <!-- <label for="cuestionarioavatares21">1</label> -->
                     </td>
 
                     <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares22" name="cuestionarioavatares5_1" value="2" {% if formulariosecundario.cuestionarioavatares5_1 == "2"  %} checked {% endif %}>
+                        <input type="radio" id="cuestionarioavatares22" name="cuestionarioavatares4_2" value="2" {% if formulariosecundario.cuestionarioavatares4_2 == "2"  %} checked {% endif %}>
                         <!-- <label for="cuestionarioavatares22">2</label> -->
                     </td>
 
                     <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares23" name="cuestionarioavatares5_1" value="3" {% if formulariosecundario.cuestionarioavatares5_1 == "3"  %} checked {% endif %}>
+                        <input type="radio" id="cuestionarioavatares23" name="cuestionarioavatares4_2" value="3" {% if formulariosecundario.cuestionarioavatares4_2 == "3"  %} checked {% endif %}>
                         <!-- <label for="cuestionarioavatares23">3</label> -->
                     </td>
 
                     <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares24" name="cuestionarioavatares5_1" value="4" {% if formulariosecundario.cuestionarioavatares5_1 == "4"  %} checked {% endif %}>
+                        <input type="radio" id="cuestionarioavatares24" name="cuestionarioavatares4_2" value="4" {% if formulariosecundario.cuestionarioavatares4_2 == "4"  %} checked {% endif %}>
                         <!-- <label for="cuestionarioavatares24">4</label> -->
                     </td>
 
                     <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares25" name="cuestionarioavatares5_1" value="5" {% if formulariosecundario.cuestionarioavatares5_1 == "5"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares25">5</label> -->
-                    </td>
-
-                    <td class="titulostablas6">Mucho</td>
-
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-
-    <div>
-        <h4>5.2 Sensación de estar cerca de la persona.</h4>
-                    
-        <table class="table11">
-
-            <thead class="theadtable">
-
-                <tr>
-
-                    <td class="titulostablas12"> </td>
-                    <td class="titulostablas12">1</td>
-                    <td class="titulostablas12">2</td>
-                    <td class="titulostablas12">3</td>
-                    <td class="titulostablas12">4</td>
-                    <td class="titulostablas12">5</td>
-                    <td class="titulostablas12"> </td>
-
-                </tr>
-            </thead>
-
-            <tbody class="tbodytable1">
-
-                <tr>
-
-                    <td class="titulostablas6">Poco</td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares26" name="cuestionarioavatares5_2" value="1" {% if formulariosecundario.cuestionarioavatares5_2 == "1"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares26">1</label> -->
-                    </td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares27" name="cuestionarioavatares5_2" value="2" {% if formulariosecundario.cuestionarioavatares5_2 == "2"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares27">2</label> -->
-                    </td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares28" name="cuestionarioavatares5_2" value="3" {% if formulariosecundario.cuestionarioavatares5_2 == "3"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares28">3</label> -->
-                    </td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares29" name="cuestionarioavatares5_2" value="4" {% if formulariosecundario.cuestionarioavatares5_2 == "4"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares29">4</label> -->
-                    </td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares30" name="cuestionarioavatares5_2" value="5" {% if formulariosecundario.cuestionarioavatares5_2 == "5"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares30">5</label> -->
-                    </td>
-
-                    <td class="titulostablas6">Mucho</td>
-
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-
-
-    <div>
-        <h4>5.3 Movimiento de la cara.</h4>
-                    
-        <table class="table11">
-
-            <thead class="theadtable">
-
-                <tr>
-
-                    <td class="titulostablas12"> </td>
-                    <td class="titulostablas12">1</td>
-                    <td class="titulostablas12">2</td>
-                    <td class="titulostablas12">3</td>
-                    <td class="titulostablas12">4</td>
-                    <td class="titulostablas12">5</td>
-                    <td class="titulostablas12"> </td>
-
-                </tr>
-            </thead>
-
-            <tbody class="tbodytable1">
-
-                <tr>
-
-                    <td class="titulostablas6">Poco</td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares31" name="cuestionarioavatares5_3" value="1" {% if formulariosecundario.cuestionarioavatares5_3 == "1"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares31">1</label> -->
-                    </td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares32" name="cuestionarioavatares5_3" value="2" {% if formulariosecundario.cuestionarioavatares5_3 == "2"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares32">2</label> -->
-                    </td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares33" name="cuestionarioavatares5_3" value="3" {% if formulariosecundario.cuestionarioavatares5_3 == "3"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares33">3</label> -->
-                    </td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares34" name="cuestionarioavatares5_3" value="4" {% if formulariosecundario.cuestionarioavatares5_3 == "4"  %} checked {% endif %}>
-                        <!-- <label for="cuestionarioavatares34">4</label> -->
-                    </td>
-
-                    <td class="contenidotabla1">
-                        <input type="radio" id="cuestionarioavatares35" name="cuestionarioavatares5_3" value="5" {% if formulariosecundario.cuestionarioavatares5_3 == "5"  %} checked {% endif %}>
+                        <input type="radio" id="cuestionarioavatares25" name="cuestionarioavatares4_2" value="5" {% if formulariosecundario.cuestionarioavatares4_2 == "5"  %} checked {% endif %}>
                         <!-- <label for="cuestionarioavatares35">5</label> -->
                     </td>
 
@@ -493,9 +368,10 @@
 
 
 
+
 <div>
 
-    <h4>6. ¿Te has agobiado al ver las caras?</h4>
+    <h4>5. ¿Te ha resultado entretenida la herramienta?</h4>
         
     <table class="table11">
 
@@ -521,28 +397,28 @@
                 <td class="titulostablas6">No</td>
 
                 <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares36" name="cuestionarioavatares6" value="1" {% if formulariosecundario.cuestionarioavatares6 == "1"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares36">1</label> -->
+                    <input type="radio" id="cuestionarioavatares26" name="cuestionarioavatares5" value="1" {% if formulariosecundario.cuestionarioavatares5 == "1"  %} checked {% endif %}>
+                    <!-- <label for="cuestionarioavatares26">1</label> -->
                 </td>
 
                 <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares37" name="cuestionarioavatares6" value="2" {% if formulariosecundario.cuestionarioavatares6 == "2"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares37">2</label> -->
+                    <input type="radio" id="cuestionarioavatares27" name="cuestionarioavatares5" value="2" {% if formulariosecundario.cuestionarioavatares5 == "2"  %} checked {% endif %}>
+                    <!-- <label for="cuestionarioavatares27">2</label> -->
                 </td>
 
                 <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares38" name="cuestionarioavatares6" value="3" {% if formulariosecundario.cuestionarioavatares6 == "3"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares38">3</label> -->
+                    <input type="radio" id="cuestionarioavatares28" name="cuestionarioavatares5" value="3" {% if formulariosecundario.cuestionarioavatares5 == "3"  %} checked {% endif %}>
+                    <!-- <label for="cuestionarioavatares28">3</label> -->
                 </td>
 
                 <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares39" name="cuestionarioavatares6" value="4" {% if formulariosecundario.cuestionarioavatares6 == "4"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares39">4</label> -->
+                    <input type="radio" id="cuestionarioavatares29" name="cuestionarioavatares5" value="4" {% if formulariosecundario.cuestionarioavatares5 == "4"  %} checked {% endif %}>
+                    <!-- <label for="cuestionarioavatares29">4</label> -->
                 </td>
 
                 <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares40" name="cuestionarioavatares6" value="5" {% if formulariosecundario.cuestionarioavatares6 == "5"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares40">5</label> -->
+                    <input type="radio" id="cuestionarioavatares30" name="cuestionarioavatares5" value="5" {% if formulariosecundario.cuestionarioavatares5 == "5"  %} checked {% endif %}>
+                    <!-- <label for="cuestionarioavatares30">5</label> -->
                 </td>
 
                 <td class="titulostablas6">Si</td>
@@ -556,136 +432,9 @@
 
 
 
-
 <div>
-
-    <h4>7. ¿Te ha resultado entretenida la herramienta?</h4>
-        
-    <table class="table11">
-
-        <thead class="theadtable">
-
-            <tr>
-
-                <td class="titulostablas12"> </td>
-                <td class="titulostablas12">1</td>
-                <td class="titulostablas12">2</td>
-                <td class="titulostablas12">3</td>
-                <td class="titulostablas12">4</td>
-                <td class="titulostablas12">5</td>
-                <td class="titulostablas12"> </td>
-
-            </tr>
-        </thead>
-
-        <tbody class="tbodytable1">
-
-            <tr>
-
-                <td class="titulostablas6">No</td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares41" name="cuestionarioavatares7" value="1" {% if formulariosecundario.cuestionarioavatares7 == "1"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares41">1</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares42" name="cuestionarioavatares7" value="2" {% if formulariosecundario.cuestionarioavatares7 == "2"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares42">2</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares43" name="cuestionarioavatares7" value="3" {% if formulariosecundario.cuestionarioavatares7 == "3"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares43">3</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares44" name="cuestionarioavatares7" value="4" {% if formulariosecundario.cuestionarioavatares7 == "4"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares44">4</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares45" name="cuestionarioavatares7" value="5" {% if formulariosecundario.cuestionarioavatares7 == "5"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares45">5</label> -->
-                </td>
-
-                <td class="titulostablas6">Si</td>
-
-            </tr>
-
-        </tbody>
-    </table>
-</div>
-<br>
-
-
-
-
-<div>
-
-    <h4>8. ¿Estarías dispuesto a llevar a cabo un entrenamiento en reconocimiento de emociones con esta herramienta?</h4>
-        
-    <table class="table11">
-
-        <thead class="theadtable">
-
-            <tr>
-
-                <td class="titulostablas12"> </td>
-                <td class="titulostablas12">1</td>
-                <td class="titulostablas12">2</td>
-                <td class="titulostablas12">3</td>
-                <td class="titulostablas12">4</td>
-                <td class="titulostablas12">5</td>
-                <td class="titulostablas12"> </td>
-
-            </tr>
-        </thead>
-
-        <tbody class="tbodytable1">
-
-            <tr>
-
-                <td class="titulostablas6">No</td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares46" name="cuestionarioavatares8" value="1" {% if formulariosecundario.cuestionarioavatares8 == "1"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares46">1</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares47" name="cuestionarioavatares8" value="2" {% if formulariosecundario.cuestionarioavatares8 == "2"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares47">2</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares48" name="cuestionarioavatares8" value="3" {% if formulariosecundario.cuestionarioavatares8 == "3"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares48">3</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares49" name="cuestionarioavatares8" value="4" {% if formulariosecundario.cuestionarioavatares8 == "4"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares49">4</label> -->
-                </td>
-
-                <td class="contenidotabla1">
-                    <input type="radio" id="cuestionarioavatares50" name="cuestionarioavatares8" value="5" {% if formulariosecundario.cuestionarioavatares8 == "5"  %} checked {% endif %}>
-                    <!-- <label for="cuestionarioavatares50">5</label> -->
-                </td>
-
-                <td class="titulostablas6">Si</td>
-
-            </tr>
-
-        </tbody>
-    </table>
-</div>
-<br>
-
-
-<div>
-    <h4>9. ¿Quieres añadir algún comentario sobre tu experiencia?</h4>
-    <textarea id="cuestionarioavatares51" name="cuestionarioavatares9" rows="7" placeholder="Indica si estarías dispuesto a llevar a cabo un entrenamiento en reconocimiento de emociones con esta herramienta">{{formulariosecundario.cuestionarioavatares9}}</textarea>
+    <h4>6. ¿Quieres añadir algún comentario sobre tu experiencia?</h4>
+    <textarea id="cuestionarioavatares31" name="cuestionarioavatares6" rows="7" placeholder="Indica si estarías dispuesto a llevar a cabo un entrenamiento en reconocimiento de emociones con esta herramienta">{{formulariosecundario.cuestionarioavatares6}}</textarea>
 </div>
 <br>
 
