@@ -484,52 +484,14 @@ def inicio():
 # pagina lista de participantes ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-# RESULTS_PER_PAGE = 5  # Define the number of results per page
-
-# @appcarasrealistas.route("/listaparticipantes/<string:tipoparticipante>/", methods=["GET", "POST"])
-# def listaparticipantes(tipoparticipante=""):
-#     if tipoparticipante == "control":
-#         nombretablabd = Formularioregistro
-#         tipolayout = 'layoutinicio2.html'
-    
-#     # Fetch all participants from the database
-#     listaparticipantes = nombretablabd.query.all()
-#     numeroparticipantes = len(listaparticipantes)
-
-#     # Get the current page from the query parameters
-#     page = int(request.args.get('page', 1))
-
-#     # Calculate the start and end indices for pagination
-#     start_index = (page - 1) * RESULTS_PER_PAGE
-#     end_index = start_index + RESULTS_PER_PAGE
-
-#     # Get the paginated data
-#     paginated_participantes = listaparticipantes[start_index:end_index]
-
-#     # Calculate the total number of pages
-#     total_pages = math.ceil(numeroparticipantes / RESULTS_PER_PAGE)
-
-#     return render_template(
-#         "listaparticipantes.html",
-#         tipolayout=tipolayout,
-#         tipoparticipante=tipoparticipante,
-#         listaparticipantes=paginated_participantes,
-#         numeroparticipantes=numeroparticipantes,
-#         total_pages=total_pages,
-#         current_page=page
-#     )
-
-
-
-
-RESULTS_PER_PAGE_OPTIONS = [3, 5, 10, 20]  # Define available options for results per page
+RESULTS_PER_PAGE_OPTIONS = [5, 10, 20, "all"]
 
 @appcarasrealistas.route("/listaparticipantes/<string:tipoparticipante>/", methods=["GET", "POST"])
 def listaparticipantes(tipoparticipante=""):
     if tipoparticipante == "control":
         nombretablabd = Formularioregistro
         tipolayout = 'layoutinicio2.html'
-    
+
     # Fetch all participants from the database
     listaparticipantes = nombretablabd.query.all()
     numeroparticipantes = len(listaparticipantes)
@@ -538,7 +500,23 @@ def listaparticipantes(tipoparticipante=""):
     page = int(request.args.get('page', 1))
 
     # Get the selected results per page value from the query parameters
-    results_per_page = int(request.args.get('results', RESULTS_PER_PAGE_OPTIONS[0]))
+    results_per_page = request.args.get('results', RESULTS_PER_PAGE_OPTIONS[0])
+
+    # Convert "all" to the total number of participants
+    if results_per_page == "all":
+        results_per_page = numeroparticipantes
+    else:
+        results_per_page = int(results_per_page)
+
+    # Get the search query from the query parameters
+    search_query = request.args.get('search', '').strip()
+
+    # Filter the participants based on the search query
+    if search_query:
+        listaparticipantes = [participante for participante in listaparticipantes if search_query in participante.nhcparticipante]
+
+    # Calculate the total number of pages
+    total_pages = math.ceil(len(listaparticipantes) / results_per_page)
 
     # Calculate the start and end indices for pagination
     start_index = (page - 1) * results_per_page
@@ -546,9 +524,6 @@ def listaparticipantes(tipoparticipante=""):
 
     # Get the paginated data
     paginated_participantes = listaparticipantes[start_index:end_index]
-
-    # Calculate the total number of pages
-    total_pages = math.ceil(numeroparticipantes / results_per_page)
 
     return render_template(
         "listaparticipantes.html",
@@ -559,14 +534,9 @@ def listaparticipantes(tipoparticipante=""):
         total_pages=total_pages,
         current_page=page,
         results_per_page=results_per_page,
-        results_per_page_options=RESULTS_PER_PAGE_OPTIONS
+        results_per_page_options=RESULTS_PER_PAGE_OPTIONS,
+        search_query=search_query
     )
-
-
-
-
-
-
 
 
 

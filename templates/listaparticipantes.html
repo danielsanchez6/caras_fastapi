@@ -47,19 +47,42 @@
     {% endwith %}
 
 
-    <h3>Número de participantes en la lista: {{ numeroparticipantes }}</h3>
+    <h3>Número total de participantes: {{ numeroparticipantes }}</h3>
     <br>
+
+
+
 
     <!-- Results per page selector -->
     <form method="get" action="/listaparticipantes/{{ tipoparticipante }}/" class="results-per-page-form">
         <label for="results-per-page-select">Resultados por página:</label>
-        <select id="results-per-page-select" name="results">
-            {% for option in results_per_page_options %}
-                <option value="{{ option }}" {% if option == results_per_page %}selected{% endif %}>{{ option }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Actualizar">
+        {% for option in results_per_page_options %}
+            <label>
+                <input type="radio" name="results" value="{{ option }}" {% if option == results_per_page %}checked{% endif %} onchange="this.form.submit()">
+                {% if option == "all" %}
+                    Mostrar todos
+                {% else %}
+                    {{ option }}
+                {% endif %}
+            </label>
+        {% endfor %}
     </form>
+
+    <!-- Search form -->
+    <form method="get" action="/listaparticipantes/{{ tipoparticipante }}/" class="search-form">
+        <label for="search-input">Buscar participante:</label>
+        <input type="text" id="search-input" name="search" value="{{ search_query }}" oninput="this.form.submit()" style="cursor: text;">
+    </form>
+
+
+    <!-- JavaScript to place cursor in the search input -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var searchInput = document.getElementById("search-input");
+            searchInput.focus();
+            searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
+        });
+    </script>
 
 
 
