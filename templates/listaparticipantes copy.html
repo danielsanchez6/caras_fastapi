@@ -47,7 +47,44 @@
     {% endwith %}
 
 
-    <h3>Número de participantes en la lista: {{ numeroparticipantes }}</h3>
+    <h3>Número total de participantes: {{ numeroparticipantes }}</h3>
+    <br>
+
+
+    <!-- Search form -->
+    <form method="get" action="/listaparticipantes/{{ tipoparticipante }}/" class="search-form">
+        <!-- <label for="search-input">Buscar participante:</label> -->
+        <input type="text" id="search-input" name="search" value="{{ search_query }}" oninput="validatePositiveInteger(this);" placeholder="Buscar participante" style="cursor: text;">
+    </form>
+
+    <!-- JavaScript to validate positive integer input -->
+    <script>
+        function validatePositiveInteger(input) {
+            var inputValue = input.value.trim();
+
+            // Remove any non-digit characters
+            inputValue = inputValue.replace(/\D/g, '');
+
+            // Ensure the input value is a positive integer
+            var intValue = parseInt(inputValue);
+            if (isNaN(intValue) || intValue <= 0) {
+                input.value = '';
+            } else {
+                input.value = intValue.toString();
+            }
+
+            // Submit the form
+            input.form.submit();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var searchInput = document.getElementById("search-input");
+            searchInput.focus();
+            searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
+        });
+    </script>
+
+
     <br>
     <div class="divtable">
 
@@ -57,7 +94,7 @@
                     <!--colocar todo los valores de las tablas que se deseen mostar -->
                     
                     <td class="titulostablas1">Identificador:</td>
-                    <td class="titulostablas1">Fecha de creación:</td>
+                    <td class="titulostabla1">Fecha de creación:</td>
                     <td class="titulostablas3"></td>
                     <td class="titulostablas4"></td>
                     <td class="titulostablas5"></td>
@@ -95,6 +132,29 @@
 
         </table>
     </div>
+
+
+    
+    <!-- Pagination -->
+    <br>
+    <div class="pagination">
+        {% if current_page > 1 %}
+            <a href="{{ url_for('listaparticipantes', tipoparticipante=tipoparticipante, page=current_page-1, search=search_query) }}">&laquo; Anterior</a>
+        {% endif %}
+        
+        {% for page_num in range(1, total_pages + 1) %}
+            {% if page_num == current_page %}
+                <span class="current-page">{{ page_num }}</span>
+            {% else %}
+                <a href="{{ url_for('listaparticipantes', tipoparticipante=tipoparticipante, page=page_num, search=search_query) }}">{{ page_num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if current_page < total_pages %}
+            <a href="{{ url_for('listaparticipantes', tipoparticipante=tipoparticipante, page=current_page+1, search=search_query) }}">Siguiente &raquo;</a>
+        {% endif %}
+    </div>
+
 
 
 {% endblock %}
