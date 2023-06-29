@@ -242,6 +242,7 @@ class Appcaraspantalla(db.Model):
     movimiento = db.Column(db.Text)
     hmd = db.Column(db.Text)
     coloravatar = db.Column(db.Text)
+    #edadavatar = db.Column(db.Text)
     tiempofinal = db.Column(db.Text)
     ordenaparicion = db.Column(db.Text)
     generoavatar = db.Column(db.Text)
@@ -1007,16 +1008,6 @@ def mostrarescalapanas(tipoparticipante="", estadoparticipante="", idparticipant
 
 
 
-
-
-
-
-
-
-
-
-
-
 # cuestionario avatares ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @appcarasrealistas.route("/cuestionarioavatares/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/", methods=["GET", "POST"])
@@ -1103,21 +1094,13 @@ def mostrarcuestionarioavatares(tipoparticipante="", estadoparticipante="", idpa
 
 
 
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-#  Appcaraspantalla del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#  Appcarasvideo del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @appcarasrealistas.route('/appcaraspantalla/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=['GET','POST'])
 def appcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
@@ -1126,14 +1109,14 @@ def appcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=
         rutabasedatos = "dbappcarasrealistas.db"
         
         if estadoparticipante == "estable":
-            tipoparticipanteapp = "Participante_control_Estable"
+            tipoparticipanteapp = "Participante_Control"
             nombretabla = "appcaraspantalla"
 
 
     # Abre la aplicacion de las caras y le envia la informacion necesaria a los participantes
     Popen("start carasPantalla.exe "+ str(nhcparticipante) + " " + str(idparticipante) + " " + str(tipoparticipanteapp) + " " + str(rutabasedatos) + " " + str(nombretabla) , shell= True)
 
-    return render_template('layoutappcaras.html', tipoapp='pantalla', estadoparticipante=estadoparticipante, tipoparticipante=tipoparticipante, idparticipante=idparticipante, nhcparticipante=nhcparticipante, fechacreacion=fechacreacion)
+    return render_template('layoutappcaras.html', tipoapp='video', estadoparticipante=estadoparticipante, tipoparticipante=tipoparticipante, idparticipante=idparticipante, nhcparticipante=nhcparticipante, fechacreacion=fechacreacion)
 
 
 #  fin Appcaraspantalla del participante ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1151,7 +1134,7 @@ def appcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=
 
 
 
-#  Resultados Appcaraspantalla del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#  Resultados Appcarasvideo del participante ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @appcarasrealistas.route('/resultadosparticipanteappcaraspantalla/<string:tipoparticipante>/<string:estadoparticipante>/<int:idparticipante>/<string:nhcparticipante>/<string:fechacreacion>/', methods=['GET','POST'])
 def resultadosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipante="", idparticipante=None, nhcparticipante="", fechacreacion=""):
@@ -1303,7 +1286,7 @@ def descargarresultadosparticipanteappcaraspantalla(tipoparticipante="", estadop
     pdf.set_font('helvetica','', 12)
     
     # añadir el texto de la pagina
-    pdf.multi_cell(170, 10, f"En el programa de 'Reconocimiento Facial de Emociones en Realidad Virtual No Inmersiva', el participante con código: { codigo }, ha conseguido los porcentajes de aciertos para cada una de las emociones indicadas a continuación:", 0, 'J', 0)
+    pdf.multi_cell(170, 10, f"En el programa de 'Validación de Avatares Hiperrealistas', el participante con identificador: { codigo }, ha conseguido los porcentajes de aciertos para cada una de las emociones indicadas a continuación:", 0, 'J', 0)
 
     pdf.ln(10)
     # añadir la imagen del grafico a la pagina
@@ -1335,7 +1318,7 @@ def descargarresultadosparticipanteappcaraspantalla(tipoparticipante="", estadop
     os.remove(f'static/pdf/{ codigo }.png')
     os.remove(f'static/pdf/{ codigo }.pdf')
 
-    flash(f"Se ha guardado el archivo '{ codigo }_Fecha_{ fecha }_Hora_{ hora }.pdf' en la carpeta 'Descargas' con los resultados de la 'Aplicación de Reconocimiento Facial en Realidad Virtual No Inmersiva', para el participante con el identificador: { nhcparticipante } en estado { estadoparticipante }.", category="crear")
+    flash(f"Se ha guardado el archivo '{ codigo }_Fecha_{ fecha }_Hora_{ hora }.pdf' en la carpeta 'Descargas' con los resultados de la 'Validación de Avatares Hiperrealistas', para el participante con el identificador: { nhcparticipante } en estado { estadoparticipante }.", category="crear")
 
     return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
@@ -1367,7 +1350,7 @@ def borrardatosparticipanteappcaraspantalla(tipoparticipante="", estadoparticipa
     for appcara in listaappcaras:
         borrarappcaras(appcara, idparticipante, nhcparticipante)
 
-    flash ("Se han borrado los datos y reiniciado la Aplicación Caras No Inmersiva correctamente", category="borrar")
+    flash ("Se han borrado los datos y reiniciado la Aplicación Caras Hiperrealistas correctamente", category="borrar")
     return redirect(url_for('listaformulariosparticipante', tipoparticipante=tipoparticipante, idparticipante = idparticipante, nhcparticipante = nhcparticipante, fechacreacion=fechacreacion))
 
 
@@ -1434,7 +1417,7 @@ def exportarbase():
     # colocar la ruta donde se crea el directorio
     # parent_dir = 'c:/'
     parent_dir = 'C:\\'
-    directory1 = 'Registro-Datos_App'
+    directory1 = 'Registro-Datos_App_Caras_Hiperrealistas'
     path1 = os.path.join(parent_dir, directory1)
 
     fechaexportacion = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
